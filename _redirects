@@ -1,0 +1,21 @@
+# Netlify重定向规则
+# 阻止WordPress扫描和恶意请求
+
+# WordPress相关请求 - 返回410 Gone（永久消失）
+/wp-* 410
+/wordpress/* 410
+/wp-admin/* 410
+/wp-content/* 410
+/wp-includes/* 410
+
+# 其他常见扫描路径
+/xmlrpc.php 410
+/.env 410
+/config.php 410
+/admin/* 410
+
+# Favicon重定向
+/favicon.ico /images/favicon.jpg 200
+
+# 404页面（可选，如果将来创建404页面）
+# /* /404.html 404

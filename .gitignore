@@ -1,0 +1,17 @@
+# Python脚本
+*.py
+__pycache__/
+*.pyc
+
+# 文档和指南
+*.md
+!README.md
+
+# 系统文件
+.DS_Store
+*.swp
+*.swo
+
+# 临时文件
+*.log
+*.tmp
