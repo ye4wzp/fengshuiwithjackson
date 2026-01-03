@@ -171,3 +171,193 @@
         init();
     }
 })();
+
+// Check-in System
+function updateCheckinStats() {
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Get check-in data
+    let checkinData = JSON.parse(localStorage.getItem('checkinData') || '{"dates": [], "streak": 0, "total": 0}');
+    
+    // Check if already checked in today
+    if (!checkinData.dates.includes(today)) {
+        // New check-in
+        checkinData.dates.push(today);
+        checkinData.total++;
+        
+        // Calculate streak
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayStr = yesterday.toISOString().split('T')[0];
+        
+        if (checkinData.dates.includes(yesterdayStr)) {
+            checkinData.streak++;
+        } else {
+            checkinData.streak = 1;
+        }
+        
+        // Keep only last 30 days
+        if (checkinData.dates.length > 30) {
+            checkinData.dates = checkinData.dates.slice(-30);
+        }
+        
+        localStorage.setItem('checkinData', JSON.stringify(checkinData));
+    }
+    
+    // Display stats
+    document.getElementById('streakDays').textContent = checkinData.streak;
+    document.getElementById('totalCheckins').textContent = checkinData.total;
+    document.getElementById('checkinStats').style.display = 'flex';
+}
+
+// Countdown Timer
+function startCountdown() {
+    function updateCountdown() {
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0);
+        
+        const diff = tomorrow - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const countdownEl = document.getElementById('countdown');
+        if (countdownEl) {
+            countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+// History System
+function saveFortuneToHistory(fortune) {
+    let history = JSON.parse(localStorage.getItem('fortuneHistory') || '[]');
+    
+    // Check if today's fortune already exists
+    const today = new Date().toISOString().split('T')[0];
+    const existingIndex = history.findIndex(item => item.date === today && item.zodiac === fortune.zodiac);
+    
+    if (existingIndex >= 0) {
+        // Update existing
+        history[existingIndex] = {
+            date: today,
+            zodiac: fortune.zodiac,
+            name: fortune.name,
+            emoji: fortune.emoji,
+            overall: Math.round((fortune.wealth + fortune.love + fortune.career + fortune.health) / 4)
+        };
+    } else {
+        // Add new
+        history.push({
+            date: today,
+            zodiac: fortune.zodiac,
+            name: fortune.name,
+            emoji: fortune.emoji,
+            overall: Math.round((fortune.wealth + fortune.love + fortune.career + fortune.health) / 4)
+        });
+    }
+    
+    // Keep only last 30 days
+    if (history.length > 30) {
+        history = history.slice(-30);
+    }
+    
+    localStorage.setItem('fortuneHistory', JSON.stringify(history));
+}
+
+function displayHistory() {
+    const history = JSON.parse(localStorage.getItem('fortuneHistory') || '[]');
+    const contentEl = document.getElementById('historyContent');
+    
+    if (history.length === 0) {
+        contentEl.innerHTML = '<div class="history-empty">No history yet. Check your fortune daily to build your history!</div>';
+        return;
+    }
+    
+    // Sort by date descending and take last 7
+    const last7 = history.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 7);
+    
+    contentEl.innerHTML = last7.map(item => {
+        const date = new Date(item.date);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const stars = '★'.repeat(item.overall) + '☆'.repeat(5 - item.overall);
+        
+        return `
+            <div class="history-item">
+                <div class="history-date">${dateStr}</div>
+                <div class="history-zodiac">
+                    <span class="history-zodiac-emoji">${item.emoji}</span>
+                    <span class="history-zodiac-name">${item.name}</span>
+                </div>
+                <div class="history-rating">${stars}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+window.toggleHistory = function() {
+    const panel = document.getElementById('historyPanel');
+    if (panel.style.display === 'none') {
+        displayHistory();
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        panel.style.display = 'none';
+    }
+};
+
+// Check if it's a new day
+function checkNewDay() {
+    const lastVisit = localStorage.getItem('lastVisit');
+    const today = new Date().toISOString().split('T')[0];
+    
+    if (lastVisit && lastVisit !== today) {
+        // It's a new day!
+        const dateEl = document.getElementById('currentDate');
+        if (dateEl && !dateEl.querySelector('.new-badge')) {
+            const badge = document.createElement('span');
+            badge.className = 'new-badge';
+            badge.textContent = 'NEW';
+            dateEl.appendChild(badge);
+        }
+    }
+}
+
+// Enhanced display fortune
+const originalDisplayFortune = window.displayFortune || function() {};
+window.displayFortune = function(fortune) {
+    // Call original function
+    if (typeof originalDisplayFortune === 'function') {
+        originalDisplayFortune(fortune);
+    }
+    
+    // Save to history
+    saveFortuneToHistory(fortune);
+    
+    // Update check-in stats
+    updateCheckinStats();
+    
+    // Show history button
+    document.getElementById('historyBtn').style.display = 'inline-block';
+    
+    // Start countdown
+    startCountdown();
+};
+
+// Initialize on page load
+(function() {
+    checkNewDay();
+    
+    // If user has already checked in today, show stats
+    const lastVisit = localStorage.getItem('lastVisit');
+    const today = new Date().toISOString().split('T')[0];
+    if (lastVisit === today) {
+        updateCheckinStats();
+        startCountdown();
+        document.getElementById('historyBtn').style.display = 'inline-block';
+    }
+})();

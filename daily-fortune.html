@@ -53,7 +53,42 @@
                 <h1>🔮 Daily Feng Shui Fortune</h1>
                 <p class="fortune-subtitle">Discover your luck for today based on your Chinese zodiac</p>
                 <p class="fortune-date" id="currentDate"></p>
+
+                <!-- Check-in Stats -->
+                <div class="checkin-stats" id="checkinStats" style="display: none;">
+                    <div class="stat-item">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-value" id="streakDays">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-value" id="totalCheckins">0</span>
+                        <span class="stat-label">Total Check-ins</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⏰</span>
+                        <span class="stat-value" id="countdown">--:--:--</span>
+                        <span class="stat-label">Next Update</span>
+                    </div>
+                </div>
+
+                <!-- History Button -->
+                <button class="btn-history" id="historyBtn" onclick="toggleHistory()" style="display: none;">
+                    📊 View History
+                </button>
             </header>
+
+            <!-- History Panel -->
+            <div class="history-panel" id="historyPanel" style="display: none;">
+                <div class="history-header">
+                    <h3>📅 Your Fortune History (Last 7 Days)</h3>
+                    <button class="btn-close" onclick="toggleHistory()">✕</button>
+                </div>
+                <div class="history-content" id="historyContent">
+                    <!-- History items will be inserted here -->
+                </div>
+            </div>
 
             <div class="zodiac-selector" id="zodiacSelector">
                 <h2>Select Your Zodiac Sign</h2>
