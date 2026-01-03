@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get your daily feng shui fortune! Check your zodiac luck, lucky colors, directions, and personalized feng shui tips for today.">
+    <meta property="og:title" content="Daily Feng Shui Fortune | Feng Shui With Jackson">
+    <meta property="og:description" content="Discover your daily feng shui fortune based on your Chinese zodiac sign. Get lucky colors, directions, and personalized tips!">
+    <title>Daily Feng Shui Fortune | Feng Shui With Jackson</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL9K60SGL2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LL9K60SGL2');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.jpg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fortune.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">FengShuiWithJackson</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="daily-fortune.html" class="active">Daily Fortune</a></li>
+                    <li><a href="shop.html">Shop My Faves</a></li>
+                    <li><a href="guide.html" class="btn-nav">Free Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fortune-container">
+        <div class="container">
+            <header class="fortune-header">
+                <h1>🔮 Daily Feng Shui Fortune</h1>
+                <p class="fortune-subtitle">Discover your luck for today based on your Chinese zodiac</p>
+                <p class="fortune-date" id="currentDate"></p>
+            </header>
+
+            <div class="zodiac-selector" id="zodiacSelector">
+                <h2>Select Your Zodiac Sign</h2>
+                <div class="zodiac-grid">
+                    <button class="zodiac-btn" data-zodiac="rat" data-emoji="🐀">
+                        <span class="zodiac-emoji">🐀</span>
+                        <span class="zodiac-name">Rat</span>
+                        <span class="zodiac-years">1960, 1972, 1984, 1996, 2008, 2020</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="ox" data-emoji="��">
+                        <span class="zodiac-emoji">🐂</span>
+                        <span class="zodiac-name">Ox</span>
+                        <span class="zodiac-years">1961, 1973, 1985, 1997, 2009, 2021</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="tiger" data-emoji="🐅">
+                        <span class="zodiac-emoji">🐅</span>
+                        <span class="zodiac-name">Tiger</span>
+                        <span class="zodiac-years">1962, 1974, 1986, 1998, 2010, 2022</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="rabbit" data-emoji="🐇">
+                        <span class="zodiac-emoji">🐇</span>
+                        <span class="zodiac-name">Rabbit</span>
+                        <span class="zodiac-years">1963, 1975, 1987, 1999, 2011, 2023</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="dragon" data-emoji="🐉">
+                        <span class="zodiac-emoji">🐉</span>
+                        <span class="zodiac-name">Dragon</span>
+                        <span class="zodiac-years">1964, 1976, 1988, 2000, 2012, 2024</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="snake" data-emoji="🐍">
+                        <span class="zodiac-emoji">🐍</span>
+                        <span class="zodiac-name">Snake</span>
+                        <span class="zodiac-years">1965, 1977, 1989, 2001, 2013, 2025</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="horse" data-emoji="🐴">
+                        <span class="zodiac-emoji">🐴</span>
+                        <span class="zodiac-name">Horse</span>
+                        <span class="zodiac-years">1966, 1978, 1990, 2002, 2014</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="goat" data-emoji="🐐">
+                        <span class="zodiac-emoji">🐐</span>
+                        <span class="zodiac-name">Goat</span>
+                        <span class="zodiac-years">1967, 1979, 1991, 2003, 2015</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="monkey" data-emoji="🐵">
+                        <span class="zodiac-emoji">🐵</span>
+                        <span class="zodiac-name">Monkey</span>
+                        <span class="zodiac-years">1968, 1980, 1992, 2004, 2016</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="rooster" data-emoji="🐔">
+                        <span class="zodiac-emoji">🐔</span>
+                        <span class="zodiac-name">Rooster</span>
+                        <span class="zodiac-years">1969, 1981, 1993, 2005, 2017</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="dog" data-emoji="🐕">
+                        <span class="zodiac-emoji">🐕</span>
+                        <span class="zodiac-name">Dog</span>
+                        <span class="zodiac-years">1970, 1982, 1994, 2006, 2018</span>
+                    </button>
+                    <button class="zodiac-btn" data-zodiac="pig" data-emoji="🐖">
+                        <span class="zodiac-emoji">🐖</span>
+                        <span class="zodiac-name">Pig</span>
+                        <span class="zodiac-years">1971, 1983, 1995, 2007, 2019</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="fortune-card-container" id="fortuneCardContainer" style="display: none;">
+                <div class="fortune-card" id="fortuneCard">
+                    <div class="fortune-card-header">
+                        <span class="fortune-zodiac-emoji" id="fortuneZodiacEmoji"></span>
+                        <h2 id="fortuneZodiacName"></h2>
+                        <div class="fortune-stars" id="fortuneStars"></div>
+                    </div>
+
+                    <div class="fortune-details">
+                        <div class="fortune-row">
+                            <div class="fortune-item">
+                                <span class="fortune-icon">🎨</span>
+                                <span class="fortune-label">Lucky Colors</span>
+                                <span class="fortune-value" id="luckyColors"></span>
+                            </div>
+                            <div class="fortune-item">
+                                <span class="fortune-icon">🧭</span>
+                                <span class="fortune-label">Lucky Direction</span>
+                                <span class="fortune-value" id="luckyDirection"></span>
+                            </div>
+                        </div>
+                        <div class="fortune-row">
+                            <div class="fortune-item">
+                                <span class="fortune-icon">🔢</span>
+                                <span class="fortune-label">Lucky Numbers</span>
+                                <span class="fortune-value" id="luckyNumbers"></span>
+                            </div>
+                            <div class="fortune-item">
+                                <span class="fortune-icon">🌟</span>
+                                <span class="fortune-label">Lucky Element</span>
+                                <span class="fortune-value" id="luckyElement"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fortune-ratings">
+                        <div class="rating-item">
+                            <span class="rating-icon">💰</span>
+                            <span class="rating-label">Wealth</span>
+                            <div class="rating-stars" id="wealthRating"></div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-icon">❤️</span>
+                            <span class="rating-label">Love</span>
+                            <div class="rating-stars" id="loveRating"></div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-icon">💼</span>
+                            <span class="rating-label">Career</span>
+                            <div class="rating-stars" id="careerRating"></div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-icon">🏥</span>
+                            <span class="rating-label">Health</span>
+                            <div class="rating-stars" id="healthRating"></div>
+                        </div>
+                    </div>
+
+                    <div class="fortune-advice">
+                        <h3>💡 Today's Feng Shui Tip</h3>
+                        <p id="fortuneAdvice"></p>
+                    </div>
+
+                    <div class="fortune-actions">
+                        <button class="btn-secondary" onclick="location.reload()">Try Another Zodiac</button>
+                        <button class="btn-primary" onclick="shareFortune()">Share Fortune</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FengShuiWithJackson</h3>
+                    <p>Bringing ancient wisdom to modern living</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="daily-fortune.html">Daily Fortune</a></li>
+                        <li><a href="guide.html">Free Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>📧 jackson@fengshuiwithjackson.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FengShuiWithJackson. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/fortune-data.js"></script>
+    <script src="js/fortune.js"></script>
+</body>
+</html>
