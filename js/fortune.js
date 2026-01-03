@@ -1,5 +1,5 @@
 // Fortune Logic
-(function() {
+(function () {
     'use strict';
 
     // Display current date
@@ -26,7 +26,7 @@
     function getFortune(zodiac) {
         const today = new Date().toISOString().split('T')[0];
         const zodiacData = fortuneData[zodiac];
-        
+
         if (!zodiacData) return null;
 
         // Use seeded random to get consistent fortune for the day
@@ -54,7 +54,7 @@
     function displayFortune(fortune) {
         // Hide zodiac selector
         document.getElementById('zodiacSelector').style.display = 'none';
-        
+
         // Show fortune card
         const container = document.getElementById('fortuneCardContainer');
         container.style.display = 'block';
@@ -91,7 +91,7 @@
     function handleZodiacClick(event) {
         const button = event.currentTarget;
         const zodiac = button.dataset.zodiac;
-        
+
         // Add loading effect
         button.style.transform = 'scale(0.95)';
         setTimeout(() => {
@@ -102,14 +102,27 @@
         }, 300);
     }
 
+    // Change zodiac (show selector again)
+    window.changeZodiac = function () {
+        // Hide fortune card
+        document.getElementById('fortuneCardContainer').style.display = 'none';
+
+        // Show zodiac selector
+        const selector = document.getElementById('zodiacSelector');
+        selector.style.display = 'block';
+
+        // Scroll to selector
+        selector.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     // Share fortune
-    window.shareFortune = function() {
+    window.shareFortune = function () {
         const zodiac = localStorage.getItem('lastZodiac');
         const fortune = getFortune(zodiac);
-        
+
         if (fortune) {
             const text = `🔮 My Daily Feng Shui Fortune:\n\n${fortune.emoji} ${fortune.name}\n⭐ ${generateStars(Math.round((fortune.wealth + fortune.love + fortune.career + fortune.health) / 4))}\n\n🎨 Lucky Colors: ${fortune.colors.join(', ')}\n🧭 Lucky Direction: ${fortune.direction}\n\nCheck yours at fengshuiwithjackson.com/daily-fortune.html`;
-            
+
             if (navigator.share) {
                 navigator.share({
                     title: 'My Daily Feng Shui Fortune',
