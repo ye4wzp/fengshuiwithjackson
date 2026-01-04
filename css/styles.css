@@ -2155,3 +2155,64 @@ h3 {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* Navigation Search Fix */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.nav-search {
+    flex-shrink: 0;
+    order: 2;
+}
+
+.nav-menu {
+    order: 3;
+}
+
+.logo {
+    order: 1;
+}
+
+.mobile-menu-toggle {
+    order: 4;
+}
+
+/* Adjust search container in nav */
+.nav-search .search-container {
+    max-width: 200px;
+}
+
+.nav-search .search-box {
+    padding: 8px 35px 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Mobile navigation fix */
+@media (max-width: 968px) {
+    .nav-wrapper {
+        flex-wrap: wrap;
+    }
+    
+    .nav-search {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .nav-search .search-container {
+        max-width: 100%;
+    }
+    
+    .mobile-menu-toggle {
+        order: 2;
+    }
+    
+    .nav-menu {
+        order: 4;
+        width: 100%;
+    }
+}

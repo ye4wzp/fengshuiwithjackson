@@ -1,7 +1,7 @@
 // Site Search Functionality
-(function() {
+(function () {
     'use strict';
-    
+
     const articles = [
         {
             title: "2026 Feng Shui Forecast: Year of the Fire Horse",
@@ -46,65 +46,69 @@
             keywords: "daily fortune zodiac luck predictions"
         }
     ];
-    
+
     function createSearchBox() {
-        const nav = document.querySelector('.nav-menu');
-        if (!nav) return;
-        
-        const searchLi = document.createElement('li');
-        searchLi.innerHTML = `
+        const navWrapper = document.querySelector('.nav-wrapper');
+        if (!navWrapper) return;
+
+        // Create search container as a separate element
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'nav-search';
+        searchContainer.innerHTML = `
             <div class="search-container">
-                <input type="text" class="search-box" placeholder="Search articles..." id="siteSearch">
+                <input type="text" class="search-box" placeholder="Search..." id="siteSearch">
                 <span class="search-icon">🔍</span>
                 <div class="search-results" id="searchResults"></div>
             </div>
         `;
-        
-        nav.insertBefore(searchLi, nav.firstChild);
-        
+
+        // Insert before the nav-menu
+        const navMenu = navWrapper.querySelector('.nav-menu');
+        navWrapper.insertBefore(searchContainer, navMenu);
+
         const searchBox = document.getElementById('siteSearch');
         const searchResults = document.getElementById('searchResults');
-        
-        searchBox.addEventListener('input', function() {
+
+        searchBox.addEventListener('input', function () {
             const query = this.value.trim().toLowerCase();
-            
+
             if (query.length < 2) {
                 searchResults.classList.remove('active');
                 return;
             }
-            
+
             const results = searchArticles(query);
             displayResults(results, query);
         });
-        
+
         // Close results when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!searchBox.contains(e.target) && !searchResults.contains(e.target)) {
                 searchResults.classList.remove('active');
             }
         });
     }
-    
+
     function searchArticles(query) {
         return articles.filter(article => {
             const searchText = `${article.title} ${article.excerpt} ${article.keywords}`.toLowerCase();
             return searchText.includes(query);
         }).slice(0, 5); // Limit to 5 results
     }
-    
+
     function displayResults(results, query) {
         const searchResults = document.getElementById('searchResults');
-        
+
         if (results.length === 0) {
             searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
             searchResults.classList.add('active');
             return;
         }
-        
+
         searchResults.innerHTML = results.map(article => {
             const highlightedTitle = highlightText(article.title, query);
             const highlightedExcerpt = highlightText(article.excerpt, query);
-            
+
             return `
                 <a href="${article.url}" class="search-result-item">
                     <div class="search-result-title">${highlightedTitle}</div>
@@ -112,15 +116,15 @@
                 </a>
             `;
         }).join('');
-        
+
         searchResults.classList.add('active');
     }
-    
+
     function highlightText(text, query) {
         const regex = new RegExp(`(${query})`, 'gi');
         return text.replace(regex, '<span class="search-highlight">$1</span>');
     }
-    
+
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', createSearchBox);
