@@ -12,7 +12,7 @@
     <meta property="og:title" content="Feng Shui With Jackson | Align Your Space, Attract Your Wealth">
     <meta property="og:description"
         content="Modern Feng Shui solutions for career success and personal harmony. Expert consultations for the Year of the Fire Horse 2026.">
-    <meta property="og:image" content="https://fengshuiwithjackson.com/images/og-image.jpg">
+    <meta property="og:image" content="https://fengshuiwithjackson.com/images/og-image.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
     <meta property="twitter:title" content="Feng Shui With Jackson | Align Your Space, Attract Your Wealth">
     <meta property="twitter:description"
         content="Modern Feng Shui solutions for career success and personal harmony. Expert consultations for the Year of the Fire Horse 2026.">
-    <meta property="twitter:image" content="https://fengshuiwithjackson.com/images/og-image.jpg">
+    <meta property="twitter:image" content="https://fengshuiwithjackson.com/images/og-image.webp">
     <meta name="keywords" content="feng shui, modern feng shui, wealth corner, prosperity, 2026, fire horse year">
     <title>Feng Shui With Jackson | Align Your Space, Attract Your Wealth</title>
     <!-- Google tag (gtag.js) -->
@@ -38,8 +38,199 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/favicon.jpg">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
+
+    <!-- Critical CSS Inline for faster First Contentful Paint -->
+    <style>
+        :root {
+            --emerald-deep: #0d4d3d;
+            --emerald-medium: #1a6b54;
+            --champagne-gold: #d4af37;
+            --cream: #faf8f3;
+            --white: #fff;
+            --black: #1a1a1a;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--black);
+            background-color: var(--cream);
+            line-height: 1.7
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--emerald-deep)
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem)
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .1);
+            z-index: 1000
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--emerald-deep);
+            text-decoration: none
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--emerald-deep);
+            font-weight: 500
+        }
+
+        .btn-nav {
+            background: var(--champagne-gold);
+            color: var(--white);
+            padding: .6rem 1.5rem;
+            border-radius: 50px
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+
+        .hero-title {
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #4a4a4a;
+            margin-bottom: 4rem;
+            line-height: 1.8
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-align: center
+        }
+
+        .btn-primary {
+            background: var(--emerald-deep);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(13, 77, 61, .3)
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: 0 0;
+            border: none;
+            cursor: pointer
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--emerald-deep)
+        }
+
+        @media(max-width:768px) {
+            .mobile-menu-toggle {
+                display: flex
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem
+            }
+
+            .nav-menu.active {
+                display: flex
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+        }
+    </style>
+
+    <!-- Preload main CSS, load async -->
+    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/visual-enhancements.css">
+        <link rel="stylesheet" href="css/print-styles.css" media="print">
+        <link rel="stylesheet" href="css/layout-fixes.css">
+        <link rel="stylesheet" href="css/services-enhanced.css">
+    </noscript>
 </head>
 
 <body>
@@ -58,7 +249,8 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                    <li><a href="shop.html">Shop My Faves</a></li>
+                    <li><a href="fortune-calculator.html">🔮 Calculator</a></li>
+                    <li><a href="shop.html">Shop</a></li>
                     <li><a href="product-2026-guide.html" class="btn-nav"
                             style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white;">🔥 2026
                             Guide $9.99</a></li>
@@ -115,9 +307,6 @@
                     Instant Access →</a>
             </div>
         </div>
-        <div
-            style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); font-size: 100px; opacity: 0.1;">
-            🐴</div>
     </section>
 
     <!-- Problem Section -->
@@ -125,17 +314,20 @@
         <div class="container">
             <div class="problems-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">🔒</div>
+                    <div class="problem-icon"><img src="images/problem-stuck.png" alt="Feeling Stuck"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Feeling Stuck?</h3>
                     <p>Your career has hit a plateau and opportunities seem to pass you by.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">💸</div>
+                    <div class="problem-icon"><img src="images/problem-money.png" alt="Money Flowing Out"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Money Flowing Out?</h3>
                     <p>You earn well but can't seem to save or build lasting wealth.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">⚡</div>
+                    <div class="problem-icon"><img src="images/problem-energy.png" alt="Restless Energy"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Restless Energy?</h3>
                     <p>Stress, poor sleep, and constant anxiety drain your vitality.</p>
                 </div>
@@ -389,6 +581,11 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/enhanced-features.js"></script>
+    <script src="js/additional-enhancements.js"></script>
+    <script src="js/final-enhancements.js"></script>
+    <script src="js/visual-enhancements.js"></script>
+    <script src="js/seo-navigation.js"></script>
     <script src="js/search.js"></script>
 </body>
 

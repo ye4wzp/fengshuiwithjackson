@@ -5,73 +5,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Feng Shui With Jackson</title>
+    <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/print-styles.css" media="print">
+    <link rel="stylesheet" href="css/layout-fixes.css">
     <style>
+        .error-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #faf8f3 0%, #f0ebe1 100%);
+            padding-top: 100px;
+        }
+
         .error-container {
-            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
+        }
+
+        .error-animation {
+            position: relative;
+            margin-bottom: 30px;
         }
 
         .error-code {
-            font-size: 120px;
+            font-size: clamp(100px, 20vw, 180px);
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0d4d3d 0%, #1a6b54 50%, #d4af37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin: 0;
             line-height: 1;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .error-decoration {
+            position: absolute;
+            font-size: 40px;
+            animation: spin 10s linear infinite;
+        }
+
+        .error-decoration.left {
+            top: 20%;
+            left: -30px;
+        }
+
+        .error-decoration.right {
+            top: 30%;
+            right: -30px;
+            animation-direction: reverse;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .error-message {
-            font-size: 2rem;
-            color: #333;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #0d4d3d;
             margin: 20px 0;
             font-family: 'Cormorant Garamond', serif;
         }
 
-        .error-description {
+        .error-subtitle {
             font-size: 1.1rem;
             color: #666;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
         }
 
+        .error-feng-shui-tip {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border-left: 4px solid #d4af37;
+            padding: 20px 25px;
+            margin: 30px auto;
+            max-width: 500px;
+            text-align: left;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .error-feng-shui-tip h4 {
+            color: #d4af37;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .error-feng-shui-tip p {
+            color: #555;
+            font-size: 15px;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Enhanced Search */
         .error-search {
             max-width: 500px;
             width: 100%;
             margin: 30px auto;
+            position: relative;
         }
 
         .error-search input {
             width: 100%;
-            padding: 15px 20px;
+            padding: 18px 50px 18px 25px;
             font-size: 1rem;
             border: 2px solid #e0e0e0;
             border-radius: 50px;
             transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
         .error-search input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #0d4d3d;
+            box-shadow: 0 5px 30px rgba(13, 77, 61, 0.15);
         }
 
+        .error-search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #0d4d3d, #1a6b54);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .error-search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .error-search-results {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .error-search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            display: block;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            color: #0d4d3d;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .search-result-excerpt {
+            color: #888;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        /* Action Buttons */
         .error-actions {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
             margin: 30px 0;
@@ -83,101 +220,190 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .error-btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0d4d3d, #1a6b54);
             color: white;
+            box-shadow: 0 5px 20px rgba(13, 77, 61, 0.3);
         }
 
         .error-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(13, 77, 61, 0.4);
         }
 
         .error-btn-secondary {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #0d4d3d;
+            border: 2px solid #0d4d3d;
         }
 
         .error-btn-secondary:hover {
-            background: #667eea;
+            background: #0d4d3d;
             color: white;
         }
 
+        .error-btn-gold {
+            background: linear-gradient(135deg, #d4af37, #e8c96f);
+            color: white;
+        }
+
+        .error-btn-gold:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .quick-links li a {
+            color: #0d4d3d;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .quick-links li a:hover {
+            color: #d4af37;
+        }
+
+        /* Popular Articles */
         .popular-articles {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+            background: white;
+            padding: 60px 0;
         }
 
         .popular-articles h2 {
             text-align: center;
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 15px;
+            color: #0d4d3d;
+        }
+
+        .popular-articles .subtitle {
+            text-align: center;
+            color: #888;
             margin-bottom: 40px;
-            color: #333;
         }
 
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .article-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            border: 1px solid #f0f0f0;
         }
 
         .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .article-card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover img {
+            transform: scale(1.05);
         }
 
         .article-card-content {
             padding: 20px;
         }
 
+        .article-card-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #0d4d3d;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
         .article-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.3rem;
-            color: #333;
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            color: #0d4d3d;
+            line-height: 1.4;
         }
 
         .article-card p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin: 0;
+            line-height: 1.5;
         }
 
-        @media (max-width: 768px) {
-            .error-code {
-                font-size: 80px;
-            }
+        /* Fortune Calculator CTA */
+        .fortune-cta {
+            background: linear-gradient(135deg, #0d4d3d 0%, #1a6b54 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
 
-            .error-message {
-                font-size: 1.5rem;
+        .fortune-cta h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .fortune-cta p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-decoration {
+                display: none;
             }
 
             .error-actions {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
             }
 
             .error-btn {
-                text-align: center;
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
             }
         }
     </style>
@@ -193,85 +419,118 @@
                 </button>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                    <li><a href="shop.html">Shop My Faves</a></li>
-                    <li><a href="guide.html" class="btn-nav">Free Guide</a></li>
+                    <li><a href="fortune-calculator.html">🔮 Calculator</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="product-2026-guide.html" class="btn-nav" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">2026 Guide</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="error-container">
-        <h1 class="error-code">404</h1>
-        <h2 class="error-message">Oops! Page Not Found</h2>
-        <p class="error-description">
-            The page you're looking for seems to have moved or doesn't exist.
-            But don't worry – your feng shui journey continues! 🌟
-        </p>
+    <div class="error-page">
+        <div class="error-container">
+            <div class="error-animation">
+                <span class="error-decoration left">☯️</span>
+                <h1 class="error-code">404</h1>
+                <span class="error-decoration right">🌿</span>
+            </div>
+            
+            <h2 class="error-message">The Energy Flow Was Blocked</h2>
+            <p class="error-subtitle">
+                This page seems to have wandered off its auspicious path. 
+                But don't worry – let's redirect your journey to positive destinations! ✨
+            </p>
 
-        <div class="error-search">
-            <input type="text" placeholder="🔍 Search for feng shui tips..." id="error-search">
+            <div class="error-feng-shui-tip">
+                <h4>💡 Feng Shui Tip</h4>
+                <p>"When one door closes, the universe opens another. This detour might lead you to exactly what you need."</p>
+            </div>
+
+            <div class="error-search">
+                <input type="text" placeholder="🔍 Search for feng shui tips..." id="error-search" autocomplete="off">
+                <button class="error-search-btn" id="search-btn">Search</button>
+                <div class="error-search-results" id="search-results"></div>
+            </div>
+
+            <div class="error-actions">
+                <a href="index.html" class="error-btn error-btn-primary">
+                    🏠 Go Home
+                </a>
+                <a href="blog.html" class="error-btn error-btn-secondary">
+                    📚 Browse Articles
+                </a>
+                <a href="fortune-calculator.html" class="error-btn error-btn-gold">
+                    🔮 Calculate Fortune
+                </a>
+            </div>
+
+            <ul class="quick-links">
+                <li><a href="article-2026-forecast.html">📅 2026 Forecast</a></li>
+                <li><a href="daily-fortune.html">✨ Daily Fortune</a></li>
+                <li><a href="shop.html">🛍️ Shop Products</a></li>
+                <li><a href="guide.html">📖 Free Guide</a></li>
+            </ul>
         </div>
 
-        <div class="error-actions">
-            <a href="index.html" class="error-btn error-btn-primary">🏠 Go Home</a>
-            <a href="blog.html" class="error-btn error-btn-secondary">📚 Browse Articles</a>
+        <div class="popular-articles">
+            <h2>✨ Popular Feng Shui Guides</h2>
+            <p class="subtitle">Discover our most-read articles while you're here</p>
+            <div class="articles-grid">
+                <a href="article-2026-forecast.html" class="article-card">
+                    <img loading="lazy" src="images/2026-forecast.webp" alt="2026 Feng Shui Forecast">
+                    <div class="article-card-content">
+                        <span class="article-card-category">Forecast</span>
+                        <h3>2026 Fire Horse Year Forecast</h3>
+                        <p>Complete guide to lucky directions, colors, and zodiac predictions</p>
+                    </div>
+                </a>
+
+                <a href="article-bedroom-fengshui.html" class="article-card">
+                    <img loading="lazy" src="images/bedroom-fengshui.webp" alt="Bedroom Feng Shui">
+                    <div class="article-card-content">
+                        <span class="article-card-category">Bedroom</span>
+                        <h3>Bedroom Feng Shui Guide</h3>
+                        <p>Better sleep and romance with proper bed placement</p>
+                    </div>
+                </a>
+
+                <a href="article-wealth-corner.html" class="article-card">
+                    <img loading="lazy" src="images/wealth-corner.webp" alt="Wealth Corner">
+                    <div class="article-card-content">
+                        <span class="article-card-category">Wealth</span>
+                        <h3>How to Find Your Wealth Corner</h3>
+                        <p>Activate prosperity energy in your home</p>
+                    </div>
+                </a>
+
+                <a href="article-plants-guide.html" class="article-card">
+                    <img loading="lazy" src="images/plants-guide.webp" alt="Feng Shui Plants">
+                    <div class="article-card-content">
+                        <span class="article-card-category">Plants</span>
+                        <h3>15 Best Feng Shui Plants</h3>
+                        <p>Bring prosperity and positive energy with living plants</p>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="popular-articles">
-        <h2>✨ Popular Feng Shui Guides</h2>
-        <div class="articles-grid">
-            <a href="article-living-room-fengshui.html" class="article-card">
-                <img src="images/living-room-fengshui.jpg" alt="Living Room Feng Shui">
-                <div class="article-card-content">
-                    <h3>Living Room Feng Shui</h3>
-                    <p>Transform your living room for wealth and harmony</p>
-                </div>
-            </a>
-
-            <a href="article-bedroom-fengshui.html" class="article-card">
-                <img src="images/bedroom-fengshui.jpg" alt="Bedroom Feng Shui">
-                <div class="article-card-content">
-                    <h3>Bedroom Feng Shui</h3>
-                    <p>Better sleep and romance with feng shui</p>
-                </div>
-            </a>
-
-            <a href="article-plants-guide.html" class="article-card">
-                <img src="images/plants-guide.jpg" alt="Feng Shui Plants">
-                <div class="article-card-content">
-                    <h3>Feng Shui Plants Guide</h3>
-                    <p>15 best plants for prosperity and positive energy</p>
-                </div>
-            </a>
+        <div class="fortune-cta">
+            <h3>🔮 Discover Your Personal Fortune</h3>
+            <p>Calculate your lucky directions, colors, and 2026 forecast based on your birth year</p>
+            <a href="fortune-calculator.html" class="error-btn error-btn-gold">Calculate My Fortune →</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-brand">
                     <h3>FengShuiWithJackson</h3>
-                    <p>Bringing ancient wisdom to modern living</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                        <li><a href="guide.html">Free Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <p>📧 jackson@fengshuiwithjackson.com</p>
+                    <p>Align Your Space, Attract Your Wealth</p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-legal">
                 <p>&copy; 2026 FengShuiWithJackson. All rights reserved.</p>
             </div>
         </div>
@@ -279,10 +538,69 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Simple search redirect
-        document.getElementById('error-search').addEventListener('keypress', function (e) {
+        // Enhanced 404 Search with live results
+        const articles = [
+            { title: "2026 Feng Shui Forecast", url: "article-2026-forecast.html", excerpt: "Fire Horse year predictions and lucky directions" },
+            { title: "Bedroom Feng Shui Guide", url: "article-bedroom-fengshui.html", excerpt: "Better sleep and romance tips" },
+            { title: "Kitchen Feng Shui", url: "article-kitchen-fengshui.html", excerpt: "Wealth and health in your kitchen" },
+            { title: "Office Feng Shui", url: "article-office-fengshui.html", excerpt: "Career success and productivity" },
+            { title: "Living Room Feng Shui", url: "article-living-room-fengshui.html", excerpt: "Wealth and harmony in living space" },
+            { title: "Feng Shui Plants Guide", url: "article-plants-guide.html", excerpt: "15 best plants for prosperity" },
+            { title: "Wealth Corner Activation", url: "article-wealth-corner.html", excerpt: "Find and activate your money area" },
+            { title: "Mirror Feng Shui Rules", url: "article-mirror-fengshui.html", excerpt: "Dos and don'ts of mirror placement" },
+            { title: "Entryway Feng Shui", url: "article-entryway-fengshui.html", excerpt: "Welcome positive energy through your door" },
+            { title: "Daily Fortune Calculator", url: "daily-fortune.html", excerpt: "Check your daily luck and guidance" },
+            { title: "Personal Fortune Calculator", url: "fortune-calculator.html", excerpt: "Calculate your Kua number and lucky elements" },
+            { title: "Shop Feng Shui Products", url: "shop.html", excerpt: "Curated items for wealth and harmony" }
+        ];
+
+        const searchInput = document.getElementById('error-search');
+        const searchResults = document.getElementById('search-results');
+        const searchBtn = document.getElementById('search-btn');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = articles.filter(article => 
+                article.title.toLowerCase().includes(query) || 
+                article.excerpt.toLowerCase().includes(query)
+            ).slice(0, 5);
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(article => `
+                    <a href="${article.url}" class="search-result-item">
+                        <div class="search-result-title">${article.title}</div>
+                        <div class="search-result-excerpt">${article.excerpt}</div>
+                    </a>
+                `).join('');
+                searchResults.classList.add('active');
+            } else {
+                searchResults.innerHTML = '<div class="search-result-item"><div class="search-result-title">No results found</div><div class="search-result-excerpt">Try a different search term</div></div>';
+                searchResults.classList.add('active');
+            }
+        });
+
+        searchBtn.addEventListener('click', function() {
+            if (searchInput.value.trim()) {
+                window.location.href = 'blog.html';
+            }
+        });
+
+        searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && this.value.trim()) {
                 window.location.href = 'blog.html';
+            }
+        });
+
+        // Close results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
             }
         });
     </script>

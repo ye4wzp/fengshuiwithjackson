@@ -5,51 +5,597 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Download your free 2026 Ultimate Decluttering Checklist. Prepare your space for the Year of the Fire Horse.">
+        content="Download your FREE 2026 Feng Shui Guide - Complete Fire Horse Year preparation with room-by-room tips, Flying Stars chart, and lucky directions.">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fengshuiwithjackson.com/guide.html">
-    <meta property="og:title" content="Free Feng Shui Guide - Feng Shui With Jackson">
-    <meta property="og:description" content="Download your free feng shui guide and start transforming your space today.">
-    <meta property="og:image" content="https://fengshuiwithjackson.com/images/og-image.jpg">
+    <meta property="og:title" content="FREE 2026 Feng Shui Guide | Fire Horse Year Preparation">
+    <meta property="og:description" content="Complete guide to prepare your home for 2026. Includes Flying Stars, lucky directions, and room-by-room tips.">
+    <meta property="og:image" content="https://fengshuiwithjackson.com/images/og-image.webp">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fengshuiwithjackson.com/guide.html">
-    <meta property="twitter:title" content="Free Feng Shui Guide - Feng Shui With Jackson">
-    <meta property="twitter:description" content="Download your free feng shui guide and start transforming your space today.">
-    <meta property="twitter:image" content="https://fengshuiwithjackson.com/images/og-image.jpg">
-    <title>Free 2026 Guide | Feng Shui With Jackson</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL9K60SGL2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LL9K60SGL2');
-</script>
+    <meta property="twitter:title" content="FREE 2026 Feng Shui Guide | Fire Horse Year Preparation">
+    <meta property="twitter:description" content="Complete guide to prepare your home for 2026. Includes Flying Stars, lucky directions, and room-by-room tips.">
+    <meta property="twitter:image" content="https://fengshuiwithjackson.com/images/og-image.webp">
+    <title>FREE 2026 Feng Shui Guide | Feng Shui With Jackson</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL9K60SGL2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LL9K60SGL2');
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/print-styles.css" media="print">
+    <link rel="stylesheet" href="css/layout-fixes.css">
+    
+    <style>
+        /* Guide Page Enhanced Styles */
+        .guide-hero-new {
+            background: linear-gradient(135deg, #0d4d3d 0%, #1a6b54 50%, #0d4d3d 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-hero-new::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .guide-hero-new .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .guide-hero-text {
+            color: white;
+        }
+
+        .guide-badge-new {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #d4af37, #e8c96f);
+            color: #0d4d3d;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .guide-hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .guide-hero-text h1 span {
+            color: #d4af37;
+        }
+
+        .guide-subtitle-new {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .guide-features {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .guide-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .guide-feature-text h4 {
+            color: #d4af37;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .guide-feature-text p {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Ebook Preview Card */
+        .ebook-preview {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .ebook-preview:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .ebook-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .ebook-header h3 {
+            color: #0d4d3d;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .ebook-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .ebook-toc {
+            margin-bottom: 20px;
+        }
+
+        .ebook-toc h4 {
+            color: #0d4d3d;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+
+        .toc-number {
+            width: 28px;
+            height: 28px;
+            background: #0d4d3d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .toc-text {
+            flex: 1;
+        }
+
+        .toc-text strong {
+            color: #333;
+            font-size: 14px;
+            display: block;
+        }
+
+        .toc-text span {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .ebook-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px dashed #e0e0e0;
+        }
+
+        .ebook-footer .page-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff8e1;
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: #b8860b;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Quick Tips Section */
+        .quick-tips {
+            padding: 80px 0;
+            background: #faf8f3;
+        }
+
+        .quick-tips h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .quick-tips .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .tip-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0d4d3d, #1a6b54);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .tip-card h3 {
+            color: #0d4d3d;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .tip-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tip-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .tip-action:hover {
+            gap: 12px;
+        }
+
+        /* Flying Stars Preview */
+        .flying-stars-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .fs-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .fs-chart {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .fs-cell {
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .fs-cell:hover {
+            transform: scale(1.05);
+        }
+
+        .fs-cell.prosperity {
+            background: linear-gradient(135deg, #d4af37, #e8c96f);
+            color: white;
+        }
+
+        .fs-cell.wealth {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+        }
+
+        .fs-cell.danger {
+            background: linear-gradient(135deg, #f44336, #e91e63);
+            color: white;
+        }
+
+        .fs-number {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .fs-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .fs-info h2 {
+            margin-bottom: 20px;
+        }
+
+        .fs-info p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .fs-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.gold { background: #d4af37; }
+        .legend-dot.green { background: #4CAF50; }
+        .legend-dot.red { background: #f44336; }
+
+        /* Testimonials Enhanced */
+        .testimonials-enhanced {
+            padding: 80px 0;
+            background: #0d4d3d;
+        }
+
+        .testimonials-enhanced h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card-new {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .testimonial-card-new::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 80px;
+            color: #f0f0f0;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            color: #d4af37;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card-new p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4af37, #e8c96f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info strong {
+            display: block;
+            color: #0d4d3d;
+        }
+
+        .author-info span {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Final CTA Enhanced */
+        .final-cta-enhanced {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-enhanced::before {
+            content: '🐴';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .final-cta-enhanced h2 {
+            color: white;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+        }
+
+        .final-cta-enhanced h2 span {
+            color: #d4af37;
+        }
+
+        .final-cta-enhanced p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-enhanced {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .guide-hero-content,
+            .fs-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .ebook-preview {
+                transform: none;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .guide-features {
+                max-width: 500px;
+                margin: 0 auto 35px;
+            }
+
+            .fs-chart {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="index.html">Home</a></li>
-    <li aria-current="page">Free Guide</li>
-  </ol>
-</nav>
-
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">Free Guide</li>
+                </ol>
+            </nav>
             <div class="nav-wrapper">
                 <a href="index.html" class="logo">FengShuiWithJackson</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -61,127 +607,264 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                    <li><a href="shop.html">Shop My Faves</a></li>
-                    <li><a href="guide.html" class="btn-nav">Free Guide</a></li>
+                    <li><a href="fortune-calculator.html">🔮 Calculator</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="product-2026-guide.html" class="btn-nav" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white;">🔥 2026 Guide $9.99</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Guide Hero -->
-    <section class="guide-hero">
+    <!-- Hero Section -->
+    <section class="guide-hero-new">
         <div class="container">
-            <div class="guide-content">
-                <div class="guide-text">
-                    <span class="guide-badge">100% FREE</span>
-                    <h1>2026 Ultimate Decluttering Checklist</h1>
-                    <p class="guide-subtitle">Don't Start the Year of the Fire Horse With Old Energy</p>
-
-                    <div class="guide-benefits">
-                        <h3>What You'll Get:</h3>
-                        <ul class="benefits-list">
-                            <li>✅ Room-by-room decluttering guide</li>
-                            <li>✅ What to keep, donate, or discard</li>
-                            <li>✅ 2026 Flying Stars remedies</li>
-                            <li>✅ Wealth corner activation tips</li>
-                            <li>✅ Printable checklist (PDF)</li>
-                            <li>✅ Bonus: 5 quick wins for immediate results</li>
-                        </ul>
+            <div class="guide-hero-content">
+                <div class="guide-hero-text">
+                    <span class="guide-badge-new">🎁 100% FREE DOWNLOAD</span>
+                    <h1>2026 <span>Fire Horse</span> Feng Shui Starter Guide</h1>
+                    <p class="guide-subtitle-new">Prepare your home and life for the powerful Year of the Fire Horse with our comprehensive beginner's guide to feng shui.</p>
+                    
+                    <div class="guide-features">
+                        <div class="guide-feature">
+                            <div class="guide-feature-icon">📍</div>
+                            <div class="guide-feature-text">
+                                <h4>Room-by-Room Checklist</h4>
+                                <p>Declutter and energize every space in your home</p>
+                            </div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-icon">⭐</div>
+                            <div class="guide-feature-text">
+                                <h4>2026 Flying Stars Map</h4>
+                                <p>Know which areas to enhance and which to avoid</p>
+                            </div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-icon">💰</div>
+                            <div class="guide-feature-text">
+                                <h4>Wealth Corner Activation</h4>
+                                <p>Attract prosperity with proven feng shui cures</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="guide-form-section">
-                        <h3>Ready to Get Started?</h3>
-                        <div class="cta-buttons">
-                            <a href="index.html#services" class="btn btn-gold btn-large">Book Consultation</a>
-                            <a href="blog.html" class="btn btn-outline btn-large">Read Free Tips</a>
-                        </div>
-                        <p class="form-privacy">✨ Quick Scan starts at just $49</p>
+                    <div class="cta-buttons-enhanced">
+                        <a href="blog.html" class="btn btn-gold btn-large">📚 Read Free Articles</a>
+                        <a href="index.html#services" class="btn btn-outline btn-large" style="border-color: white; color: white;">Book Consultation</a>
                     </div>
                 </div>
 
-                <div class="guide-preview">
-                    <div class="guide-mockup">
-                        <div class="mockup-header">
-                            <h4>2026 Ultimate Decluttering Checklist</h4>
-                            <p>By Jackson</p>
-                        </div>
-                        <div class="mockup-content">
-                            <div class="mockup-section">
-                                <h5>📍 Living Room</h5>
-                                <p>□ Remove broken items<br>□ Clear coffee table<br>□ Organize shelves</p>
-                            </div>
-                            <div class="mockup-section">
-                                <h5>🛏️ Bedroom</h5>
-                                <p>□ Under-bed storage<br>□ Closet purge<br>□ Fresh bedding</p>
-                            </div>
-                            <div class="mockup-section">
-                                <h5>💼 Office</h5>
-                                <p>□ Paper clutter<br>□ Digital cleanup<br>□ Desk organization</p>
+                <div class="ebook-preview">
+                    <div class="ebook-header">
+                        <h3>📘 2026 Feng Shui Starter Guide</h3>
+                        <p>By Jackson | FengShuiWithJackson.com</p>
+                    </div>
+                    <div class="ebook-toc">
+                        <h4>📋 What's Inside</h4>
+                        <div class="toc-item">
+                            <span class="toc-number">1</span>
+                            <div class="toc-text">
+                                <strong>Introduction to Fire Horse Year</strong>
+                                <span>Energy overview & what to expect</span>
                             </div>
                         </div>
+                        <div class="toc-item">
+                            <span class="toc-number">2</span>
+                            <div class="toc-text">
+                                <strong>2026 Flying Stars Chart</strong>
+                                <span>Lucky & unlucky sectors explained</span>
+                            </div>
+                        </div>
+                        <div class="toc-item">
+                            <span class="toc-number">3</span>
+                            <div class="toc-text">
+                                <strong>Room-by-Room Decluttering</strong>
+                                <span>Printable checklist included</span>
+                            </div>
+                        </div>
+                        <div class="toc-item">
+                            <span class="toc-number">4</span>
+                            <div class="toc-text">
+                                <strong>5 Quick Feng Shui Wins</strong>
+                                <span>Instant energy improvements</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ebook-footer">
+                        <span class="page-count">📄 15+ Pages of Content</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="guide-testimonials">
+    <!-- Quick Tips Section -->
+    <section class="quick-tips">
         <div class="container">
-            <h2>What Others Are Saying</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-mini">
-                    <p>"This checklist changed everything! I cleared out 10 bags of stuff and my home feels so much
-                        lighter."</p>
-                    <strong>— Maria L.</strong>
+            <h2>🌟 Quick Feng Shui Tips for 2026</h2>
+            <p class="section-subtitle">Start applying these tips today - no download required!</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🚪</div>
+                    <h3>Clear Your Entryway</h3>
+                    <p>The mouth of chi! Remove shoes, clutter, and obstacles from your front entrance to welcome positive energy into your home.</p>
+                    <a href="article-entryway-fengshui.html" class="tip-action">Read full guide →</a>
                 </div>
-                <div class="testimonial-mini">
-                    <p>"Simple, actionable, and it actually works. I did the bedroom section and slept better that same
-                        night!"</p>
-                    <strong>— David K.</strong>
+                <div class="tip-card">
+                    <div class="tip-icon">🪞</div>
+                    <h3>Mirror Placement Rules</h3>
+                    <p>Never place mirrors facing the bed or front door. Position them to reflect beautiful views and expand positive spaces.</p>
+                    <a href="article-mirror-fengshui.html" class="tip-action">Learn more →</a>
                 </div>
-                <div class="testimonial-mini">
-                    <p>"The 2026 Flying Stars section is gold. I moved one piece of furniture and opportunities started
-                        flowing."</p>
-                    <strong>— Jennifer W.</strong>
+                <div class="tip-card">
+                    <div class="tip-icon">🛏️</div>
+                    <h3>Command Position</h3>
+                    <p>Position your bed and desk so you can see the door but aren't directly in line with it. This provides safety and power.</p>
+                    <a href="article-bedroom-fengshui.html" class="tip-action">Bedroom guide →</a>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🪴</div>
+                    <h3>Add Living Plants</h3>
+                    <p>Healthy green plants bring vibrant wood energy. Lucky bamboo, money trees, and jade plants are especially auspicious.</p>
+                    <a href="article-plants-guide.html" class="tip-action">Best plants →</a>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">💧</div>
+                    <h3>Water Features</h3>
+                    <p>Place a small fountain near the entrance (not in the bedroom) to activate wealth energy. Ensure water flows inward.</p>
+                    <a href="article-wealth-corner.html" class="tip-action">Wealth tips →</a>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🔥</div>
+                    <h3>Fire Horse Colors</h3>
+                    <p>Red, orange, and gold are powerful in 2026. Use them as accents in the South sector to boost recognition and fame.</p>
+                    <a href="article-2026-forecast.html" class="tip-action">2026 colors →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bonus Section -->
-    <section class="guide-bonus">
+    <!-- Flying Stars Preview -->
+    <section class="flying-stars-section">
         <div class="container">
-            <h2>Plus, You'll Also Receive:</h2>
-            <div class="bonus-grid">
-                <div class="bonus-card">
-                    <div class="bonus-icon">📧</div>
-                    <h3>Weekly Feng Shui Tips</h3>
-                    <p>Practical advice delivered to your inbox every week</p>
+            <div class="fs-content">
+                <div class="fs-chart">
+                    <div class="fs-cell">
+                        <span class="fs-number">6</span>
+                        <span class="fs-label">SE</span>
+                    </div>
+                    <div class="fs-cell prosperity">
+                        <span class="fs-number">2</span>
+                        <span class="fs-label">S ⚠️</span>
+                    </div>
+                    <div class="fs-cell">
+                        <span class="fs-number">4</span>
+                        <span class="fs-label">SW</span>
+                    </div>
+                    <div class="fs-cell danger">
+                        <span class="fs-number">5</span>
+                        <span class="fs-label">E ⚠️</span>
+                    </div>
+                    <div class="fs-cell">
+                        <span class="fs-number">7</span>
+                        <span class="fs-label">Center</span>
+                    </div>
+                    <div class="fs-cell">
+                        <span class="fs-number">9</span>
+                        <span class="fs-label">W</span>
+                    </div>
+                    <div class="fs-cell wealth">
+                        <span class="fs-number">1</span>
+                        <span class="fs-label">NE 💰</span>
+                    </div>
+                    <div class="fs-cell">
+                        <span class="fs-number">3</span>
+                        <span class="fs-label">N</span>
+                    </div>
+                    <div class="fs-cell wealth">
+                        <span class="fs-number">8</span>
+                        <span class="fs-label">NW 💰</span>
+                    </div>
                 </div>
-                <div class="bonus-card">
-                    <div class="bonus-icon">🎁</div>
-                    <h3>Exclusive Discounts</h3>
-                    <p>Special offers on consultations and recommended products</p>
+
+                <div class="fs-info">
+                    <h2>2026 Flying Stars Chart Preview</h2>
+                    <p>The Flying Stars chart changes every year, affecting different areas of your home. In 2026, the <strong>Northeast (Star 1)</strong> and <strong>Northwest (Star 8)</strong> sectors are especially auspicious for wealth and career.</p>
+                    <p>Be cautious with the <strong>East (Star 5)</strong> and <strong>South (Star 2)</strong> sectors, which carry negative energy this year. Use metal cures and avoid major renovations in these areas.</p>
+                    
+                    <div class="fs-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot gold"></span>
+                            <span>Caution Areas</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot green"></span>
+                            <span>Wealth & Prosperity</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot red"></span>
+                            <span>Danger - Use Cures</span>
+                        </div>
+                    </div>
+
+                    <a href="article-2026-forecast.html" class="btn btn-primary" style="margin-top: 25px;">Read Full 2026 Forecast →</a>
                 </div>
-                <div class="bonus-card">
-                    <div class="bonus-icon">🔔</div>
-                    <h3>Early Access</h3>
-                    <p>Be first to know about new guides, workshops, and content</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-enhanced">
+        <div class="container">
+            <h2>💬 What Readers Are Saying</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card-new">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"I followed the decluttering checklist and within a week, I received an unexpected job offer! The energy in my home feels completely different now."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <strong>Maria L.</strong>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-new">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"The Flying Stars section was eye-opening. I had no idea my workspace was in a negative sector. After moving my desk, my productivity skyrocketed!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <strong>David K.</strong>
+                            <span>Austin, TX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-new">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Simple, practical, and it actually works. I shared it with my entire family. The bedroom tips alone are worth it - I sleep so much better now."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JW</div>
+                        <div class="author-info">
+                            <strong>Jennifer W.</strong>
+                            <span>Seattle, WA</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="guide-final-cta">
+    <section class="final-cta-enhanced">
         <div class="container">
-            <h2>Ready to Transform Your Space for 2026?</h2>
-            <p>Book a consultation and get personalized feng shui solutions</p>
-            <div class="cta-buttons">
-                <a href="index.html#services" class="btn btn-gold btn-large">View Services</a>
-                <a href="blog.html" class="btn btn-secondary btn-large">Read Free Tips</a>
+            <h2>Ready to <span>Transform</span> Your Space?</h2>
+            <p>Get personalized feng shui recommendations with a professional consultation or explore our blog for more free tips.</p>
+            <div class="cta-buttons-enhanced">
+                <a href="product-2026-guide.html" class="btn btn-gold btn-large">🔥 Get Premium Guide ($9.99)</a>
+                <a href="blog.html" class="btn btn-outline btn-large" style="border-color: white; color: white;">📚 Browse Free Articles</a>
+                <a href="fortune-calculator.html" class="btn btn-secondary btn-large">🔮 Calculate Your Fortune</a>
             </div>
         </div>
     </section>
@@ -195,37 +878,40 @@
                     <p>Align Your Space, Attract Your Wealth</p>
                 </div>
                 <div class="footer-social">
-                    <a href="https://www.pinterest.com/fengshuiwithjackson/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><svg width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor">
-                            <path
-                                d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-                        </svg></a>
-                    <a href="#" aria-label="TikTok"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                        </svg></a>
-                    <a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg></a>
+                    <a href="https://www.pinterest.com/fengshuiwithjackson/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-legal">
-                <p>&copy; 2025 FengShuiWithJackson. All rights reserved.</p>
+                <p>&copy; 2026 FengShuiWithJackson. All rights reserved.</p>
                 <p class="footer-links">
                     <a href="privacy.html">Privacy Policy</a> | 
                     <a href="terms.html">Terms of Service</a> | 
                     <a href="disclaimer.html">Disclaimer</a>
                 </p>
-                <p class="affiliate-disclosure">Amazon Affiliate Disclosure: As an Amazon Associate, I earn from
-                    qualifying purchases.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/search.js"></script>
+    <script src="js/enhanced-features.js"></script>
+    <script src="js/additional-enhancements.js"></script>
+    <script src="js/final-enhancements.js"></script>
+    <script src="js/visual-enhancements.js"></script>
+    <script src="js/seo-navigation.js"></script>
 </body>
 
 </html>
