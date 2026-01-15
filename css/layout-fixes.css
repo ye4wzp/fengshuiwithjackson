@@ -6,6 +6,8 @@
 /* Fix 1: Navigation Bar Alignment */
 .navbar .container {
     position: relative;
+    max-width: 1400px;
+    overflow: visible;
 }
 
 .nav-wrapper {
@@ -13,7 +15,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 20px;
+    gap: 15px;
+    overflow: visible;
 }
 
 /* Move search box to proper position */
@@ -25,14 +28,37 @@
 .nav-menu {
     order: 3;
     flex-wrap: nowrap;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    overflow: visible;
+    align-items: center;
 }
 
 /* Ensure nav button doesn't overflow */
 .nav-menu .btn-nav {
     white-space: nowrap;
     padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 25px;
+    line-height: 1.2;
+}
+
+/* Nav menu text smaller on medium screens */
+@media (max-width: 1300px) {
+    .nav-menu {
+        gap: 0.8rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.85rem;
+    }
+    
+    .nav-menu .btn-nav {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
 }
 
 /* Nav menu on smaller screens */
