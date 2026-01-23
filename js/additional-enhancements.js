@@ -653,7 +653,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         Styles.init();
         BackToTop.init();
-        SmartPopup.init();
+        // SmartPopup.init(); // DISABLED: Exit popup removed per user request
         FloatingTOC.init();
 
         console.log('%c🚀 Additional Enhancements Loaded', 'color: #d4af37; font-weight: bold;');
