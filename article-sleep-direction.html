@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL9K60SGL2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LL9K60SGL2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Sleep Direction Based on Your Kua Number: Complete Guide | Feng Shui With Jackson</title>
+    <meta name="description"
+        content="Discover your ideal sleep direction based on your personal Kua number. Learn how to calculate your Kua and position your bed for optimal health, wealth, and relationships.">
+    <meta name="keywords"
+        content="feng shui sleep direction, kua number bed direction, best sleeping direction, feng shui bed placement, personal kua number">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fengshuiwithjackson.com/article-sleep-direction.html">
+    <meta property="og:title" content="Best Sleep Direction Based on Your Kua Number">
+    <meta property="og:description" content="Calculate your Kua number and find your perfect sleep direction!">
+
+    <link rel="canonical" href="https://fengshuiwithjackson.com/article-sleep-direction.html">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout-fixes.css">
+
+    <style>
+        .article-hero {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 120px 20px 80px;
+        }
+
+        .article-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .article-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            color: #1a1a2e;
+            font-size: 1.8rem;
+            margin: 50px 0 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .kua-calculator {
+            background: linear-gradient(135deg, #1a1a2e, #2d3561);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .kua-calculator h2 {
+            color: #d4af37;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .calc-step {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .calc-step .step-num {
+            background: #d4af37;
+            color: #1a1a2e;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .direction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .direction-table th {
+            background: linear-gradient(135deg, #1a1a2e, #2d3561);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .direction-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .direction-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .direction-table tr:hover {
+            background: #fff3cd;
+        }
+
+        .east-group {
+            background: #e8f5e9 !important;
+        }
+
+        .west-group {
+            background: #fff3e0 !important;
+        }
+
+        .direction-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .dir-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #1a1a2e;
+        }
+
+        .dir-card.best {
+            border-top-color: #27ae60;
+        }
+
+        .dir-card.good {
+            border-top-color: #3498db;
+        }
+
+        .dir-card.health {
+            border-top-color: #e74c3c;
+        }
+
+        .dir-card.stability {
+            border-top-color: #9b59b6;
+        }
+
+        .dir-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .dir-card h4 {
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .dir-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-left: 5px solid #d4af37;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+            border-left: 5px solid #e74c3c;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .couples-section {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .couples-section h3 {
+            color: #c2185b;
+            margin-bottom: 20px;
+        }
+
+        .related-box {
+            background: linear-gradient(135deg, #1a1a2e, #2d3561);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin: 40px 0;
+        }
+
+        .related-box .btn {
+            background: #d4af37;
+            color: #333;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Feng Shui With Jackson</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="daily-fortune.html">Daily Fortune</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="guide.html" class="btn-nav">Free Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="article-hero">
+        <div>
+            <span
+                style="background: #d4af37; color: #333; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; display: inline-block; margin-bottom: 15px;">🛏️
+                Deep Dive</span>
+            <h1>Best Sleep Direction for Your Kua Number</h1>
+            <p style="opacity: 0.9; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Calculate your personal Kua
+                number and discover the ideal direction to position your bed for health, wealth, and love.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <article class="article-content">
+
+        <p style="font-size: 1.2rem; line-height: 1.8;">Did you know that the direction your head points while sleeping
+            can significantly impact your <strong>health, career success, and relationships</strong>? In feng shui, your
+            personal <em>Kua number</em> determines which directions are auspicious or inauspicious for you — and this
+            applies directly to how you position your bed.</p>
+
+        <h2 class="section-title">🧮 What is the Kua Number?</h2>
+
+        <p>The Kua number (also called Gua number) is derived from your <strong>birth year and gender</strong>. It
+            divides people into two groups:</p>
+
+        <div class="direction-card">
+            <div class="dir-card" style="background: #e8f5e9;">
+                <div class="emoji">🌅</div>
+                <h4>East Group</h4>
+                <p>Kua: 1, 3, 4, 9<br>Best directions: E, SE, N, S</p>
+            </div>
+            <div class="dir-card" style="background: #fff3e0;">
+                <div class="emoji">🌇</div>
+                <h4>West Group</h4>
+                <p>Kua: 2, 6, 7, 8<br>Best directions: W, NW, SW, NE</p>
+            </div>
+        </div>
+
+        <!-- Kua Calculator -->
+        <div class="kua-calculator">
+            <h2>🔢 Calculate Your Kua Number</h2>
+
+            <div class="calc-step">
+                <span class="step-num">1</span>
+                <strong>Take your birth year's last two digits</strong><br>
+                <span style="opacity: 0.8;">Example: 1985 → 85 | 1990 → 90 | 2000 → 00</span>
+            </div>
+
+            <div class="calc-step">
+                <span class="step-num">2</span>
+                <strong>Add the digits together until you get a single digit</strong><br>
+                <span style="opacity: 0.8;">Example: 85 → 8+5 = 13 → 1+3 = 4</span>
+            </div>
+
+            <div class="calc-step">
+                <span class="step-num">3</span>
+                <strong>For Males:</strong> Subtract from 10 (or 9 if born 2000+)<br>
+                <strong>For Females:</strong> Add 5 (or 6 if born 2000+)<br>
+                <span style="opacity: 0.8;">If result is 5: Males → 2, Females → 8</span>
+            </div>
+
+            <div
+                style="background: #d4af37; color: #333; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center;">
+                <strong>Example:</strong> Female born 1988<br>
+                88 → 8+8 = 16 → 1+6 = 7<br>
+                7 + 5 = 12 → 1+2 = <strong style="font-size: 1.5rem;">3</strong> (East Group)
+            </div>
+        </div>
+
+        <h2 class="section-title">🧭 The Four Auspicious Directions</h2>
+
+        <p>Each Kua number has <strong>four favorable directions</strong>, ranked by their benefits:</p>
+
+        <div class="direction-card">
+            <div class="dir-card best">
+                <div class="emoji">💰</div>
+                <h4>Sheng Chi (生气)</h4>
+                <p><strong>Best for:</strong> Wealth, success, vitality<br>The most powerful direction</p>
+            </div>
+            <div class="dir-card good">
+                <div class="emoji">❤️</div>
+                <h4>Yan Nian (延年)</h4>
+                <p><strong>Best for:</strong> Love, relationships, longevity<br>Great for couples</p>
+            </div>
+            <div class="dir-card health">
+                <div class="emoji">🏥</div>
+                <h4>Tien Yi (天医)</h4>
+                <p><strong>Best for:</strong> Health, recovery, healing<br>Use when sick</p>
+            </div>
+            <div class="dir-card stability">
+                <div class="emoji">🏠</div>
+                <h4>Fu Wei (伏位)</h4>
+                <p><strong>Best for:</strong> Stability, clarity, peace<br>Personal growth direction</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">📊 Complete Direction Chart by Kua Number</h2>
+
+        <table class="direction-table">
+            <thead>
+                <tr>
+                    <th>Kua</th>
+                    <th>Group</th>
+                    <th>Sheng Chi (Wealth)</th>
+                    <th>Yan Nian (Love)</th>
+                    <th>Tien Yi (Health)</th>
+                    <th>Fu Wei (Stability)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="east-group">
+                    <td><strong>1</strong></td>
+                    <td>East</td>
+                    <td>Southeast</td>
+                    <td>South</td>
+                    <td>East</td>
+                    <td>North</td>
+                </tr>
+                <tr class="west-group">
+                    <td><strong>2</strong></td>
+                    <td>West</td>
+                    <td>Northeast</td>
+                    <td>Northwest</td>
+                    <td>West</td>
+                    <td>Southwest</td>
+                </tr>
+                <tr class="east-group">
+                    <td><strong>3</strong></td>
+                    <td>East</td>
+                    <td>South</td>
+                    <td>Southeast</td>
+                    <td>North</td>
+                    <td>East</td>
+                </tr>
+                <tr class="east-group">
+                    <td><strong>4</strong></td>
+                    <td>East</td>
+                    <td>North</td>
+                    <td>East</td>
+                    <td>South</td>
+                    <td>Southeast</td>
+                </tr>
+                <tr class="west-group">
+                    <td><strong>6</strong></td>
+                    <td>West</td>
+                    <td>West</td>
+                    <td>Southwest</td>
+                    <td>Northeast</td>
+                    <td>Northwest</td>
+                </tr>
+                <tr class="west-group">
+                    <td><strong>7</strong></td>
+                    <td>West</td>
+                    <td>Northwest</td>
+                    <td>Northeast</td>
+                    <td>Southwest</td>
+                    <td>West</td>
+                </tr>
+                <tr class="west-group">
+                    <td><strong>8</strong></td>
+                    <td>West</td>
+                    <td>Southwest</td>
+                    <td>West</td>
+                    <td>Northwest</td>
+                    <td>Northeast</td>
+                </tr>
+                <tr class="east-group">
+                    <td><strong>9</strong></td>
+                    <td>East</td>
+                    <td>East</td>
+                    <td>North</td>
+                    <td>Southeast</td>
+                    <td>South</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <h4 style="color: #b8860b; margin-bottom: 10px;">💡 Pro Tip: How to Use This Chart</h4>
+            <p>The direction refers to <strong>where your head points when sleeping</strong>. If you want to boost your
+                wealth, point your head toward your Sheng Chi direction. For better relationships, use your Yan Nian
+                direction.</p>
+        </div>
+
+        <h2 class="section-title">❤️ For Couples: What If Kua Numbers Conflict?</h2>
+
+        <div class="couples-section">
+            <h3>When partners have different Kua groups...</h3>
+            <p>This is common! One person may be East Group while the other is West Group. Here are solutions:</p>
+            <ul style="padding-left: 25px;">
+                <li><strong>Priority Rule:</strong> The breadwinner or the person with health issues gets priority</li>
+                <li><strong>Compromise:</strong> Choose a direction that's neutral (not worst for either)</li>
+                <li><strong>Alternate:</strong> Switch head position seasonally or based on current needs</li>
+                <li><strong>Individual Boost:</strong> Use personal items (pillows, crystals) aligned to each person's
+                    direction</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">⚠️ The Four Inauspicious Directions</h2>
+
+        <p>Avoid sleeping with your head pointing toward these directions:</p>
+
+        <div class="warning-box">
+            <ul style="padding-left: 20px; margin: 0;">
+                <li><strong>Jue Ming (绝命)</strong> — Total loss, accidents, worst direction</li>
+                <li><strong>Wu Gui (五鬼)</strong> — Five ghosts, backstabbing, fire hazards</li>
+                <li><strong>Liu Sha (六煞)</strong> — Six killings, scandals, relationship problems</li>
+                <li><strong>Huo Hai (祸害)</strong> — Mishaps, frustrations, minor problems</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">🛏️ Additional Bed Placement Rules</h2>
+
+        <p>Beyond direction, also consider these feng shui bed placement principles:</p>
+
+        <div class="direction-card">
+            <div class="dir-card">
+                <div class="emoji">🚪</div>
+                <h4>Command Position</h4>
+                <p>See the door from bed but not directly in line with it</p>
+            </div>
+            <div class="dir-card">
+                <div class="emoji">🧱</div>
+                <h4>Solid Headboard</h4>
+                <p>Headboard against a solid wall for support and stability</p>
+            </div>
+            <div class="dir-card">
+                <div class="emoji">🪞</div>
+                <h4>No Mirrors</h4>
+                <p>Avoid mirrors facing the bed (disturbs sleep energy)</p>
+            </div>
+            <div class="dir-card">
+                <div class="emoji">⚡</div>
+                <h4>No Electronics</h4>
+                <p>Keep phones and TVs away from the bed area</p>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h4 style="color: #b8860b; margin-bottom: 10px;">📐 How to Find Directions in Your Room</h4>
+            <p>Use a compass app on your phone! Stand in the center of your room and note where each direction is. Then
+                position your bed so your head points toward your chosen auspicious direction.</p>
+        </div>
+
+        <!-- Related Content -->
+        <div class="related-box">
+            <h3>🛏️ Want More Bedroom Feng Shui Tips?</h3>
+            <p>Check out our complete bedroom feng shui guide!</p>
+            <a href="article-bedroom-fengshui.html" class="btn">Read Bedroom Guide →</a>
+        </div>
+
+    </article>
+
+    <!-- Related Articles Section -->
+    <div class="related-articles"
+        style="background: #f8f9fa; border-radius: 20px; padding: 30px; margin: 40px auto; max-width: 900px;">
+        <h3 style="color: #1B4D3E; margin-bottom: 20px; text-align: center;">📚 Related Articles</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <a href="article-bedroom-fengshui.html"
+                style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                <strong>Bedroom Feng Shui Basics</strong>
+            </a>
+            <a href="article-bedroom-mistakes.html"
+                style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                <strong>Common Bedroom Mistakes</strong>
+            </a>
+            <a href="article-health-longevity.html"
+                style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                <strong>Health & Longevity Feng Shui</strong>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a2e; color: white; padding: 40px 20px; text-align: center;">
+        <p><a href="blog.html" style="color: #d4af37;">← More Articles</a> | <a href="index.html"
+                style="color: #d4af37;">Home</a></p>
+        <p style="opacity: 0.7; font-size: 0.85rem; margin-top: 15px;">© 2026 Feng Shui With Jackson</p>
+    </footer>
+
+    <script src="js/social-share.js"></script>
+    <script src="js/schema-enhancement.js"></script>
+</body>
+
+</html>
