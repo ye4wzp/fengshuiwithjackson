@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaZi Birth Chart Calculator | Four Pillars of Destiny | Feng Shui With Jackson</title>
+    <meta name="description"
+        content="Free BaZi (八字) calculator. Enter your birth date and time to discover your Four Pillars of Destiny, Five Elements balance, personality traits, and 2026 Fire Horse year forecast.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --emerald-deep: #0d4d3d;
+            --emerald-medium: #2E7D5C;
+            --champagne-gold: #d4af37;
+            --gold-light: #f0d774;
+            --cream: #faf8f3;
+            --white: #fff;
+            --black: #1a1a1a;
+            --wood: #2E7D32;
+            --fire: #D32F2F;
+            --earth: #F9A825;
+            --metal: #9E9E9E;
+            --water: #1565C0;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-cn: 'Noto Serif SC', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--black);
+            line-height: 1.7;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #0d4d3d 100%);
+            color: white;
+            padding: 7rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '甲乙丙丁戊己庚辛壬癸';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            opacity: 0.04;
+            font-family: var(--font-cn);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            opacity: 0.75;
+            font-size: 1.1rem;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-back:hover {
+            color: var(--champagne-gold);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Input Form */
+        .input-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .input-card h2 {
+            font-family: var(--font-heading);
+            color: var(--emerald-deep);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--emerald-deep);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid rgba(13, 77, 61, 0.15);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            background: var(--cream);
+            transition: border-color 0.3s;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--champagne-gold);
+        }
+
+        .gender-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .gender-btn {
+            padding: 0.7rem 2rem;
+            border: 2px solid rgba(13, 77, 61, 0.15);
+            border-radius: 50px;
+            background: var(--cream);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .gender-btn.active {
+            background: var(--emerald-deep);
+            color: white;
+            border-color: var(--emerald-deep);
+        }
+
+        .btn-calculate {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 77, 61, 0.3);
+        }
+
+        /* Results */
+        #results {
+            display: none;
+        }
+
+        .result-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .result-card h3 {
+            font-family: var(--font-heading);
+            color: var(--emerald-deep);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        /* Four Pillars Display */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar {
+            text-align: center;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem 0.5rem;
+            background: linear-gradient(145deg, #faf8f3, #fff);
+        }
+
+        .pillar-label {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-stem {
+            font-family: var(--font-cn);
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .pillar-branch {
+            font-family: var(--font-cn);
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-info {
+            font-size: 0.75rem;
+            color: #777;
+        }
+
+        .pillar-animal {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Five Elements Bar Chart */
+        .elements-chart {
+            margin: 1.5rem 0;
+        }
+
+        .element-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .element-label {
+            min-width: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        .element-bar-track {
+            flex: 1;
+            height: 28px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .element-bar-fill {
+            height: 100%;
+            border-radius: 14px;
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            min-width: 30px;
+        }
+
+        .element-bar-fill.wood {
+            background: linear-gradient(90deg, #2E7D32, #4CAF50);
+        }
+
+        .element-bar-fill.fire {
+            background: linear-gradient(90deg, #D32F2F, #FF5722);
+        }
+
+        .element-bar-fill.earth {
+            background: linear-gradient(90deg, #F9A825, #FFB300);
+        }
+
+        .element-bar-fill.metal {
+            background: linear-gradient(90deg, #757575, #BDBDBD);
+        }
+
+        .element-bar-fill.water {
+            background: linear-gradient(90deg, #1565C0, #42A5F5);
+        }
+
+        .missing-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .weak-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Day Master */
+        .day-master-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, rgba(13, 77, 61, 0.05), rgba(212, 175, 55, 0.08));
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-master-element {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-master-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--emerald-deep);
+        }
+
+        .day-master-strength {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .strength-strong {
+            background: rgba(46, 125, 50, 0.15);
+            color: #2E7D32;
+        }
+
+        .strength-weak {
+            background: rgba(211, 47, 47, 0.15);
+            color: #D32F2F;
+        }
+
+        .strength-balanced {
+            background: rgba(249, 168, 37, 0.15);
+            color: #F57F17;
+        }
+
+        /* Personality */
+        .traits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .trait-positive,
+        .trait-negative {
+            padding: 1rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+        }
+
+        .trait-positive {
+            background: rgba(46, 125, 50, 0.08);
+        }
+
+        .trait-negative {
+            background: rgba(211, 47, 47, 0.06);
+        }
+
+        .trait-positive h4 {
+            color: #2E7D32;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .trait-negative h4 {
+            color: #D32F2F;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .trait-positive li,
+        .trait-negative li {
+            padding: 0.2rem 0;
+            list-style: none;
+        }
+
+        /* 2026 Forecast */
+        .forecast-box {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.08), rgba(255, 107, 53, 0.05));
+            border: 1px solid rgba(255, 69, 0, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .forecast-box h4 {
+            color: #ff4500;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .forecast-stars {
+            color: var(--champagne-gold);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Kua Info */
+        .kua-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .kua-good,
+        .kua-bad {
+            padding: 1rem;
+            border-radius: 14px;
+        }
+
+        .kua-good {
+            background: rgba(46, 125, 50, 0.08);
+        }
+
+        .kua-bad {
+            background: rgba(211, 47, 47, 0.06);
+        }
+
+        .kua-good h4 {
+            color: #2E7D32;
+            margin-bottom: 0.5rem;
+        }
+
+        .kua-bad h4 {
+            color: #D32F2F;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-reset {
+            background: var(--white);
+            color: var(--emerald-deep);
+            border: 2px solid var(--emerald-deep);
+        }
+
+        .btn-reset:hover {
+            background: var(--emerald-deep);
+            color: white;
+        }
+
+        .btn-share {
+            background: var(--champagne-gold);
+            color: white;
+        }
+
+        .btn-share:hover {
+            background: #c9a22e;
+        }
+
+        .btn-fortune {
+            background: rgba(13, 77, 61, 0.08);
+            color: var(--emerald-deep);
+            border: 2px solid rgba(13, 77, 61, 0.2);
+        }
+
+        .btn-fortune:hover {
+            background: var(--emerald-deep);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: var(--emerald-deep);
+            text-decoration: none;
+        }
+
+        @media(max-width:768px) {
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .traits-grid,
+            .kua-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar-stem,
+            .pillar-branch {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media(max-width:480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .input-card,
+            .result-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <a href="index.html" class="nav-back">← Back to Home</a>
+        <h1>🔮 BaZi Birth Chart</h1>
+        <p class="sub">Four Pillars of Destiny · 八字命盘</p>
+    </section>
+
+    <div class="container">
+        <!-- Input Form -->
+        <div class="input-card">
+            <h2>Enter Your Birth Details</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Birth Year 出生年</label>
+                    <input type="number" id="birthYear" min="1920" max="2026" placeholder="e.g. 1990">
+                </div>
+                <div class="form-group">
+                    <label>Birth Month 月</label>
+                    <select id="birthMonth">
+                        <option value="">Select Month</option>
+                        <option value="1">January 一月</option>
+                        <option value="2">February 二月</option>
+                        <option value="3">March 三月</option>
+                        <option value="4">April 四月</option>
+                        <option value="5">May 五月</option>
+                        <option value="6">June 六月</option>
+                        <option value="7">July 七月</option>
+                        <option value="8">August 八月</option>
+                        <option value="9">September 九月</option>
+                        <option value="10">October 十月</option>
+                        <option value="11">November 十一月</option>
+                        <option value="12">December 十二月</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Birth Day 日</label>
+                    <input type="number" id="birthDay" min="1" max="31" placeholder="1-31">
+                </div>
+                <div class="form-group">
+                    <label>Birth Hour 时辰</label>
+                    <select id="birthHour">
+                        <option value="">Unknown 不知道</option>
+                        <option value="0">子时 23:00-01:00</option>
+                        <option value="1">丑时 01:00-03:00</option>
+                        <option value="3">寅时 03:00-05:00</option>
+                        <option value="5">卯时 05:00-07:00</option>
+                        <option value="7">辰时 07:00-09:00</option>
+                        <option value="9">巳时 09:00-11:00</option>
+                        <option value="11">午时 11:00-13:00</option>
+                        <option value="13">未时 13:00-15:00</option>
+                        <option value="15">申时 15:00-17:00</option>
+                        <option value="17">酉时 17:00-19:00</option>
+                        <option value="19">戌时 19:00-21:00</option>
+                        <option value="21">亥时 21:00-23:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="gender-row">
+                <button class="gender-btn active" data-gender="male" onclick="selectGender(this)">♂ Male 男</button>
+                <button class="gender-btn" data-gender="female" onclick="selectGender(this)">♀ Female 女</button>
+            </div>
+            <button class="btn-calculate" onclick="calculateBazi()">Calculate My BaZi 排盘</button>
+        </div>
+
+        <!-- Results -->
+        <div id="results">
+            <!-- Four Pillars -->
+            <div class="result-card">
+                <h3>📜 Four Pillars 四柱八字</h3>
+                <div class="pillars-grid" id="pillarsGrid"></div>
+            </div>
+
+            <!-- Five Elements -->
+            <div class="result-card">
+                <h3>🌊 Five Elements Balance 五行分析</h3>
+                <div class="day-master-box">
+                    <div class="day-master-element" id="dayMasterEmoji"></div>
+                    <div class="day-master-name" id="dayMasterName"></div>
+                    <div class="day-master-strength" id="dayMasterStrength"></div>
+                </div>
+                <div class="elements-chart" id="elementsChart"></div>
+                <div id="missingElements" style="text-align:center; margin-top:1rem;"></div>
+            </div>
+
+            <!-- Personality -->
+            <div class="result-card">
+                <h3>🧠 Personality Profile 性格分析</h3>
+                <div class="traits-grid" id="traitsGrid"></div>
+                <div id="careerAdvice"
+                    style="margin-top:1rem; padding:1rem; background:rgba(13,77,61,0.05); border-radius:14px;"></div>
+                <div id="lifeAdvice"
+                    style="margin-top:1rem; padding:1rem; background:rgba(212,175,55,0.08); border-radius:14px; border-left:4px solid var(--champagne-gold);">
+                </div>
+            </div>
+
+            <!-- 2026 Forecast -->
+            <div class="result-card">
+                <h3>🔥 2026 Fire Horse Forecast 丙午年运势</h3>
+                <div class="forecast-box" id="forecastBox"></div>
+            </div>
+
+            <!-- Kua Number -->
+            <div class="result-card">
+                <h3>🧭 Kua Number & Directions 命卦方位</h3>
+                <div id="kuaInfo" style="text-align:center; margin-bottom:1rem;"></div>
+                <div class="kua-grid" id="kuaGrid"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn-action btn-reset" onclick="resetForm()">🔄 New Calculation</button>
+                <button class="btn-action btn-share" onclick="shareBazi()">📤 Share Result</button>
+                <a href="daily-fortune.html" class="btn-action btn-fortune">🐉 Daily Fortune</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 <a href="index.html">FengShuiWithJackson</a> · <a href="daily-fortune.html">Daily Fortune</a> · <a
+                href="compass.html">Feng Shui Compass</a></p>
+    </footer>
+
+    <script src="js/bazi-engine.js"></script>
+    <script>
+        let selectedGender = 'male';
+
+        function selectGender(btn) {
+            document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedGender = btn.dataset.gender;
+        }
+
+        function calculateBazi() {
+            const year = parseInt(document.getElementById('birthYear').value);
+            const month = parseInt(document.getElementById('birthMonth').value);
+            const day = parseInt(document.getElementById('birthDay').value);
+            const hourStr = document.getElementById('birthHour').value;
+            const hour = hourStr !== '' ? parseInt(hourStr) : undefined;
+
+            if (!year || !month || !day || year < 1920 || year > 2026) {
+                alert('Please enter a valid birth date (year 1920-2026).');
+                return;
+            }
+
+            const pillars = BaziEngine.getFourPillars(year, month, day, hour);
+            const elementCount = BaziEngine.countElements(pillars);
+            const { missing, weak } = BaziEngine.getMissingElements(elementCount);
+            const dayMaster = BaziEngine.getDayMasterStrength(pillars);
+            const traits = BaziEngine.getPersonalityTraits(dayMaster.element, dayMaster.strength);
+            const zodiac = BaziEngine.getZodiacFromYear(year);
+            const yearFortune = BaziEngine.get2026YearFortune(zodiac.index);
+            const kua = BaziEngine.calculateKua(year, selectedGender);
+            const kuaDir = BaziEngine.getKuaDirections(kua);
+
+            renderPillars(pillars);
+            renderElements(elementCount, missing, weak);
+            renderDayMaster(dayMaster);
+            renderTraits(traits, dayMaster);
+            renderForecast(yearFortune, zodiac);
+            renderKua(kua, kuaDir);
+
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        const ELEMENT_EMOJI = { Wood: '🌳', Fire: '🔥', Earth: '⛰️', Metal: '⚔️', Water: '💧' };
+        const ELEMENT_CN = { Wood: '木', Fire: '火', Earth: '土', Metal: '金', Water: '水' };
+
+        function renderPillars(pillars) {
+            const grid = document.getElementById('pillarsGrid');
+            const keys = [
+                { key: 'hour', label: 'Hour 时柱' },
+                { key: 'day', label: 'Day 日柱' },
+                { key: 'month', label: 'Month 月柱' },
+                { key: 'year', label: 'Year 年柱' }
+            ];
+            grid.innerHTML = keys.map(({ key, label }) => {
+                const p = pillars[key];
+                if (!p) return `<div class="pillar"><div class="pillar-label">${label}</div><div class="pillar-stem" style="opacity:0.3">?</div><div class="pillar-branch" style="opacity:0.3">?</div><div class="pillar-info">Unknown</div></div>`;
+                const stemEl = BaziEngine.getStemElement(p.stem);
+                const branchEl = BaziEngine.getBranchElement(p.branch);
+                const animal = BaziEngine.BRANCHES_ANIMALS_EMOJI[p.branch];
+                return `<div class="pillar">
+                    <div class="pillar-label">${label}</div>
+                    <div class="pillar-stem" style="color:${BaziEngine.FIVE_ELEMENTS_COLORS[stemEl]}">${BaziEngine.HEAVENLY_STEMS[p.stem]}</div>
+                    <div class="pillar-branch" style="color:${BaziEngine.FIVE_ELEMENTS_COLORS[branchEl]}">${BaziEngine.EARTHLY_BRANCHES[p.branch]}</div>
+                    <div class="pillar-animal">${animal}</div>
+                    <div class="pillar-info">${BaziEngine.STEMS_EN[p.stem]} ${BaziEngine.BRANCHES_EN[p.branch]}<br>${stemEl} / ${branchEl}</div>
+                </div>`;
+            }).join('');
+        }
+
+        function renderElements(count, missing, weak) {
+            const chart = document.getElementById('elementsChart');
+            const maxVal = Math.max(...Object.values(count), 4);
+            chart.innerHTML = BaziEngine.FIVE_ELEMENTS.map(el => {
+                const val = count[el];
+                const pct = (val / maxVal) * 100;
+                const cls = el.toLowerCase();
+                let badge = '';
+                if (missing.includes(el)) badge = '<span class="missing-badge">MISSING 缺</span>';
+                else if (weak.includes(el)) badge = '<span class="weak-badge">WEAK 弱</span>';
+                return `<div class="element-bar-row">
+                    <div class="element-label" style="color:${BaziEngine.FIVE_ELEMENTS_COLORS[el]}">${ELEMENT_EMOJI[el]} ${ELEMENT_CN[el]}</div>
+                    <div class="element-bar-track">
+                        <div class="element-bar-fill ${cls}" style="width:${Math.max(pct, 8)}%">${val.toFixed(1)}</div>
+                    </div>
+                    ${badge}
+                </div>`;
+            }).join('');
+
+            const missingEl = document.getElementById('missingElements');
+            if (missing.length > 0) {
+                missingEl.innerHTML = `<strong style="color:#e74c3c">⚠️ Missing Elements:</strong> ${missing.map(e => ELEMENT_EMOJI[e] + ' ' + e).join(', ')}<br><em style="font-size:0.85rem;color:#777">Consider adding ${missing.map(e => BaziEngine.ELEMENT_LUCKY_COLORS[e][0]).join(', ')} colors to your environment</em>`;
+            } else if (weak.length > 0) {
+                missingEl.innerHTML = `<strong style="color:#f39c12">💡 Weak Elements:</strong> ${weak.map(e => ELEMENT_EMOJI[e] + ' ' + e).join(', ')}<br><em style="font-size:0.85rem;color:#777">Boost with ${weak.map(e => BaziEngine.ELEMENT_LUCKY_COLORS[e][0]).join(', ')} tones</em>`;
+            } else {
+                missingEl.innerHTML = `<strong style="color:#27ae60">✨ Well-balanced Five Elements!</strong>`;
+            }
+        }
+
+        function renderDayMaster(dm) {
+            document.getElementById('dayMasterEmoji').textContent = ELEMENT_EMOJI[dm.element];
+            document.getElementById('dayMasterName').innerHTML = `Day Master: <strong>${dm.element} ${dm.elementCn}</strong>`;
+            const strengthEl = document.getElementById('dayMasterStrength');
+            strengthEl.textContent = dm.strengthCn + ' (' + dm.strength + ')';
+            strengthEl.className = 'day-master-strength strength-' + dm.strength;
+        }
+
+        function renderTraits(traits, dm) {
+            const grid = document.getElementById('traitsGrid');
+            grid.innerHTML = `
+                <div class="trait-positive">
+                    <h4>✅ Strengths</h4>
+                    <ul>${traits.positive.map(t => `<li>• ${t}</li>`).join('')}</ul>
+                </div>
+                <div class="trait-negative">
+                    <h4>⚠️ Watch Out For</h4>
+                    <ul>${traits.negative.map(t => `<li>• ${t}</li>`).join('')}</ul>
+                </div>
+            `;
+            document.getElementById('careerAdvice').innerHTML = `<strong>💼 Career Fit:</strong> ${traits.career}`;
+            document.getElementById('lifeAdvice').innerHTML = `<strong>💡 Life Advice:</strong> ${traits.advice}`;
+        }
+
+        function renderForecast(yf, zodiac) {
+            const stars = '★'.repeat(yf.luck) + '☆'.repeat(5 - yf.luck);
+            document.getElementById('forecastBox').innerHTML = `
+                <h4>🔥 ${zodiac.emoji} ${zodiac.animal} in the Year of the Fire Horse</h4>
+                <div class="forecast-stars">${stars}</div>
+                <p><strong>Zodiac-Year Relationship:</strong> ${yf.relation.typeCn} (${yf.relation.type}) — ${yf.relation.description}</p>
+                <p style="margin-top:0.5rem"><strong>Element Interaction:</strong> Your ${zodiac.element} meets the year's Fire energy. ${zodiac.element === 'Wood' ? 'Wood feeds Fire — your energy fuels the year, but be careful not to burn out!' :
+                    zodiac.element === 'Fire' ? 'Double Fire — explosive energy! Channel it wisely for maximum impact.' :
+                        zodiac.element === 'Earth' ? 'Fire generates Earth — the year supports your stability and growth.' :
+                            zodiac.element === 'Metal' ? 'Fire melts Metal — a transformative year. Embrace change.' :
+                                'Water controls Fire — tension exists but also creates balance. Stay grounded.'
+                }</p>
+                <p style="margin-top:0.8rem; padding:0.8rem; background:rgba(255,69,0,0.08); border-radius:10px;">
+                    🏠 <strong>Feng Shui Tip for 2026:</strong> Face ${BaziEngine.ELEMENT_DIRECTIONS[zodiac.element]} and use ${BaziEngine.ELEMENT_LUCKY_COLORS[zodiac.element].slice(0, 2).join(' & ')} to enhance your luck this year.
+                </p>
+            `;
+        }
+
+        function renderKua(kua, dir) {
+            document.getElementById('kuaInfo').innerHTML = `
+                <div style="font-size:3rem; font-family:var(--font-cn); color:var(--champagne-gold); font-weight:700">${kua}</div>
+                <div style="font-size:1.1rem; color:var(--emerald-deep); font-weight:600">Kua Number 命卦 · ${dir.group} Group ${dir.group === 'East' ? '东四命' : '西四命'}</div>
+            `;
+            document.getElementById('kuaGrid').innerHTML = `
+                <div class="kua-good">
+                    <h4>✅ Auspicious Directions 吉方</h4>
+                    ${dir.auspicious.map((d, i) => `<div style="padding:0.3rem 0">🧭 ${d}${i === 0 ? ' <strong>(Best 生气)</strong>' : i === 1 ? ' (天医)' : i === 2 ? ' (延年)' : ' (伏位)'}</div>`).join('')}
+                </div>
+                <div class="kua-bad">
+                    <h4>⚠️ Directions to Avoid 凶方</h4>
+                    ${dir.inauspicious.map((d, i) => `<div style="padding:0.3rem 0">⚠️ ${d}${i === 0 ? ' <strong>(Worst 绝命)</strong>' : i === 1 ? ' (五鬼)' : i === 2 ? ' (六煞)' : ' (祸害)'}</div>`).join('')}
+                </div>
+            `;
+        }
+
+        function resetForm() {
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('birthYear').value = '';
+            document.getElementById('birthMonth').value = '';
+            document.getElementById('birthDay').value = '';
+            document.getElementById('birthHour').value = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function shareBazi() {
+            const year = document.getElementById('birthYear').value;
+            const zodiac = BaziEngine.getZodiacFromYear(parseInt(year));
+            const pillars = BaziEngine.getFourPillars(
+                parseInt(year),
+                parseInt(document.getElementById('birthMonth').value),
+                parseInt(document.getElementById('birthDay').value)
+            );
+            const dm = BaziEngine.getDayMasterStrength(pillars);
+            const text = `🔮 My BaZi Chart:\n${zodiac.emoji} ${zodiac.animal} · Day Master: ${dm.element} (${dm.strengthCn})\nFour Pillars: ${BaziEngine.formatPillar(pillars.year)} ${BaziEngine.formatPillar(pillars.month)} ${BaziEngine.formatPillar(pillars.day)}\n\nCalculate yours at fengshuiwithjackson.com/bazi-calculator.html`;
+            if (navigator.share) {
+                navigator.share({ title: 'My BaZi Birth Chart', text: text, url: window.location.href }).catch(() => { });
+            } else {
+                navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!')).catch(() => { });
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -33,6 +33,58 @@
         gtag('config', 'G-LL9K60SGL2');
     </script>
 
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Feng Shui With Jackson",
+        "description": "Modern Feng Shui solutions for career success and personal harmony. Expert consultations for the Year of the Fire Horse 2026.",
+        "url": "https://fengshuiwithjackson.com",
+        "logo": "https://fengshuiwithjackson.com/images/favicon.webp",
+        "image": "https://fengshuiwithjackson.com/images/og-image.webp",
+        "priceRange": "$50-$500",
+        "sameAs": [
+            "https://www.pinterest.com/fengshuiwithjackson/"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Feng Shui Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Quick Question Consultation",
+                        "description": "30-minute video consultation for specific feng shui questions"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Full Home Audit",
+                        "description": "Comprehensive feng shui analysis of your entire home"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Feng Shui With Jackson",
+        "url": "https://fengshuiwithjackson.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://fengshuiwithjackson.com/blog.html?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -229,7 +281,7 @@
         <link rel="stylesheet" href="css/visual-enhancements.css">
         <link rel="stylesheet" href="css/print-styles.css" media="print">
         <link rel="stylesheet" href="css/layout-fixes.css">
-    <link rel="stylesheet" href="css/visual-luxury.css">
+        <link rel="stylesheet" href="css/visual-luxury.css">
         <link rel="stylesheet" href="css/services-enhanced.css">
     </noscript>
 </head>
@@ -249,8 +301,25 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                    <li><a href="fortune-calculator.html">🔮 Calculator</a></li>
+                    <li style="position:relative" class="nav-dropdown">
+                        <a href="#fortune-tools" style="cursor:pointer">🔮 Fortune Tools ▾</a>
+                        <ul style="display:none; position:absolute; top:100%; left:0; background:var(--white);
+                            box-shadow:0 8px 25px rgba(0,0,0,0.12); border-radius:12px; padding:0.8rem 0;
+                            min-width:200px; z-index:100; list-style:none;">
+                            <li><a href="daily-fortune.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🐉
+                                    Daily Fortune</a></li>
+                            <li><a href="bazi-calculator.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🔮
+                                    BaZi Calculator</a></li>
+                            <li><a href="fortune-calculator.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">📊
+                                    Fortune Calculator</a></li>
+                            <li><a href="compass.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🧭
+                                    Feng Shui Compass</a></li>
+                        </ul>
+                    </li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="product-2026-guide.html" class="btn-nav"
                             style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white;">🔥 2026
@@ -337,6 +406,146 @@
         </div>
     </section>
 
+    <!-- ===== Fortune Tools Showcase ===== -->
+    <section id="fortune-tools" class="fortune-showcase" style="
+        background: linear-gradient(135deg, #0d4d3d 0%, #1a5c4a 40%, #2E7D5C 100%);
+        padding: 5rem 0; position: relative; overflow: hidden;
+    ">
+        <!-- Background decoration -->
+        <div style="position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.04; font-size:12rem;
+            display:flex; align-items:center; justify-content:center; pointer-events:none;
+            font-family:'Noto Serif SC',serif; letter-spacing:2rem;">
+            ☰☷☳☵
+        </div>
+
+        <div class="container" style="position:relative; z-index:2;">
+            <!-- Section Header -->
+            <div style="text-align:center; margin-bottom:3rem;">
+                <span style="background:rgba(212,175,55,0.2); color:#f0d774; padding:0.4rem 1.2rem;
+                    border-radius:20px; font-size:0.85rem; font-weight:600; letter-spacing:1px;">
+                    ✨ FREE INTERACTIVE TOOLS
+                </span>
+                <h2 style="font-family:'Cormorant Garamond',serif; color:white; font-size:clamp(2rem,4vw,3rem);
+                    margin-top:1rem; font-weight:600;">
+                    Discover Your Fortune
+                </h2>
+                <p style="color:rgba(255,255,255,0.7); font-size:1.1rem; max-width:600px; margin:0.8rem auto 0;">
+                    Ancient Chinese wisdom meets modern technology. Explore your destiny with our interactive tools.
+                </p>
+            </div>
+
+            <!-- Tool Cards Grid -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+                gap:1.5rem; margin-bottom:3rem;">
+
+                <!-- Card 1: Daily Fortune -->
+                <a href="daily-fortune.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🐉</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">Daily Zodiac Fortune</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        BaZi-powered daily readings with lucky colors, directions, do's & don'ts, and feng shui tips.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Check Today's Fortune →
+                    </div>
+                </a>
+
+                <!-- Card 2: BaZi Calculator -->
+                <a href="bazi-calculator.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🔮</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">BaZi Birth Chart</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        Four Pillars of Destiny analysis with Five Elements balance, personality, and 2026 forecast.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Calculate Your Chart →
+                    </div>
+                </a>
+
+                <!-- Card 3: Feng Shui Compass -->
+                <a href="compass.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🧭</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">Feng Shui Compass</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        Real-time Lo Pan compass with 24 Mountains, 8 Trigrams, and personalized Kua directions.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Open Compass →
+                    </div>
+                </a>
+            </div>
+
+            <!-- Quick Fortune Preview Widget -->
+            <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(212,175,55,0.2);
+                border-radius:16px; padding:1.5rem 2rem; display:flex; align-items:center;
+                justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                <div>
+                    <div style="color:#f0d774; font-size:0.8rem; font-weight:600; text-transform:uppercase;
+                        letter-spacing:1.5px; margin-bottom:0.3rem;">
+                        📅 Today's Energy
+                    </div>
+                    <div id="quickFortuneText"
+                        style="color:white; font-size:1.1rem; font-family:'Cormorant Garamond',serif;">
+                        Loading today's celestial energy...
+                    </div>
+                </div>
+                <a href="daily-fortune.html" style="
+                    background: linear-gradient(135deg, #d4af37, #c9a22e);
+                    color: white; padding:0.7rem 1.8rem; border-radius:50px;
+                    text-decoration:none; font-weight:600; font-size:0.9rem;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    white-space:nowrap;
+                " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    See Full Fortune →
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Fortune Script -->
+        <script>
+            (function () {
+                var el = document.getElementById('quickFortuneText');
+                if (!el) return;
+                // Simple day-based message without requiring BaZi engine
+                var msgs = [
+                    '🔥 Fire energy dominates — bold actions are favored today',
+                    '💧 Water wisdom flows — trust your intuition and reflect deeply',
+                    '🌳 Wood growth surges — start new projects and plant seeds',
+                    '⛰️ Earth stability grounds you — focus on building foundations',
+                    '⚔️ Metal clarity sharpens — organize, decide, and execute'
+                ];
+                var today = new Date();
+                var dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+                el.textContent = msgs[dayOfYear % msgs.length];
+            })();
+        </script>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
@@ -417,7 +626,9 @@
             <h2 class="section-title">Jackson's Feng Shui Essentials</h2>
             <div class="blog-grid">
                 <article class="blog-card">
-                    <div class="blog-image" id="blog-img-1"></div>
+                    <div class="blog-image"
+                        style="background-image: url('images/wealth-corner-blog.webp'); background-size: cover; background-position: center;">
+                    </div>
                     <div class="blog-content">
                         <h3>How to Find Your Wealth Corner</h3>
                         <p>Discover the secret location in your home that attracts prosperity and abundance.</p>
@@ -426,7 +637,9 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" id="blog-img-2"></div>
+                    <div class="blog-image"
+                        style="background-image: url('images/money-plants-blog.webp'); background-size: cover; background-position: center;">
+                    </div>
                     <div class="blog-content">
                         <h3>Top 5 Plants for Money</h3>
                         <p>These powerful plants don't just look good—they activate wealth energy in your space.</p>
@@ -435,7 +648,9 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" id="blog-img-3"></div>
+                    <div class="blog-image"
+                        style="background-image: url('images/bedroom-mistakes-blog.webp'); background-size: cover; background-position: center;">
+                    </div>
                     <div class="blog-content">
                         <h3>Bedroom Feng Shui Mistakes</h3>
                         <p>Are these common errors blocking your rest, relationships, and rejuvenation?</p>
@@ -568,7 +783,7 @@
                 </div>
             </div>
             <div class="footer-legal">
-                <p>&copy; 2025 FengShuiWithJackson. All rights reserved.</p>
+                <p>&copy; 2026 FengShuiWithJackson. All rights reserved.</p>
                 <p class="footer-links">
                     <a href="privacy.html">Privacy Policy</a> |
                     <a href="terms.html">Terms of Service</a> |
@@ -581,17 +796,18 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/enhanced-features.js"></script>
-    <script src="js/additional-enhancements.js"></script>
-    <script src="js/final-enhancements.js"></script>
-    <script src="js/visual-enhancements.js"></script>
-    <script src="js/seo-navigation.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/social-share.js"></script>
-    <script src="js/schema-enhancement.js"></script>
-    <script src="js/visual-luxury.js"></script>
-    <script src="js/lazy-loading.js"></script>
+    <!-- Nav dropdown script -->
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach(function (item) {
+            var submenu = item.querySelector('ul');
+            if (!submenu) return;
+            item.addEventListener('mouseenter', function () { submenu.style.display = 'block'; });
+            item.addEventListener('mouseleave', function () { submenu.style.display = 'none'; });
+        });
+    </script>
+
+    <!-- Bundled JS for better performance -->
+    <script src="js/bundle.min.js"></script>
 </body>
 
 </html>

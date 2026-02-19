@@ -29,14 +29,16 @@
     <meta property="pin:description" content="Don't Let Money Gather Dust - Clean Your Plant Leaves 🪴">
 
     <link rel="canonical" href="https://fengshuiwithjackson.com/article-dust-plants-thursday.html">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout-fixes.css">
     <link rel="stylesheet" href="css/visual-luxury.css">
 
     <style>
         .article-hero {
-            background: linear-gradient(135deg, #228B22, #32CD32);
+            background: linear-gradient(135deg, #228B22dd, #32CD32cc), url('images/dust-plants-thursday.webp') center/cover;
             min-height: 40vh;
             display: flex;
             align-items: center;
@@ -45,35 +47,49 @@
             color: white;
             padding: 100px 20px 60px;
         }
+
         .article-hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 15px;
         }
+
         .article-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 50px 20px;
         }
+
         .visual-compare {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin: 40px 0;
         }
+
         .compare-card {
             border-radius: 20px;
             padding: 30px;
             text-align: center;
         }
+
         .compare-card.dusty {
             background: linear-gradient(135deg, #d5d5d5, #a9a9a9);
         }
+
         .compare-card.clean {
             background: linear-gradient(135deg, #90EE90, #32CD32);
         }
-        .compare-card .emoji { font-size: 3rem; margin-bottom: 15px; }
-        .compare-card h3 { margin-bottom: 10px; }
+
+        .compare-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .compare-card h3 {
+            margin-bottom: 10px;
+        }
+
         .jupiter-box {
             background: linear-gradient(135deg, #4B0082, #6A0DAD);
             border-radius: 25px;
@@ -82,23 +98,31 @@
             color: white;
             text-align: center;
         }
-        .jupiter-box h2 { color: #d4af37; margin-bottom: 20px; }
+
+        .jupiter-box h2 {
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
         .step-section {
             background: #f0fff0;
             border-radius: 25px;
             padding: 40px;
             margin: 40px 0;
         }
+
         .step-section h2 {
             color: #228B22;
             text-align: center;
             margin-bottom: 30px;
         }
+
         .step-list {
             counter-reset: step-counter;
             list-style: none;
             padding: 0;
         }
+
         .step-list li {
             counter-increment: step-counter;
             padding: 20px 20px 20px 80px;
@@ -106,8 +130,9 @@
             background: white;
             border-radius: 15px;
             position: relative;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
         }
+
         .step-list li::before {
             content: counter(step-counter);
             position: absolute;
@@ -125,22 +150,34 @@
             font-weight: bold;
             font-size: 1.3rem;
         }
+
         .plant-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
+
         .plant-card {
             background: white;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             border-top: 4px solid #228B22;
         }
-        .plant-card .emoji { font-size: 2.5rem; margin-bottom: 10px; }
-        .plant-card h4 { color: #228B22; margin-bottom: 5px; font-size: 0.95rem; }
+
+        .plant-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .plant-card h4 {
+            color: #228B22;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
         .related-box {
             background: linear-gradient(135deg, #228B22, #32CD32);
             border-radius: 20px;
@@ -149,6 +186,7 @@
             color: white;
             margin: 40px 0;
         }
+
         .related-box .btn {
             background: #d4af37;
             color: #333;
@@ -159,6 +197,7 @@
             font-weight: 600;
             margin-top: 15px;
         }
+
         .pinterest-save {
             text-align: center;
             margin: 30px 0;
@@ -166,8 +205,11 @@
             background: #fafafa;
             border-radius: 15px;
         }
+
         @media (max-width: 600px) {
-            .visual-compare { grid-template-columns: 1fr; }
+            .visual-compare {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -190,7 +232,9 @@
     <!-- Hero -->
     <section class="article-hero">
         <div>
-            <span style="background: #d4af37; color: #333; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; display: inline-block; margin-bottom: 15px;">🪴 Plant Care</span>
+            <span
+                style="background: #d4af37; color: #333; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; display: inline-block; margin-bottom: 15px;">🪴
+                Plant Care</span>
             <h1>Don't Let Money Gather Dust</h1>
             <p style="opacity: 0.9; font-size: 1.2rem;">Why You Must Clean Your Plant Leaves on Thursdays</p>
         </div>
@@ -199,7 +243,9 @@
     <!-- Content -->
     <article class="article-content">
 
-        <p style="font-size: 1.2rem; text-align: center; color: #666;"><strong>Dusty plants = Stagnant growth.</strong> 🚫 In Feng Shui, plants represent your financial growth. If their leaves are covered in dust, <span style="color: #228B22; font-weight: bold;">money can't "breathe"!</span></p>
+        <p style="font-size: 1.2rem; text-align: center; color: #666;"><strong>Dusty plants = Stagnant growth.</strong>
+            🚫 In Feng Shui, plants represent your financial growth. If their leaves are covered in dust, <span
+                style="color: #228B22; font-weight: bold;">money can't "breathe"!</span></p>
 
         <!-- Visual Compare -->
         <div class="visual-compare">
@@ -218,7 +264,8 @@
         <!-- Jupiter Box -->
         <div class="jupiter-box">
             <h2>♃ Why Thursday?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 15px;">Thursday is ruled by <strong>Jupiter</strong> — the planet of expansion, growth, and abundance!</p>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">Thursday is ruled by <strong>Jupiter</strong> — the
+                planet of expansion, growth, and abundance!</p>
             <p>In feng shui and astrology, Jupiter governs:</p>
             <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
                 <span>💰 Wealth</span>
@@ -226,7 +273,8 @@
                 <span>🍀 Luck</span>
                 <span>🌳 Wood Element</span>
             </div>
-            <p style="margin-top: 20px; opacity: 0.9;">Cleaning your plants on Thursday aligns with Jupiter's expansive energy!</p>
+            <p style="margin-top: 20px; opacity: 0.9;">Cleaning your plants on Thursday aligns with Jupiter's expansive
+                energy!</p>
         </div>
 
         <!-- How To -->
@@ -277,7 +325,8 @@
         </div>
 
         <!-- Warning -->
-        <div style="background: #fff5f5; border-left: 5px solid #e74c3c; padding: 25px 30px; margin: 30px 0; border-radius: 0 15px 15px 0;">
+        <div
+            style="background: #fff5f5; border-left: 5px solid #e74c3c; padding: 25px 30px; margin: 30px 0; border-radius: 0 15px 15px 0;">
             <h4 style="color: #c0392b; margin-bottom: 10px;">⚠️ Don't Forget!</h4>
             <ul style="padding-left: 20px; margin: 0;">
                 <li>Remove dead or yellowing leaves immediately</li>
@@ -289,7 +338,10 @@
         <!-- Pinterest Save -->
         <div class="pinterest-save">
             <p>📌 Save this reminder!</p>
-            <a href="https://pinterest.com/pin/create/button/?url=https://fengshuiwithjackson.com/article-dust-plants-thursday.html&description=Don't%20Let%20Money%20Gather%20Dust%20-%20Clean%20Your%20Plant%20Leaves" target="_blank" style="background: #e60023; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600;">Save to Pinterest</a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://fengshuiwithjackson.com/article-dust-plants-thursday.html&description=Don't%20Let%20Money%20Gather%20Dust%20-%20Clean%20Your%20Plant%20Leaves"
+                target="_blank"
+                style="background: #e60023; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600;">Save
+                to Pinterest</a>
         </div>
 
         <!-- Related Content -->
@@ -299,34 +351,39 @@
             <a href="article-money-plants.html" class="btn">Read Full Plant Guide →</a>
         </div>
 
-    
-    <!-- Related Articles Section -->
-    <div class="related-articles" style="background: #f8f9fa; border-radius: 20px; padding: 30px; margin: 40px 0;">
-        <h3 style="color: #1B4D3E; margin-bottom: 20px; text-align: center;">📚 Related Articles</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-            <a href="article-plants-guide.html" style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                <strong>Feng Shui Plants Guide: 15 Best Plants f</strong>
-            </a>
-            <a href="article-money-plants.html" style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                <strong>Top 5 Plants for Money & Prosperity</strong>
-            </a>
-            <a href="article-jupiter-manifestation.html" style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
-                <strong>How to Use Jupiter Energy to Manifest Bi</strong>
-            </a>
+
+        <!-- Related Articles Section -->
+        <div class="related-articles" style="background: #f8f9fa; border-radius: 20px; padding: 30px; margin: 40px 0;">
+            <h3 style="color: #1B4D3E; margin-bottom: 20px; text-align: center;">📚 Related Articles</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <a href="article-plants-guide.html"
+                    style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <strong>Feng Shui Plants Guide: 15 Best Plants f</strong>
+                </a>
+                <a href="article-money-plants.html"
+                    style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <strong>Top 5 Plants for Money & Prosperity</strong>
+                </a>
+                <a href="article-jupiter-manifestation.html"
+                    style="background: white; padding: 15px; border-radius: 15px; text-decoration: none; color: #1B4D3E; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                    <strong>How to Use Jupiter Energy to Manifest Bi</strong>
+                </a>
+            </div>
         </div>
-    </div>
 
     </article>
 
     <!-- Footer -->
     <footer style="background: #228B22; color: white; padding: 30px 20px; text-align: center;">
-        <p><a href="blog.html" style="color: #d4af37;">← More Articles</a> | <a href="index.html" style="color: #d4af37;">Home</a></p>
+        <p><a href="blog.html" style="color: #d4af37;">← More Articles</a> | <a href="index.html"
+                style="color: #d4af37;">Home</a></p>
         <p style="opacity: 0.7; font-size: 0.85rem; margin-top: 10px;">© 2026 Feng Shui With Jackson</p>
     </footer>
 
-    <script src="js/social-share.js"></script>
+
     <script src="js/schema-enhancement.js"></script>
     <script src="js/visual-luxury.js"></script>
     <script src="js/lazy-loading.js"></script>
 </body>
+
 </html>

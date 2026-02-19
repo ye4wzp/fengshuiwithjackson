@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feng Shui Compass (Lo Pan) | 风水罗盘 | Feng Shui With Jackson</title>
+    <meta name="description"
+        content="Interactive digital Lo Pan compass with 24 Mountains, 8 Trigrams, and personalized Kua directions. Find your auspicious feng shui directions in real-time.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --emerald-deep: #0d4d3d;
+            --emerald-medium: #2E7D5C;
+            --champagne-gold: #d4af37;
+            --gold-light: #f0d774;
+            --cream: #faf8f3;
+            --white: #fff;
+            --black: #1a1a1a;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-cn: 'Noto Serif SC', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: #1a0a2e;
+            color: var(--white);
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, #1a0a2e 0%, #0d4d3d 100%);
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .sub {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-back:hover {
+            color: var(--champagne-gold);
+        }
+
+        /* Compass Container */
+        .compass-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 2rem 3rem;
+            text-align: center;
+        }
+
+        /* Compass Canvas */
+        .compass-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 1rem auto;
+        }
+
+        #compassCanvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .compass-needle-info {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: var(--font-cn);
+            color: var(--champagne-gold);
+            white-space: nowrap;
+        }
+
+        /* Heading Display */
+        .heading-display {
+            margin: 2.5rem 0 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .heading-degrees {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: var(--champagne-gold);
+            letter-spacing: 2px;
+        }
+
+        .heading-direction {
+            font-family: var(--font-cn);
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .heading-mountain {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Kua Section */
+        .kua-section {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .kua-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--champagne-gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .kua-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .kua-form input,
+        .kua-form select {
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+        }
+
+        .kua-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .kua-form button {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--champagne-gold);
+            color: #1a0a2e;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .kua-form button:hover {
+            background: var(--gold-light);
+        }
+
+        #kuaResult {
+            min-height: 100px;
+        }
+
+        .kua-directions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .kua-dir-good,
+        .kua-dir-bad {
+            padding: 1rem;
+            border-radius: 14px;
+        }
+
+        .kua-dir-good {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.2);
+        }
+
+        .kua-dir-bad {
+            background: rgba(231, 76, 60, 0.08);
+            border: 1px solid rgba(231, 76, 60, 0.15);
+        }
+
+        .kua-dir-good h4 {
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .kua-dir-bad h4 {
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .kua-dir-good li,
+        .kua-dir-bad li {
+            padding: 0.2rem 0;
+            font-size: 0.85rem;
+            list-style: none;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Trigram Info */
+        .trigram-info {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .trigram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .trigram-card {
+            text-align: center;
+            padding: 0.8rem 0.3rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s;
+        }
+
+        .trigram-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .trigram-symbol {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .trigram-name {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .trigram-cn {
+            font-family: var(--font-cn);
+            font-size: 0.9rem;
+            color: var(--champagne-gold);
+        }
+
+        /* Permission */
+        .permission-banner {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .permission-banner button {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--champagne-gold);
+            color: #1a0a2e;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: var(--champagne-gold);
+            text-decoration: none;
+        }
+
+        @media(max-width:600px) {
+            .heading-display {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .kua-directions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trigram-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <a href="index.html" class="nav-back">← Back to Home</a>
+        <h1>🧭 Feng Shui Compass</h1>
+        <p class="sub">Digital Lo Pan · 风水罗盘</p>
+    </section>
+
+    <div class="compass-container">
+        <!-- Permission Banner -->
+        <div class="permission-banner" id="permissionBanner">
+            📍 Enable device orientation for real-time compass readings.
+            <br><button onclick="requestPermission()">Enable Compass</button>
+            <span style="display:block; margin-top:0.5rem; font-size:0.8rem;">
+                (Or enter degrees manually below)
+            </span>
+        </div>
+
+        <!-- Manual Heading Input -->
+        <div style="display:flex; justify-content:center; gap:0.5rem; margin:1rem 0;">
+            <input type="range" id="manualHeading" min="0" max="359" value="0"
+                style="width:200px; accent-color:var(--champagne-gold);">
+            <input type="number" id="manualDegrees" min="0" max="359" value="0" placeholder="0-359" style="width:60px; padding:0.3rem; border:1px solid rgba(255,255,255,0.2); border-radius:8px;
+                background:rgba(255,255,255,0.08); color:white; text-align:center; font-size:0.9rem;">
+            <span style="color:rgba(255,255,255,0.5); font-size:0.8rem; align-self:center;">°</span>
+        </div>
+
+        <!-- Compass Canvas -->
+        <div class="compass-wrapper">
+            <canvas id="compassCanvas" width="360" height="360"></canvas>
+        </div>
+
+        <!-- Heading Display -->
+        <div class="heading-display">
+            <div class="heading-degrees" id="headingDegrees">0°</div>
+            <div>
+                <div class="heading-direction" id="headingDirection">北 North</div>
+                <div class="heading-mountain" id="headingMountain">壬山 Ren Mountain</div>
+            </div>
+        </div>
+
+        <!-- 8 Trigrams Reference -->
+        <div class="trigram-info">
+            <h3
+                style="font-family:var(--font-heading); color:var(--champagne-gold); font-size:1.3rem; text-align:center;">
+                ☰ Eight Trigrams · 八卦
+            </h3>
+            <div class="trigram-grid">
+                <div class="trigram-card"><span class="trigram-symbol">☰</span><span
+                        class="trigram-cn">乾</span><br><span class="trigram-name">Qian · NW</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☷</span><span
+                        class="trigram-cn">坤</span><br><span class="trigram-name">Kun · SW</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☳</span><span
+                        class="trigram-cn">震</span><br><span class="trigram-name">Zhen · E</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☴</span><span
+                        class="trigram-cn">巽</span><br><span class="trigram-name">Xun · SE</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☵</span><span
+                        class="trigram-cn">坎</span><br><span class="trigram-name">Kan · N</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☲</span><span
+                        class="trigram-cn">离</span><br><span class="trigram-name">Li · S</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☶</span><span
+                        class="trigram-cn">艮</span><br><span class="trigram-name">Gen · NE</span></div>
+                <div class="trigram-card"><span class="trigram-symbol">☱</span><span
+                        class="trigram-cn">兑</span><br><span class="trigram-name">Dui · W</span></div>
+            </div>
+        </div>
+
+        <!-- Kua Personalization -->
+        <div class="kua-section">
+            <h3>🔮 Personalize Your Directions</h3>
+            <div class="kua-form">
+                <input type="number" id="kuaYear" min="1920" max="2026" placeholder="Birth Year">
+                <select id="kuaGender">
+                    <option value="male">♂ Male</option>
+                    <option value="female">♀ Female</option>
+                </select>
+                <button onclick="calculateKuaCompass()">Show My Directions</button>
+            </div>
+            <div id="kuaResult"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 <a href="index.html">FengShuiWithJackson</a> · <a href="daily-fortune.html">Daily Fortune</a> · <a
+                href="bazi-calculator.html">BaZi Calculator</a></p>
+    </footer>
+
+    <script src="js/bazi-engine.js"></script>
+    <script>
+        // ===== 24 MOUNTAINS =====
+        const MOUNTAINS = [
+            { cn: '壬', en: 'Ren', type: 'stem', start: 337.5, end: 352.5 },
+            { cn: '子', en: 'Zi', type: 'branch', start: 352.5, end: 7.5 },
+            { cn: '癸', en: 'Gui', type: 'stem', start: 7.5, end: 22.5 },
+            { cn: '丑', en: 'Chou', type: 'branch', start: 22.5, end: 37.5 },
+            { cn: '艮', en: 'Gen', type: 'trigram', start: 37.5, end: 52.5 },
+            { cn: '寅', en: 'Yin', type: 'branch', start: 52.5, end: 67.5 },
+            { cn: '甲', en: 'Jia', type: 'stem', start: 67.5, end: 82.5 },
+            { cn: '卯', en: 'Mao', type: 'branch', start: 82.5, end: 97.5 },
+            { cn: '乙', en: 'Yi', type: 'stem', start: 97.5, end: 112.5 },
+            { cn: '辰', en: 'Chen', type: 'branch', start: 112.5, end: 127.5 },
+            { cn: '巽', en: 'Xun', type: 'trigram', start: 127.5, end: 142.5 },
+            { cn: '巳', en: 'Si', type: 'branch', start: 142.5, end: 157.5 },
+            { cn: '丙', en: 'Bing', type: 'stem', start: 157.5, end: 172.5 },
+            { cn: '午', en: 'Wu', type: 'branch', start: 172.5, end: 187.5 },
+            { cn: '丁', en: 'Ding', type: 'stem', start: 187.5, end: 202.5 },
+            { cn: '未', en: 'Wei', type: 'branch', start: 202.5, end: 217.5 },
+            { cn: '坤', en: 'Kun', type: 'trigram', start: 217.5, end: 232.5 },
+            { cn: '申', en: 'Shen', type: 'branch', start: 232.5, end: 247.5 },
+            { cn: '庚', en: 'Geng', type: 'stem', start: 247.5, end: 262.5 },
+            { cn: '酉', en: 'You', type: 'branch', start: 262.5, end: 277.5 },
+            { cn: '辛', en: 'Xin', type: 'stem', start: 277.5, end: 292.5 },
+            { cn: '戌', en: 'Xu', type: 'branch', start: 292.5, end: 307.5 },
+            { cn: '乾', en: 'Qian', type: 'trigram', start: 307.5, end: 322.5 },
+            { cn: '亥', en: 'Hai', type: 'branch', start: 322.5, end: 337.5 }
+        ];
+
+        const DIRECTION_NAMES = [
+            { cn: '北', en: 'North', start: 337.5, end: 22.5 },
+            { cn: '东北', en: 'Northeast', start: 22.5, end: 67.5 },
+            { cn: '东', en: 'East', start: 67.5, end: 112.5 },
+            { cn: '东南', en: 'Southeast', start: 112.5, end: 157.5 },
+            { cn: '南', en: 'South', start: 157.5, end: 202.5 },
+            { cn: '西南', en: 'Southwest', start: 202.5, end: 247.5 },
+            { cn: '西', en: 'West', start: 247.5, end: 292.5 },
+            { cn: '西北', en: 'Northwest', start: 292.5, end: 337.5 }
+        ];
+
+        let currentHeading = 0;
+        let isDeviceOrientation = false;
+        let personalKua = null;
+        let kuaDir = null;
+
+        // Get mountain for a heading
+        function getMountain(deg) {
+            deg = ((deg % 360) + 360) % 360;
+            for (const m of MOUNTAINS) {
+                if (m.start > m.end) { // wraps around 360
+                    if (deg >= m.start || deg < m.end) return m;
+                } else {
+                    if (deg >= m.start && deg < m.end) return m;
+                }
+            }
+            return MOUNTAINS[0];
+        }
+
+        function getDirection(deg) {
+            deg = ((deg % 360) + 360) % 360;
+            for (const d of DIRECTION_NAMES) {
+                if (d.start > d.end) {
+                    if (deg >= d.start || deg < d.end) return d;
+                } else {
+                    if (deg >= d.start && deg < d.end) return d;
+                }
+            }
+            return DIRECTION_NAMES[0];
+        }
+
+        // ===== COMPASS DRAWING =====
+        function drawCompass(heading) {
+            const canvas = document.getElementById('compassCanvas');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            const cx = w / 2, cy = h / 2;
+            const R = Math.min(w, h) / 2 - 10;
+
+            ctx.clearRect(0, 0, w, h);
+            ctx.save();
+
+            // Rotate everything opposite to heading so "facing direction" is at top
+            ctx.translate(cx, cy);
+            ctx.rotate(-heading * Math.PI / 180);
+
+            // Outer Ring
+            ctx.beginPath();
+            ctx.arc(0, 0, R, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(13, 77, 61, 0.15)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 24 Mountains Ring
+            const mountainR = R - 5;
+            const innerR = R * 0.68;
+            for (let i = 0; i < 24; i++) {
+                const m = MOUNTAINS[i];
+                const startAngle = (m.start - 90) * Math.PI / 180;
+                const midAngle = startAngle + (15 * Math.PI / 180) / 2;
+                const endAngle = startAngle + 15 * Math.PI / 180;
+
+                // Sector fill based on type
+                ctx.beginPath();
+                ctx.arc(0, 0, mountainR, startAngle, endAngle);
+                ctx.arc(0, 0, innerR, endAngle, startAngle, true);
+                ctx.closePath();
+
+                // Color by type and Kua
+                if (m.type === 'trigram') ctx.fillStyle = 'rgba(212, 175, 55, 0.2)';
+                else if (m.type === 'stem') ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
+                else ctx.fillStyle = 'rgba(13, 77, 61, 0.15)';
+
+                // Highlight if Kua personalized
+                if (kuaDir) {
+                    const dir = getDirection((m.start + 7.5) % 360);
+                    if (kuaDir.auspicious.includes(dir.en)) ctx.fillStyle = 'rgba(39, 174, 96, 0.25)';
+                    if (kuaDir.inauspicious.includes(dir.en)) ctx.fillStyle = 'rgba(231, 76, 60, 0.15)';
+                }
+
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+
+                // Label
+                const labelR = (mountainR + innerR) / 2;
+                const lx = labelR * Math.cos(midAngle);
+                const ly = labelR * Math.sin(midAngle);
+                ctx.save();
+                ctx.translate(lx, ly);
+                ctx.rotate(midAngle + Math.PI / 2);
+                ctx.font = '700 11px "Noto Serif SC", serif';
+                ctx.fillStyle = m.type === 'trigram' ? '#d4af37' : 'rgba(255,255,255,0.85)';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(m.cn, 0, 0);
+                ctx.restore();
+            }
+
+            // 8 Directions Ring (inner)
+            const dir8R = innerR - 2;
+            const dir8Inner = R * 0.38;
+            const dir8Labels = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+            const dir8Cn = ['北', '东北', '东', '东南', '南', '西南', '西', '西北'];
+            for (let i = 0; i < 8; i++) {
+                const startDeg = i * 45 - 22.5;
+                const startAngle = (startDeg - 90) * Math.PI / 180;
+                const endAngle = startAngle + 45 * Math.PI / 180;
+                const midAngle = startAngle + 22.5 * Math.PI / 180;
+
+                // Sector lines
+                ctx.beginPath();
+                ctx.moveTo(dir8Inner * Math.cos(startAngle), dir8Inner * Math.sin(startAngle));
+                ctx.lineTo(dir8R * Math.cos(startAngle), dir8R * Math.sin(startAngle));
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Direction labels
+                const labelR2 = (dir8R + dir8Inner) / 2;
+                ctx.save();
+                ctx.translate(labelR2 * Math.cos(midAngle), labelR2 * Math.sin(midAngle));
+                ctx.rotate(midAngle + Math.PI / 2);
+                ctx.font = 'bold 10px Inter, sans-serif';
+                ctx.fillStyle = i === 0 ? '#e74c3c' : i === 4 ? '#d4af37' : 'rgba(255,255,255,0.6)';
+                ctx.textAlign = 'center';
+                ctx.fillText(dir8Labels[i], 0, -4);
+                ctx.font = '600 10px "Noto Serif SC", serif';
+                ctx.fillText(dir8Cn[i], 0, 8);
+                ctx.restore();
+            }
+
+            // Center Circle
+            ctx.beginPath();
+            ctx.arc(0, 0, dir8Inner, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(26, 10, 46, 0.8)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Yin-Yang or Trigram in center
+            ctx.font = '700 22px "Noto Serif SC", serif';
+            ctx.fillStyle = 'var(--champagne-gold)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('☯', 0, 0);
+
+            ctx.restore();
+
+            // Fixed needle pointing up (North indicator)
+            ctx.save();
+            ctx.translate(cx, cy);
+            // Red triangle pointing up
+            ctx.beginPath();
+            ctx.moveTo(0, -R + 2);
+            ctx.lineTo(-8, -R + 20);
+            ctx.lineTo(8, -R + 20);
+            ctx.closePath();
+            ctx.fillStyle = '#e74c3c';
+            ctx.fill();
+            // Small dot at center
+            ctx.beginPath();
+            ctx.arc(0, 0, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#d4af37';
+            ctx.fill();
+            ctx.restore();
+
+            // Update text displays
+            const deg = Math.round(heading);
+            const mountain = getMountain(heading);
+            const direction = getDirection(heading);
+            document.getElementById('headingDegrees').textContent = deg + '°';
+            document.getElementById('headingDirection').textContent = direction.cn + ' ' + direction.en;
+            document.getElementById('headingMountain').textContent = mountain.cn + '山 · ' + mountain.en + ' Mountain';
+        }
+
+        // ===== DEVICE ORIENTATION =====
+        function requestPermission() {
+            if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                // iOS 13+
+                DeviceOrientationEvent.requestPermission().then(response => {
+                    if (response === 'granted') {
+                        enableDeviceOrientation();
+                    }
+                }).catch(err => {
+                    console.log('Permission denied:', err);
+                });
+            } else if ('DeviceOrientationEvent' in window) {
+                enableDeviceOrientation();
+            } else {
+                document.getElementById('permissionBanner').innerHTML =
+                    '📍 Device orientation not available. Use the manual slider to set direction.';
+            }
+        }
+
+        function enableDeviceOrientation() {
+            isDeviceOrientation = true;
+            document.getElementById('permissionBanner').style.display = 'none';
+            window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+            window.addEventListener('deviceorientation', handleOrientation);
+        }
+
+        function handleOrientation(event) {
+            let heading;
+            if (event.webkitCompassHeading !== undefined) {
+                heading = event.webkitCompassHeading; // iOS
+            } else if (event.alpha !== null) {
+                heading = (360 - event.alpha) % 360; // Android
+            }
+            if (heading !== undefined) {
+                currentHeading = heading;
+                drawCompass(heading);
+                document.getElementById('manualHeading').value = Math.round(heading);
+                document.getElementById('manualDegrees').value = Math.round(heading);
+            }
+        }
+
+        // Manual heading controls
+        document.getElementById('manualHeading').addEventListener('input', function () {
+            if (!isDeviceOrientation) {
+                currentHeading = parseInt(this.value);
+                document.getElementById('manualDegrees').value = currentHeading;
+                drawCompass(currentHeading);
+            }
+        });
+        document.getElementById('manualDegrees').addEventListener('input', function () {
+            if (!isDeviceOrientation) {
+                const v = Math.max(0, Math.min(359, parseInt(this.value) || 0));
+                currentHeading = v;
+                document.getElementById('manualHeading').value = v;
+                drawCompass(v);
+            }
+        });
+
+        // Kua Calculation
+        function calculateKuaCompass() {
+            const year = parseInt(document.getElementById('kuaYear').value);
+            const gender = document.getElementById('kuaGender').value;
+            if (!year || year < 1920 || year > 2026) {
+                alert('Enter a valid year (1920-2026)');
+                return;
+            }
+
+            personalKua = BaziEngine.calculateKua(year, gender);
+            kuaDir = BaziEngine.getKuaDirections(personalKua);
+
+            document.getElementById('kuaResult').innerHTML = `
+                <div style="text-align:center; margin:1rem 0;">
+                    <span style="font-size:2.5rem; font-family:var(--font-cn); color:var(--champagne-gold); font-weight:700">${personalKua}</span>
+                    <div style="color:rgba(255,255,255,0.7); font-size:0.9rem;">Kua Number · ${kuaDir.group} Group ${kuaDir.group === 'East' ? '东四命' : '西四命'}</div>
+                </div>
+                <div class="kua-directions-grid">
+                    <div class="kua-dir-good">
+                        <h4>✅ Auspicious 吉方</h4>
+                        <ul>${kuaDir.auspicious.map((d, i) => `<li>🧭 ${d} ${i === 0 ? '<strong>(Best 生气)</strong>' : i === 1 ? '(天医)' : i === 2 ? '(延年)' : '(伏位)'}</li>`).join('')}</ul>
+                    </div>
+                    <div class="kua-dir-bad">
+                        <h4>⚠️ Avoid 凶方</h4>
+                        <ul>${kuaDir.inauspicious.map((d, i) => `<li>⚠️ ${d} ${i === 0 ? '<strong>(Worst 绝命)</strong>' : i === 1 ? '(五鬼)' : i === 2 ? '(六煞)' : '(祸害)'}</li>`).join('')}</ul>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:1rem; font-size:0.85rem; color:rgba(255,255,255,0.5);">
+                    💡 Compass now highlights your auspicious (green) and inauspicious (red) sectors
+                </p>
+            `;
+
+            // Redraw compass with Kua highlights
+            drawCompass(currentHeading);
+        }
+
+        // Initial draw
+        drawCompass(0);
+    </script>
+</body>
+
+</html>

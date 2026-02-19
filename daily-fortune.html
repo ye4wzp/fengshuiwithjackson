@@ -4,272 +4,522 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Chinese Zodiac Fortune | Feng Shui With Jackson</title>
     <meta name="description"
-        content="Get your daily feng shui fortune! Check your zodiac luck, lucky colors, directions, and personalized feng shui tips for today.">
-    <meta property="og:title" content="Daily Feng Shui Fortune | Feng Shui With Jackson">
-    <meta property="og:description"
-        content="Discover your daily feng shui fortune based on your Chinese zodiac sign. Get lucky colors, directions, and personalized tips!">
-    <title>Daily Feng Shui Fortune | Feng Shui With Jackson</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL9K60SGL2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-LL9K60SGL2');
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Get your personalized daily feng shui fortune based on Chinese zodiac and BaZi astrology. Discover lucky colors, directions, do's and don'ts for today.">
+    <link rel="canonical" href="https://fengshuiwithjackson.com/daily-fortune.html">
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/favicon.webp">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/visual-enhancements.css">
-    <link rel="stylesheet" href="css/print-styles.css" media="print">
-    <link rel="stylesheet" href="css/layout-fixes.css">
     <link rel="stylesheet" href="css/fortune.css">
+
+    <style>
+        :root {
+            --emerald-deep: #0d4d3d;
+            --emerald-medium: #2E7D5C;
+            --emerald-light: #4CAF80;
+            --champagne-gold: #d4af37;
+            --gold-light: #f0d774;
+            --cream: #faf8f3;
+            --white: #fff;
+            --black: #1a1a1a;
+            --red-soft: #e74c3c;
+            --green-soft: #27ae60;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-cn: 'Noto Serif SC', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--cream); color: var(--black); line-height: 1.7; }
+
+        /* ===== HERO ===== */
+        .fortune-hero {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, #1a5c4a 50%, var(--emerald-medium) 100%);
+            color: var(--white);
+            padding: 7rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .fortune-hero::before {
+            content: '☰ ☷ ☳ ☵ ☶ ☲ ☱ ☴';
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 8rem; opacity: 0.04; letter-spacing: 1rem;
+            white-space: nowrap; pointer-events: none;
+        }
+        .fortune-hero h1 {
+            font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--white); margin-bottom: 0.5rem;
+        }
+        .fortune-hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.5rem; }
+        #currentDate { font-size: 1rem; opacity: 0.7; }
+        .chinese-date {
+            font-family: var(--font-cn); font-weight: 700; color: var(--champagne-gold);
+            display: block; margin-top: 0.3rem; font-size: 1.1rem;
+        }
+        .nav-back {
+            position: absolute; top: 1.5rem; left: 2rem;
+            color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+        }
+        .nav-back:hover { color: var(--champagne-gold); }
+
+        /* ===== CONTAINER ===== */
+        .fortune-container {
+            max-width: 900px; margin: 0 auto; padding: 2rem;
+        }
+
+        /* ===== ZODIAC SELECTOR ===== */
+        .zodiac-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1rem; padding: 2rem 0;
+        }
+        .zodiac-btn {
+            background: var(--white); border: 2px solid rgba(13,77,61,0.1);
+            border-radius: 16px; padding: 1.2rem 0.5rem; cursor: pointer;
+            text-align: center; transition: all 0.3s ease;
+            perspective: 600px;
+        }
+        .zodiac-btn:hover {
+            border-color: var(--champagne-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .zodiac-btn .emoji { font-size: 2.2rem; display: block; margin-bottom: 0.3rem; }
+        .zodiac-btn .name { font-size: 0.85rem; font-weight: 600; color: var(--emerald-deep); }
+        .zodiac-flip { animation: flipCard 0.5s ease-out; }
+        @keyframes flipCard {
+            0% { transform: perspective(600px) rotateY(0); }
+            50% { transform: perspective(600px) rotateY(90deg); }
+            100% { transform: perspective(600px) rotateY(0); }
+        }
+
+        /* ===== FORTUNE CARD ===== */
+        #fortuneCardContainer { display: none; }
+        .fortune-card {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            animation: cardReveal 0.6s ease-out;
+        }
+        @keyframes cardReveal {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
+            color: var(--white); padding: 2rem; text-align: center;
+        }
+        .card-header .zodiac-display { font-size: 4rem; margin-bottom: 0.5rem; }
+        .card-header h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.3rem; }
+        .card-header .stars { font-size: 1.4rem; color: var(--champagne-gold); letter-spacing: 4px; }
+
+        #dayPillarInfo, #branchRelation {
+            display: none; font-family: var(--font-cn);
+            background: rgba(255,255,255,0.1); padding: 0.4rem 1rem;
+            border-radius: 20px; margin-top: 0.8rem; font-size: 0.9rem;
+            display: inline-block;
+        }
+        #branchRelation {
+            margin-left: 0.5rem; font-style: italic;
+            font-family: var(--font-body); font-size: 0.85rem;
+        }
+
+        .card-body { padding: 2rem; }
+
+        /* Lucky Items Grid */
+        .lucky-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem; margin-bottom: 2rem;
+        }
+        .lucky-item {
+            background: linear-gradient(145deg, #f8f6f0, #fff);
+            padding: 1rem; border-radius: 14px; text-align: center;
+            border: 1px solid rgba(212,175,55,0.15);
+        }
+        .lucky-item .label {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--emerald-medium); font-weight: 600; margin-bottom: 0.3rem;
+        }
+        .lucky-item .value { font-size: 0.95rem; font-weight: 500; color: var(--black); }
+
+        /* Ratings */
+        .ratings-section { margin: 2rem 0; }
+        .ratings-section h3 {
+            font-family: var(--font-heading); font-size: 1.5rem;
+            color: var(--emerald-deep); margin-bottom: 1rem; text-align: center;
+        }
+        .ratings-container {
+            display: flex; gap: 2rem; align-items: center;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .ratings-list { flex: 1; min-width: 200px; }
+        .rating-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .rating-row .label { font-weight: 500; }
+        .rating-row .stars { color: var(--champagne-gold); letter-spacing: 2px; }
+        .radar-container { flex-shrink: 0; }
+        #fortuneRadar { width: 200px; height: 200px; }
+
+        /* ===== ALMANAC PANEL ===== */
+        #almanacPanel {
+            display: none; margin: 2rem 0;
+            border: 2px solid rgba(212,175,55,0.3);
+            border-radius: 18px; overflow: hidden;
+        }
+        .almanac-header {
+            background: linear-gradient(135deg, var(--champagne-gold), #c9a22e);
+            color: var(--white); padding: 0.8rem 1.5rem; text-align: center;
+            font-family: var(--font-cn); font-size: 1.2rem; font-weight: 700;
+        }
+        .almanac-body {
+            display: grid; grid-template-columns: 1fr 1fr;
+        }
+        .almanac-do, .almanac-dont { padding: 1.2rem 1.5rem; }
+        .almanac-do {
+            background: rgba(39,174,96,0.05);
+            border-right: 1px solid rgba(0,0,0,0.06);
+        }
+        .almanac-dont { background: rgba(231,76,60,0.05); }
+        .almanac-do h4 {
+            color: var(--green-soft); font-family: var(--font-cn);
+            font-size: 1.3rem; margin-bottom: 0.8rem;
+        }
+        .almanac-dont h4 {
+            color: var(--red-soft); font-family: var(--font-cn);
+            font-size: 1.3rem; margin-bottom: 0.8rem;
+        }
+        .almanac-do ul, .almanac-dont ul { list-style: none; }
+        .almanac-do li, .almanac-dont li {
+            padding: 0.4rem 0; font-size: 0.9rem; line-height: 1.5;
+        }
+
+        /* ===== LUCKY HOURS ===== */
+        #luckyHoursPanel { display: none; margin: 2rem 0; }
+        .lucky-hours-title {
+            font-family: var(--font-heading); font-size: 1.3rem;
+            color: var(--emerald-deep); margin-bottom: 1rem; text-align: center;
+        }
+        #luckyHours {
+            display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;
+        }
+        .lucky-hour-badge {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
+            color: var(--white); padding: 0.5rem 1rem; border-radius: 25px;
+            font-size: 0.85rem; font-weight: 500;
+        }
+
+        /* ===== FENG SHUI TIP ===== */
+        #fengShuiTipPanel {
+            display: none; margin: 2rem 0;
+            background: linear-gradient(145deg, rgba(13,77,61,0.05), rgba(212,175,55,0.08));
+            border-radius: 16px; padding: 1.5rem; border-left: 4px solid var(--champagne-gold);
+        }
+        #fengShuiTipPanel h4 {
+            color: var(--emerald-deep); font-family: var(--font-heading);
+            font-size: 1.2rem; margin-bottom: 0.5rem;
+        }
+        #fengShuiTip { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        /* ===== ADVICE ===== */
+        .advice-section {
+            background: linear-gradient(145deg, #f8f6f0, #fff);
+            border-radius: 16px; padding: 1.5rem; margin: 2rem 0;
+            border: 1px solid rgba(212,175,55,0.15);
+        }
+        .advice-section h4 {
+            font-family: var(--font-heading); font-size: 1.2rem;
+            color: var(--emerald-deep); margin-bottom: 0.5rem;
+        }
+        #fortuneAdvice { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        /* ===== ACTIONS ===== */
+        .card-actions {
+            display: flex; gap: 1rem; justify-content: center;
+            padding: 1.5rem 2rem 2rem; flex-wrap: wrap;
+        }
+        .btn-fortune {
+            padding: 0.8rem 2rem; border-radius: 50px; font-size: 0.9rem;
+            font-weight: 600; cursor: pointer; border: none; transition: all 0.3s;
+        }
+        .btn-change {
+            background: var(--white); color: var(--emerald-deep);
+            border: 2px solid var(--emerald-deep);
+        }
+        .btn-change:hover { background: var(--emerald-deep); color: var(--white); }
+        .btn-share {
+            background: var(--champagne-gold); color: var(--white);
+        }
+        .btn-share:hover { background: #c9a22e; transform: translateY(-2px); }
+        .btn-history {
+            background: rgba(13,77,61,0.08); color: var(--emerald-deep);
+            border: 2px solid rgba(13,77,61,0.2);
+        }
+        .btn-history:hover { background: var(--emerald-deep); color: var(--white); }
+
+        /* ===== HISTORY PANEL ===== */
+        #historyPanel {
+            display: none; margin: 2rem 0;
+            background: var(--white); border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06); padding: 2rem;
+        }
+        .history-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .history-item:last-child { border-bottom: none; }
+        .history-date { font-size: 0.85rem; color: #999; min-width: 70px; }
+        .history-zodiac { font-weight: 500; }
+        .history-rating { color: var(--champagne-gold); letter-spacing: 2px; }
+        .history-empty { text-align: center; color: #999; padding: 2rem; }
+        #trendChart { width: 100%; height: 150px; margin-top: 1rem; }
+
+        /* ===== CHECKIN ===== */
+        #checkinStats {
+            display: none; justify-content: center; gap: 2rem;
+            text-align: center; margin: 1.5rem 0;
+        }
+        .checkin-stat .number {
+            font-size: 2rem; font-weight: 700; color: var(--champagne-gold);
+            font-family: var(--font-heading);
+        }
+        .checkin-stat .label {
+            font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown-bar {
+            text-align: center; margin: 2rem 0; padding: 1rem;
+            background: rgba(13,77,61,0.04); border-radius: 12px;
+        }
+        .countdown-bar .label { font-size: 0.8rem; color: #999; margin-bottom: 0.3rem; }
+        #countdown {
+            font-size: 1.5rem; font-weight: 700; color: var(--emerald-deep);
+            font-family: 'Courier New', monospace; letter-spacing: 4px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        .fade-out { animation: fadeOut 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+        .new-badge {
+            background: var(--red-soft); color: white; font-size: 0.6rem;
+            padding: 0.15rem 0.5rem; border-radius: 10px; margin-left: 0.5rem;
+            vertical-align: middle; animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .zodiac-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+            .zodiac-btn { padding: 0.8rem 0.3rem; }
+            .zodiac-btn .emoji { font-size: 1.8rem; }
+            .ratings-container { flex-direction: column; }
+            .almanac-body { grid-template-columns: 1fr; }
+            .almanac-do { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+            .card-actions { flex-direction: column; }
+            .btn-fortune { width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
+            .lucky-grid { grid-template-columns: repeat(2, 1fr); }
+            .fortune-hero { padding: 6rem 1rem 2rem; }
+        }
+
+        /* ===== FOOTER ===== */
+        .fortune-footer {
+            text-align: center; padding: 2rem; color: #999; font-size: 0.8rem;
+        }
+        .fortune-footer a { color: var(--emerald-deep); text-decoration: none; }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">FengShuiWithJackson</a>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
-                </button>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="daily-fortune.html" class="active">Daily Fortune</a></li>
-                    <li><a href="shop.html">Shop My Faves</a></li>
-                    <li><a href="guide.html" class="btn-nav">Free Guide</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Hero -->
+    <section class="fortune-hero">
+        <a href="index.html" class="nav-back">← Back to Home</a>
+        <h1>🔮 Daily Zodiac Fortune</h1>
+        <p class="subtitle">Ancient Wisdom · Modern Guidance · Powered by BaZi Astrology</p>
+        <div id="currentDate"></div>
+    </section>
 
     <div class="fortune-container">
-        <div class="container">
-            <header class="fortune-header">
-                <h1>🔮 Daily Feng Shui Fortune</h1>
-                <p class="fortune-subtitle">Discover your luck for today based on your Chinese zodiac</p>
-                <p class="fortune-date" id="currentDate"></p>
-
-                <!-- Check-in Stats -->
-                <div class="checkin-stats" id="checkinStats" style="display: none;">
-                    <div class="stat-item">
-                        <span class="stat-icon">🔥</span>
-                        <span class="stat-value" id="streakDays">0</span>
-                        <span class="stat-label">Day Streak</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-icon">⭐</span>
-                        <span class="stat-value" id="totalCheckins">0</span>
-                        <span class="stat-label">Total Check-ins</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-icon">⏰</span>
-                        <span class="stat-value" id="countdown">--:--:--</span>
-                        <span class="stat-label">Next Update</span>
-                    </div>
-                </div>
-
-                <!-- History Button -->
-                <button class="btn-history" id="historyBtn" onclick="toggleHistory()" style="display: none;">
-                    📊 View History
-                </button>
-            </header>
-
-            <!-- History Panel -->
-            <div class="history-panel" id="historyPanel" style="display: none;">
-                <div class="history-header">
-                    <h3>📅 Your Fortune History (Last 7 Days)</h3>
-                    <button class="btn-close" onclick="toggleHistory()">✕</button>
-                </div>
-                <div class="history-content" id="historyContent">
-                    <!-- History items will be inserted here -->
-                </div>
+        <!-- Check-in Stats -->
+        <div id="checkinStats">
+            <div class="checkin-stat">
+                <div class="number" id="streakDays">0</div>
+                <div class="label">Day Streak 🔥</div>
             </div>
-
-            <div class="zodiac-selector" id="zodiacSelector">
-                <h2>Select Your Zodiac Sign</h2>
-                <div class="zodiac-grid">
-                    <button class="zodiac-btn" data-zodiac="rat" data-emoji="🐀">
-                        <span class="zodiac-emoji">🐀</span>
-                        <span class="zodiac-name">Rat</span>
-                        <span class="zodiac-years">1960, 1972, 1984, 1996, 2008, 2020</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="ox" data-emoji="��">
-                        <span class="zodiac-emoji">🐂</span>
-                        <span class="zodiac-name">Ox</span>
-                        <span class="zodiac-years">1961, 1973, 1985, 1997, 2009, 2021</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="tiger" data-emoji="🐅">
-                        <span class="zodiac-emoji">🐅</span>
-                        <span class="zodiac-name">Tiger</span>
-                        <span class="zodiac-years">1962, 1974, 1986, 1998, 2010, 2022</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="rabbit" data-emoji="🐇">
-                        <span class="zodiac-emoji">🐇</span>
-                        <span class="zodiac-name">Rabbit</span>
-                        <span class="zodiac-years">1963, 1975, 1987, 1999, 2011, 2023</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="dragon" data-emoji="🐉">
-                        <span class="zodiac-emoji">🐉</span>
-                        <span class="zodiac-name">Dragon</span>
-                        <span class="zodiac-years">1964, 1976, 1988, 2000, 2012, 2024</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="snake" data-emoji="🐍">
-                        <span class="zodiac-emoji">🐍</span>
-                        <span class="zodiac-name">Snake</span>
-                        <span class="zodiac-years">1965, 1977, 1989, 2001, 2013, 2025</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="horse" data-emoji="🐴">
-                        <span class="zodiac-emoji">🐴</span>
-                        <span class="zodiac-name">Horse</span>
-                        <span class="zodiac-years">1966, 1978, 1990, 2002, 2014</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="goat" data-emoji="🐐">
-                        <span class="zodiac-emoji">🐐</span>
-                        <span class="zodiac-name">Goat</span>
-                        <span class="zodiac-years">1967, 1979, 1991, 2003, 2015</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="monkey" data-emoji="🐵">
-                        <span class="zodiac-emoji">🐵</span>
-                        <span class="zodiac-name">Monkey</span>
-                        <span class="zodiac-years">1968, 1980, 1992, 2004, 2016</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="rooster" data-emoji="🐔">
-                        <span class="zodiac-emoji">🐔</span>
-                        <span class="zodiac-name">Rooster</span>
-                        <span class="zodiac-years">1969, 1981, 1993, 2005, 2017</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="dog" data-emoji="🐕">
-                        <span class="zodiac-emoji">🐕</span>
-                        <span class="zodiac-name">Dog</span>
-                        <span class="zodiac-years">1970, 1982, 1994, 2006, 2018</span>
-                    </button>
-                    <button class="zodiac-btn" data-zodiac="pig" data-emoji="🐖">
-                        <span class="zodiac-emoji">🐖</span>
-                        <span class="zodiac-name">Pig</span>
-                        <span class="zodiac-years">1971, 1983, 1995, 2007, 2019</span>
-                    </button>
-                </div>
+            <div class="checkin-stat">
+                <div class="number" id="totalCheckins">0</div>
+                <div class="label">Total Check-ins</div>
             </div>
+        </div>
 
-            <div class="fortune-card-container" id="fortuneCardContainer" style="display: none;">
-                <div class="fortune-card" id="fortuneCard">
-                    <div class="fortune-card-header">
-                        <span class="fortune-zodiac-emoji" id="fortuneZodiacEmoji"></span>
-                        <h2 id="fortuneZodiacName"></h2>
-                        <div class="fortune-stars" id="fortuneStars"></div>
+        <!-- Zodiac Selector -->
+        <div id="zodiacSelector">
+            <h2 style="text-align:center; font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.8rem; margin-bottom:1.5rem;">
+                Choose Your Zodiac Sign
+            </h2>
+            <div class="zodiac-grid">
+                <button class="zodiac-btn" data-zodiac="rat"><span class="emoji">🐀</span><span class="name">Rat</span></button>
+                <button class="zodiac-btn" data-zodiac="ox"><span class="emoji">🐂</span><span class="name">Ox</span></button>
+                <button class="zodiac-btn" data-zodiac="tiger"><span class="emoji">🐅</span><span class="name">Tiger</span></button>
+                <button class="zodiac-btn" data-zodiac="rabbit"><span class="emoji">🐇</span><span class="name">Rabbit</span></button>
+                <button class="zodiac-btn" data-zodiac="dragon"><span class="emoji">🐉</span><span class="name">Dragon</span></button>
+                <button class="zodiac-btn" data-zodiac="snake"><span class="emoji">🐍</span><span class="name">Snake</span></button>
+                <button class="zodiac-btn" data-zodiac="horse"><span class="emoji">🐴</span><span class="name">Horse</span></button>
+                <button class="zodiac-btn" data-zodiac="goat"><span class="emoji">🐐</span><span class="name">Goat</span></button>
+                <button class="zodiac-btn" data-zodiac="monkey"><span class="emoji">🐵</span><span class="name">Monkey</span></button>
+                <button class="zodiac-btn" data-zodiac="rooster"><span class="emoji">🐔</span><span class="name">Rooster</span></button>
+                <button class="zodiac-btn" data-zodiac="dog"><span class="emoji">🐕</span><span class="name">Dog</span></button>
+                <button class="zodiac-btn" data-zodiac="pig"><span class="emoji">🐷</span><span class="name">Pig</span></button>
+            </div>
+        </div>
+
+        <!-- Fortune Card -->
+        <div id="fortuneCardContainer">
+            <div class="fortune-card">
+                <!-- Card Header -->
+                <div class="card-header">
+                    <div class="zodiac-display" id="fortuneZodiacEmoji"></div>
+                    <h2 id="fortuneZodiacName"></h2>
+                    <div class="stars" id="fortuneStars"></div>
+                    <div>
+                        <span id="dayPillarInfo"></span>
+                        <span id="branchRelation"></span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <!-- Lucky Items -->
+                    <div class="lucky-grid">
+                        <div class="lucky-item">
+                            <div class="label">🎨 Lucky Colors</div>
+                            <div class="value" id="luckyColors"></div>
+                        </div>
+                        <div class="lucky-item">
+                            <div class="label">🧭 Direction</div>
+                            <div class="value" id="luckyDirection"></div>
+                        </div>
+                        <div class="lucky-item">
+                            <div class="label">🔢 Numbers</div>
+                            <div class="value" id="luckyNumbers"></div>
+                        </div>
+                        <div class="lucky-item">
+                            <div class="label">🌊 Element</div>
+                            <div class="value" id="luckyElement"></div>
+                        </div>
+                        <div class="lucky-item">
+                            <div class="label">💎 Crystal</div>
+                            <div class="value" id="luckyCrystal"></div>
+                        </div>
                     </div>
 
-                    <div class="fortune-details">
-                        <div class="fortune-row">
-                            <div class="fortune-item">
-                                <span class="fortune-icon">🎨</span>
-                                <span class="fortune-label">Lucky Colors</span>
-                                <span class="fortune-value" id="luckyColors"></span>
+                    <!-- Ratings with Radar Chart -->
+                    <div class="ratings-section">
+                        <h3>Fortune Ratings</h3>
+                        <div class="ratings-container">
+                            <div class="ratings-list">
+                                <div class="rating-row">
+                                    <span class="label">💰 Wealth</span>
+                                    <span class="stars" id="wealthRating"></span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="label">❤️ Love</span>
+                                    <span class="stars" id="loveRating"></span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="label">💼 Career</span>
+                                    <span class="stars" id="careerRating"></span>
+                                </div>
+                                <div class="rating-row">
+                                    <span class="label">🏥 Health</span>
+                                    <span class="stars" id="healthRating"></span>
+                                </div>
                             </div>
-                            <div class="fortune-item">
-                                <span class="fortune-icon">🧭</span>
-                                <span class="fortune-label">Lucky Direction</span>
-                                <span class="fortune-value" id="luckyDirection"></span>
-                            </div>
-                        </div>
-                        <div class="fortune-row">
-                            <div class="fortune-item">
-                                <span class="fortune-icon">🔢</span>
-                                <span class="fortune-label">Lucky Numbers</span>
-                                <span class="fortune-value" id="luckyNumbers"></span>
-                            </div>
-                            <div class="fortune-item">
-                                <span class="fortune-icon">🌟</span>
-                                <span class="fortune-label">Lucky Element</span>
-                                <span class="fortune-value" id="luckyElement"></span>
+                            <div class="radar-container">
+                                <canvas id="fortuneRadar" width="200" height="200"></canvas>
                             </div>
                         </div>
                     </div>
 
-                    <div class="fortune-ratings">
-                        <div class="rating-item">
-                            <span class="rating-icon">💰</span>
-                            <span class="rating-label">Wealth</span>
-                            <div class="rating-stars" id="wealthRating"></div>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-icon">❤️</span>
-                            <span class="rating-label">Love</span>
-                            <div class="rating-stars" id="loveRating"></div>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-icon">💼</span>
-                            <span class="rating-label">Career</span>
-                            <div class="rating-stars" id="careerRating"></div>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-icon">🏥</span>
-                            <span class="rating-label">Health</span>
-                            <div class="rating-stars" id="healthRating"></div>
+                    <!-- Almanac Panel (Do / Don't) -->
+                    <div id="almanacPanel">
+                        <div class="almanac-header">📜 今日黄历 · Daily Almanac</div>
+                        <div class="almanac-body">
+                            <div class="almanac-do">
+                                <h4>✅ 宜 Do</h4>
+                                <ul id="doItems"></ul>
+                            </div>
+                            <div class="almanac-dont">
+                                <h4>❌ 忌 Don't</h4>
+                                <ul id="dontItems"></ul>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="fortune-advice">
-                        <h3>💡 Today's Feng Shui Tip</h3>
+                    <!-- Lucky Hours -->
+                    <div id="luckyHoursPanel">
+                        <h3 class="lucky-hours-title">⏰ Lucky Hours (吉时)</h3>
+                        <div id="luckyHours"></div>
+                    </div>
+
+                    <!-- Feng Shui Tip -->
+                    <div id="fengShuiTipPanel">
+                        <h4>🏠 Today's Feng Shui Tip</h4>
+                        <p id="fengShuiTip"></p>
+                    </div>
+
+                    <!-- Advice -->
+                    <div class="advice-section">
+                        <h4>🔮 Jackson's Advice</h4>
                         <p id="fortuneAdvice"></p>
                     </div>
-
-                    <div class="fortune-actions">
-                        <button class="btn-secondary" onclick="changeZodiac()">Change Zodiac</button>
-                        <button class="btn-primary" onclick="shareFortune()">Share Fortune</button>
-                    </div>
                 </div>
+
+                <!-- Actions -->
+                <div class="card-actions">
+                    <button class="btn-fortune btn-change" onclick="changeZodiac()">🔄 Change Zodiac</button>
+                    <button class="btn-fortune btn-share" onclick="shareFortune()">📤 Share Fortune</button>
+                    <button class="btn-fortune btn-history" id="historyBtn" style="display:none" onclick="toggleHistory()">📊 History & Trends</button>
+                </div>
+            </div>
+
+            <!-- History Panel -->
+            <div id="historyPanel">
+                <h3 style="font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.5rem; margin-bottom:1rem; text-align:center;">
+                    📊 Fortune History (Last 7 Days)
+                </h3>
+                <div id="historyContent"></div>
+                <canvas id="trendChart" width="400" height="150"></canvas>
+            </div>
+
+            <!-- Countdown -->
+            <div class="countdown-bar">
+                <div class="label">Next fortune refreshes in</div>
+                <div id="countdown">--:--:--</div>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>FengShuiWithJackson</h3>
-                    <p>Bringing ancient wisdom to modern living</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="daily-fortune.html">Daily Fortune</a></li>
-                        <li><a href="guide.html">Free Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <p>📧 jackson@fengshuiwithjackson.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 FengShuiWithJackson. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="fortune-footer">
+        <p>© 2026 <a href="index.html">FengShuiWithJackson</a> · <a href="fortune-calculator.html">Personal Fortune Calculator</a></p>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/enhanced-features.js"></script>
-    <script src="js/additional-enhancements.js"></script>
-    <script src="js/final-enhancements.js"></script>
-    <script src="js/visual-enhancements.js"></script>
-    <script src="js/seo-navigation.js"></script>
-    <script src="js/search.js"></script>
+    <!-- Scripts -->
+    <script src="js/bazi-engine.js"></script>
     <script src="js/fortune-data.js"></script>
     <script src="js/fortune.js"></script>
-    <script src="js/social-share.js"></script>
-    <script src="js/schema-enhancement.js"></script>
-    <script src="js/lazy-loading.js"></script>
 </body>
 
 </html>
