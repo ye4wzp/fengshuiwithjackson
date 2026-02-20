@@ -1,0 +1,244 @@
+/* =============================================
+   Email Subscribe Inline Component
+   Matches Modern Zen Luxury design system
+   ============================================= */
+
+/* Inline Subscribe Form - Used in articles, daily fortune, 404 */
+.subscribe-inline {
+    background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-inline::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.subscribe-inline h3 {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-inline .subscribe-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 550px;
+    margin: 0 auto 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subscribe-form input[type="email"] {
+    flex: 1;
+    min-width: 240px;
+    padding: 0.9rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(4px);
+}
+
+.subscribe-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--champagne-gold);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.subscribe-form .btn-subscribe {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background: var(--champagne-gold);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.subscribe-form .btn-subscribe:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.subscribe-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+/* Zodiac selector for fortune subscriptions */
+.zodiac-select-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 550px;
+    margin: 0 auto 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.zodiac-select-wrapper select {
+    padding: 0.9rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    min-width: 200px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    padding-right: 2.5rem;
+}
+
+.zodiac-select-wrapper select:focus {
+    outline: none;
+    border-color: var(--champagne-gold);
+}
+
+.zodiac-select-wrapper select option {
+    background: var(--emerald-deep);
+    color: var(--white);
+}
+
+/* Success state */
+.subscribe-success {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+}
+
+.subscribe-success.active {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.subscribe-success .success-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-success h4 {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-success p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Compact variant for article footers */
+.subscribe-inline.compact {
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.subscribe-inline.compact h3 {
+    font-size: 1.4rem;
+}
+
+.subscribe-inline.compact .subscribe-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* Lead magnet section email form */
+.lead-email-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 550px;
+    margin: 0 auto 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.lead-email-form input[type="email"] {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+}
+
+.lead-email-form input[type="email"]:focus {
+    outline: 3px solid var(--champagne-gold);
+}
+
+.lead-email-form .btn-subscribe {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--champagne-gold);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.lead-email-form .btn-subscribe:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .subscribe-inline {
+    background: linear-gradient(135deg, #0a3a2e, #145540);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

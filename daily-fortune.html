@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/fortune.css">
+    <link rel="stylesheet" href="css/email-subscribe.css">
 
     <style>
         :root {
@@ -31,9 +32,22 @@
             --font-cn: 'Noto Serif SC', serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--cream); color: var(--black); line-height: 1.7; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--black);
+            line-height: 1.7;
+        }
 
         /* ===== HERO ===== */
         .fortune-hero {
@@ -44,301 +58,677 @@
             position: relative;
             overflow: hidden;
         }
+
         .fortune-hero::before {
             content: '☰ ☷ ☳ ☵ ☶ ☲ ☱ ☴';
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 8rem; opacity: 0.04; letter-spacing: 1rem;
-            white-space: nowrap; pointer-events: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.04;
+            letter-spacing: 1rem;
+            white-space: nowrap;
+            pointer-events: none;
         }
+
         .fortune-hero h1 {
-            font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--white); margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--white);
+            margin-bottom: 0.5rem;
         }
-        .fortune-hero .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 0.5rem; }
-        #currentDate { font-size: 1rem; opacity: 0.7; }
+
+        .fortune-hero .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 0.5rem;
+        }
+
+        #currentDate {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
         .chinese-date {
-            font-family: var(--font-cn); font-weight: 700; color: var(--champagne-gold);
-            display: block; margin-top: 0.3rem; font-size: 1.1rem;
+            font-family: var(--font-cn);
+            font-weight: 700;
+            color: var(--champagne-gold);
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 1.1rem;
         }
+
         .nav-back {
-            position: absolute; top: 1.5rem; left: 2rem;
-            color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
         }
-        .nav-back:hover { color: var(--champagne-gold); }
+
+        .nav-back:hover {
+            color: var(--champagne-gold);
+        }
 
         /* ===== CONTAINER ===== */
         .fortune-container {
-            max-width: 900px; margin: 0 auto; padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         /* ===== ZODIAC SELECTOR ===== */
         .zodiac-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 1rem; padding: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 2rem 0;
         }
+
         .zodiac-btn {
-            background: var(--white); border: 2px solid rgba(13,77,61,0.1);
-            border-radius: 16px; padding: 1.2rem 0.5rem; cursor: pointer;
-            text-align: center; transition: all 0.3s ease;
+            background: var(--white);
+            border: 2px solid rgba(13, 77, 61, 0.1);
+            border-radius: 16px;
+            padding: 1.2rem 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
             perspective: 600px;
         }
+
         .zodiac-btn:hover {
             border-color: var(--champagne-gold);
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
-        .zodiac-btn .emoji { font-size: 2.2rem; display: block; margin-bottom: 0.3rem; }
-        .zodiac-btn .name { font-size: 0.85rem; font-weight: 600; color: var(--emerald-deep); }
-        .zodiac-flip { animation: flipCard 0.5s ease-out; }
+
+        .zodiac-btn .emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .zodiac-btn .name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--emerald-deep);
+        }
+
+        .zodiac-flip {
+            animation: flipCard 0.5s ease-out;
+        }
+
         @keyframes flipCard {
-            0% { transform: perspective(600px) rotateY(0); }
-            50% { transform: perspective(600px) rotateY(90deg); }
-            100% { transform: perspective(600px) rotateY(0); }
+            0% {
+                transform: perspective(600px) rotateY(0);
+            }
+
+            50% {
+                transform: perspective(600px) rotateY(90deg);
+            }
+
+            100% {
+                transform: perspective(600px) rotateY(0);
+            }
         }
 
         /* ===== FORTUNE CARD ===== */
-        #fortuneCardContainer { display: none; }
+        #fortuneCardContainer {
+            display: none;
+        }
+
         .fortune-card {
             background: var(--white);
             border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             animation: cardReveal 0.6s ease-out;
         }
+
         @keyframes cardReveal {
-            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .card-header {
             background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
-            color: var(--white); padding: 2rem; text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
         }
-        .card-header .zodiac-display { font-size: 4rem; margin-bottom: 0.5rem; }
-        .card-header h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.3rem; }
-        .card-header .stars { font-size: 1.4rem; color: var(--champagne-gold); letter-spacing: 4px; }
 
-        #dayPillarInfo, #branchRelation {
-            display: none; font-family: var(--font-cn);
-            background: rgba(255,255,255,0.1); padding: 0.4rem 1rem;
-            border-radius: 20px; margin-top: 0.8rem; font-size: 0.9rem;
+        .card-header .zodiac-display {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-header .stars {
+            font-size: 1.4rem;
+            color: var(--champagne-gold);
+            letter-spacing: 4px;
+        }
+
+        #dayPillarInfo,
+        #branchRelation {
+            display: none;
+            font-family: var(--font-cn);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
             display: inline-block;
         }
+
         #branchRelation {
-            margin-left: 0.5rem; font-style: italic;
-            font-family: var(--font-body); font-size: 0.85rem;
+            margin-left: 0.5rem;
+            font-style: italic;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
         }
 
-        .card-body { padding: 2rem; }
+        .card-body {
+            padding: 2rem;
+        }
 
         /* Lucky Items Grid */
         .lucky-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem; margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
+
         .lucky-item {
             background: linear-gradient(145deg, #f8f6f0, #fff);
-            padding: 1rem; border-radius: 14px; text-align: center;
-            border: 1px solid rgba(212,175,55,0.15);
+            padding: 1rem;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
+
         .lucky-item .label {
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
-            color: var(--emerald-medium); font-weight: 600; margin-bottom: 0.3rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--emerald-medium);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
         }
-        .lucky-item .value { font-size: 0.95rem; font-weight: 500; color: var(--black); }
+
+        .lucky-item .value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--black);
+        }
 
         /* Ratings */
-        .ratings-section { margin: 2rem 0; }
+        .ratings-section {
+            margin: 2rem 0;
+        }
+
         .ratings-section h3 {
-            font-family: var(--font-heading); font-size: 1.5rem;
-            color: var(--emerald-deep); margin-bottom: 1rem; text-align: center;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--emerald-deep);
+            margin-bottom: 1rem;
+            text-align: center;
         }
+
         .ratings-container {
-            display: flex; gap: 2rem; align-items: center;
-            justify-content: center; flex-wrap: wrap;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .ratings-list { flex: 1; min-width: 200px; }
+
+        .ratings-list {
+            flex: 1;
+            min-width: 200px;
+        }
+
         .rating-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .rating-row .label { font-weight: 500; }
-        .rating-row .stars { color: var(--champagne-gold); letter-spacing: 2px; }
-        .radar-container { flex-shrink: 0; }
-        #fortuneRadar { width: 200px; height: 200px; }
+
+        .rating-row .label {
+            font-weight: 500;
+        }
+
+        .rating-row .stars {
+            color: var(--champagne-gold);
+            letter-spacing: 2px;
+        }
+
+        .radar-container {
+            flex-shrink: 0;
+        }
+
+        #fortuneRadar {
+            width: 200px;
+            height: 200px;
+        }
 
         /* ===== ALMANAC PANEL ===== */
         #almanacPanel {
-            display: none; margin: 2rem 0;
-            border: 2px solid rgba(212,175,55,0.3);
-            border-radius: 18px; overflow: hidden;
+            display: none;
+            margin: 2rem 0;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 18px;
+            overflow: hidden;
         }
+
         .almanac-header {
             background: linear-gradient(135deg, var(--champagne-gold), #c9a22e);
-            color: var(--white); padding: 0.8rem 1.5rem; text-align: center;
-            font-family: var(--font-cn); font-size: 1.2rem; font-weight: 700;
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-align: center;
+            font-family: var(--font-cn);
+            font-size: 1.2rem;
+            font-weight: 700;
         }
+
         .almanac-body {
-            display: grid; grid-template-columns: 1fr 1fr;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
-        .almanac-do, .almanac-dont { padding: 1.2rem 1.5rem; }
+
+        .almanac-do,
+        .almanac-dont {
+            padding: 1.2rem 1.5rem;
+        }
+
         .almanac-do {
-            background: rgba(39,174,96,0.05);
-            border-right: 1px solid rgba(0,0,0,0.06);
+            background: rgba(39, 174, 96, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
         }
-        .almanac-dont { background: rgba(231,76,60,0.05); }
+
+        .almanac-dont {
+            background: rgba(231, 76, 60, 0.05);
+        }
+
         .almanac-do h4 {
-            color: var(--green-soft); font-family: var(--font-cn);
-            font-size: 1.3rem; margin-bottom: 0.8rem;
+            color: var(--green-soft);
+            font-family: var(--font-cn);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
         }
+
         .almanac-dont h4 {
-            color: var(--red-soft); font-family: var(--font-cn);
-            font-size: 1.3rem; margin-bottom: 0.8rem;
+            color: var(--red-soft);
+            font-family: var(--font-cn);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
         }
-        .almanac-do ul, .almanac-dont ul { list-style: none; }
-        .almanac-do li, .almanac-dont li {
-            padding: 0.4rem 0; font-size: 0.9rem; line-height: 1.5;
+
+        .almanac-do ul,
+        .almanac-dont ul {
+            list-style: none;
+        }
+
+        .almanac-do li,
+        .almanac-dont li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* ===== LUCKY HOURS ===== */
-        #luckyHoursPanel { display: none; margin: 2rem 0; }
+        #luckyHoursPanel {
+            display: none;
+            margin: 2rem 0;
+        }
+
         .lucky-hours-title {
-            font-family: var(--font-heading); font-size: 1.3rem;
-            color: var(--emerald-deep); margin-bottom: 1rem; text-align: center;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--emerald-deep);
+            margin-bottom: 1rem;
+            text-align: center;
         }
+
         #luckyHours {
-            display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
         }
+
         .lucky-hour-badge {
             background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
-            color: var(--white); padding: 0.5rem 1rem; border-radius: 25px;
-            font-size: 0.85rem; font-weight: 500;
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         /* ===== FENG SHUI TIP ===== */
         #fengShuiTipPanel {
-            display: none; margin: 2rem 0;
-            background: linear-gradient(145deg, rgba(13,77,61,0.05), rgba(212,175,55,0.08));
-            border-radius: 16px; padding: 1.5rem; border-left: 4px solid var(--champagne-gold);
+            display: none;
+            margin: 2rem 0;
+            background: linear-gradient(145deg, rgba(13, 77, 61, 0.05), rgba(212, 175, 55, 0.08));
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--champagne-gold);
         }
+
         #fengShuiTipPanel h4 {
-            color: var(--emerald-deep); font-family: var(--font-heading);
-            font-size: 1.2rem; margin-bottom: 0.5rem;
+            color: var(--emerald-deep);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
-        #fengShuiTip { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        #fengShuiTip {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
 
         /* ===== ADVICE ===== */
         .advice-section {
             background: linear-gradient(145deg, #f8f6f0, #fff);
-            border-radius: 16px; padding: 1.5rem; margin: 2rem 0;
-            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
+
         .advice-section h4 {
-            font-family: var(--font-heading); font-size: 1.2rem;
-            color: var(--emerald-deep); margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--emerald-deep);
+            margin-bottom: 0.5rem;
         }
-        #fortuneAdvice { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        #fortuneAdvice {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
 
         /* ===== ACTIONS ===== */
         .card-actions {
-            display: flex; gap: 1rem; justify-content: center;
-            padding: 1.5rem 2rem 2rem; flex-wrap: wrap;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 1.5rem 2rem 2rem;
+            flex-wrap: wrap;
         }
+
         .btn-fortune {
-            padding: 0.8rem 2rem; border-radius: 50px; font-size: 0.9rem;
-            font-weight: 600; cursor: pointer; border: none; transition: all 0.3s;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
         }
+
         .btn-change {
-            background: var(--white); color: var(--emerald-deep);
+            background: var(--white);
+            color: var(--emerald-deep);
             border: 2px solid var(--emerald-deep);
         }
-        .btn-change:hover { background: var(--emerald-deep); color: var(--white); }
+
+        .btn-change:hover {
+            background: var(--emerald-deep);
+            color: var(--white);
+        }
+
         .btn-share {
-            background: var(--champagne-gold); color: var(--white);
+            background: var(--champagne-gold);
+            color: var(--white);
         }
-        .btn-share:hover { background: #c9a22e; transform: translateY(-2px); }
+
+        .btn-share:hover {
+            background: #c9a22e;
+            transform: translateY(-2px);
+        }
+
         .btn-history {
-            background: rgba(13,77,61,0.08); color: var(--emerald-deep);
-            border: 2px solid rgba(13,77,61,0.2);
+            background: rgba(13, 77, 61, 0.08);
+            color: var(--emerald-deep);
+            border: 2px solid rgba(13, 77, 61, 0.2);
         }
-        .btn-history:hover { background: var(--emerald-deep); color: var(--white); }
+
+        .btn-history:hover {
+            background: var(--emerald-deep);
+            color: var(--white);
+        }
 
         /* ===== HISTORY PANEL ===== */
         #historyPanel {
-            display: none; margin: 2rem 0;
-            background: var(--white); border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.06); padding: 2rem;
+            display: none;
+            margin: 2rem 0;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
         }
+
         .history-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .history-item:last-child { border-bottom: none; }
-        .history-date { font-size: 0.85rem; color: #999; min-width: 70px; }
-        .history-zodiac { font-weight: 500; }
-        .history-rating { color: var(--champagne-gold); letter-spacing: 2px; }
-        .history-empty { text-align: center; color: #999; padding: 2rem; }
-        #trendChart { width: 100%; height: 150px; margin-top: 1rem; }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-date {
+            font-size: 0.85rem;
+            color: #999;
+            min-width: 70px;
+        }
+
+        .history-zodiac {
+            font-weight: 500;
+        }
+
+        .history-rating {
+            color: var(--champagne-gold);
+            letter-spacing: 2px;
+        }
+
+        .history-empty {
+            text-align: center;
+            color: #999;
+            padding: 2rem;
+        }
+
+        #trendChart {
+            width: 100%;
+            height: 150px;
+            margin-top: 1rem;
+        }
 
         /* ===== CHECKIN ===== */
         #checkinStats {
-            display: none; justify-content: center; gap: 2rem;
-            text-align: center; margin: 1.5rem 0;
+            display: none;
+            justify-content: center;
+            gap: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
         }
+
         .checkin-stat .number {
-            font-size: 2rem; font-weight: 700; color: var(--champagne-gold);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--champagne-gold);
             font-family: var(--font-heading);
         }
+
         .checkin-stat .label {
-            font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px;
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* ===== COUNTDOWN ===== */
         .countdown-bar {
-            text-align: center; margin: 2rem 0; padding: 1rem;
-            background: rgba(13,77,61,0.04); border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(13, 77, 61, 0.04);
+            border-radius: 12px;
         }
-        .countdown-bar .label { font-size: 0.8rem; color: #999; margin-bottom: 0.3rem; }
+
+        .countdown-bar .label {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
         #countdown {
-            font-size: 1.5rem; font-weight: 700; color: var(--emerald-deep);
-            font-family: 'Courier New', monospace; letter-spacing: 4px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--emerald-deep);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
         }
 
         /* ===== ANIMATIONS ===== */
-        .fade-in { animation: fadeIn 0.5s ease-out; }
-        .fade-out { animation: fadeOut 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
 
         .new-badge {
-            background: var(--red-soft); color: white; font-size: 0.6rem;
-            padding: 0.15rem 0.5rem; border-radius: 10px; margin-left: 0.5rem;
-            vertical-align: middle; animation: pulse 1.5s infinite;
+            background: var(--red-soft);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            animation: pulse 1.5s infinite;
         }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .zodiac-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
-            .zodiac-btn { padding: 0.8rem 0.3rem; }
-            .zodiac-btn .emoji { font-size: 1.8rem; }
-            .ratings-container { flex-direction: column; }
-            .almanac-body { grid-template-columns: 1fr; }
-            .almanac-do { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
-            .card-actions { flex-direction: column; }
-            .btn-fortune { width: 100%; }
+            .zodiac-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.6rem;
+            }
+
+            .zodiac-btn {
+                padding: 0.8rem 0.3rem;
+            }
+
+            .zodiac-btn .emoji {
+                font-size: 1.8rem;
+            }
+
+            .ratings-container {
+                flex-direction: column;
+            }
+
+            .almanac-body {
+                grid-template-columns: 1fr;
+            }
+
+            .almanac-do {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .card-actions {
+                flex-direction: column;
+            }
+
+            .btn-fortune {
+                width: 100%;
+            }
         }
+
         @media (max-width: 480px) {
-            .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
-            .lucky-grid { grid-template-columns: repeat(2, 1fr); }
-            .fortune-hero { padding: 6rem 1rem 2rem; }
+            .zodiac-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .lucky-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fortune-hero {
+                padding: 6rem 1rem 2rem;
+            }
         }
 
         /* ===== FOOTER ===== */
         .fortune-footer {
-            text-align: center; padding: 2rem; color: #999; font-size: 0.8rem;
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.8rem;
         }
-        .fortune-footer a { color: var(--emerald-deep); text-decoration: none; }
+
+        .fortune-footer a {
+            color: var(--emerald-deep);
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -366,22 +756,35 @@
 
         <!-- Zodiac Selector -->
         <div id="zodiacSelector">
-            <h2 style="text-align:center; font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.8rem; margin-bottom:1.5rem;">
+            <h2
+                style="text-align:center; font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.8rem; margin-bottom:1.5rem;">
                 Choose Your Zodiac Sign
             </h2>
             <div class="zodiac-grid">
-                <button class="zodiac-btn" data-zodiac="rat"><span class="emoji">🐀</span><span class="name">Rat</span></button>
-                <button class="zodiac-btn" data-zodiac="ox"><span class="emoji">🐂</span><span class="name">Ox</span></button>
-                <button class="zodiac-btn" data-zodiac="tiger"><span class="emoji">🐅</span><span class="name">Tiger</span></button>
-                <button class="zodiac-btn" data-zodiac="rabbit"><span class="emoji">🐇</span><span class="name">Rabbit</span></button>
-                <button class="zodiac-btn" data-zodiac="dragon"><span class="emoji">🐉</span><span class="name">Dragon</span></button>
-                <button class="zodiac-btn" data-zodiac="snake"><span class="emoji">🐍</span><span class="name">Snake</span></button>
-                <button class="zodiac-btn" data-zodiac="horse"><span class="emoji">🐴</span><span class="name">Horse</span></button>
-                <button class="zodiac-btn" data-zodiac="goat"><span class="emoji">🐐</span><span class="name">Goat</span></button>
-                <button class="zodiac-btn" data-zodiac="monkey"><span class="emoji">🐵</span><span class="name">Monkey</span></button>
-                <button class="zodiac-btn" data-zodiac="rooster"><span class="emoji">🐔</span><span class="name">Rooster</span></button>
-                <button class="zodiac-btn" data-zodiac="dog"><span class="emoji">🐕</span><span class="name">Dog</span></button>
-                <button class="zodiac-btn" data-zodiac="pig"><span class="emoji">🐷</span><span class="name">Pig</span></button>
+                <button class="zodiac-btn" data-zodiac="rat"><span class="emoji">🐀</span><span
+                        class="name">Rat</span></button>
+                <button class="zodiac-btn" data-zodiac="ox"><span class="emoji">🐂</span><span
+                        class="name">Ox</span></button>
+                <button class="zodiac-btn" data-zodiac="tiger"><span class="emoji">🐅</span><span
+                        class="name">Tiger</span></button>
+                <button class="zodiac-btn" data-zodiac="rabbit"><span class="emoji">🐇</span><span
+                        class="name">Rabbit</span></button>
+                <button class="zodiac-btn" data-zodiac="dragon"><span class="emoji">🐉</span><span
+                        class="name">Dragon</span></button>
+                <button class="zodiac-btn" data-zodiac="snake"><span class="emoji">🐍</span><span
+                        class="name">Snake</span></button>
+                <button class="zodiac-btn" data-zodiac="horse"><span class="emoji">🐴</span><span
+                        class="name">Horse</span></button>
+                <button class="zodiac-btn" data-zodiac="goat"><span class="emoji">🐐</span><span
+                        class="name">Goat</span></button>
+                <button class="zodiac-btn" data-zodiac="monkey"><span class="emoji">🐵</span><span
+                        class="name">Monkey</span></button>
+                <button class="zodiac-btn" data-zodiac="rooster"><span class="emoji">🐔</span><span
+                        class="name">Rooster</span></button>
+                <button class="zodiac-btn" data-zodiac="dog"><span class="emoji">🐕</span><span
+                        class="name">Dog</span></button>
+                <button class="zodiac-btn" data-zodiac="pig"><span class="emoji">🐷</span><span
+                        class="name">Pig</span></button>
             </div>
         </div>
 
@@ -490,13 +893,15 @@
                 <div class="card-actions">
                     <button class="btn-fortune btn-change" onclick="changeZodiac()">🔄 Change Zodiac</button>
                     <button class="btn-fortune btn-share" onclick="shareFortune()">📤 Share Fortune</button>
-                    <button class="btn-fortune btn-history" id="historyBtn" style="display:none" onclick="toggleHistory()">📊 History & Trends</button>
+                    <button class="btn-fortune btn-history" id="historyBtn" style="display:none"
+                        onclick="toggleHistory()">📊 History & Trends</button>
                 </div>
             </div>
 
             <!-- History Panel -->
             <div id="historyPanel">
-                <h3 style="font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.5rem; margin-bottom:1rem; text-align:center;">
+                <h3
+                    style="font-family:var(--font-heading); color:var(--emerald-deep); font-size:1.5rem; margin-bottom:1rem; text-align:center;">
                     📊 Fortune History (Last 7 Days)
                 </h3>
                 <div id="historyContent"></div>
@@ -511,15 +916,48 @@
         </div>
     </div>
 
+    <!-- Email Subscribe Section -->
+    <div style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <div class="subscribe-inline" data-subscribe-source="daily-fortune">
+            <h3>📬 Get Your Daily Fortune by Email</h3>
+            <p class="subscribe-subtitle">Never miss a day! Receive personalized feng shui fortune readings in your
+                inbox every morning.</p>
+            <div class="zodiac-select-wrapper">
+                <select id="subscribeZodiac" aria-label="Select your zodiac sign">
+                    <option value="" disabled selected>Select your zodiac</option>
+                    <option value="rat">🐀 Rat</option>
+                    <option value="ox">🐂 Ox</option>
+                    <option value="tiger">🐅 Tiger</option>
+                    <option value="rabbit">🐇 Rabbit</option>
+                    <option value="dragon">🐉 Dragon</option>
+                    <option value="snake">🐍 Snake</option>
+                    <option value="horse">🐴 Horse</option>
+                    <option value="goat">🐐 Goat</option>
+                    <option value="monkey">🐵 Monkey</option>
+                    <option value="rooster">🐔 Rooster</option>
+                    <option value="dog">🐕 Dog</option>
+                    <option value="pig">🐷 Pig</option>
+                </select>
+            </div>
+            <form class="subscribe-form">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe Free →</button>
+            </form>
+            <p class="subscribe-note">🔒 No spam. Unsubscribe anytime. Free forever.</p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="fortune-footer">
-        <p>© 2026 <a href="index.html">FengShuiWithJackson</a> · <a href="fortune-calculator.html">Personal Fortune Calculator</a></p>
+        <p>© 2026 <a href="index.html">FengShuiWithJackson</a> · <a href="fortune-calculator.html">Personal Fortune
+                Calculator</a></p>
     </footer>
 
     <!-- Scripts -->
     <script src="js/bazi-engine.js"></script>
     <script src="js/fortune-data.js"></script>
     <script src="js/fortune.js"></script>
+    <script src="js/email-subscribe.js"></script>
 </body>
 
 </html>

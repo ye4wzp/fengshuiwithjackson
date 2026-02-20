@@ -432,3 +432,6 @@ const fortuneData = {
 if (typeof window !== 'undefined') {
     window.fortuneData = fortuneData;
 }
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = fortuneData;
+}

@@ -411,7 +411,7 @@
             const blogCards = document.querySelectorAll('.blog-card');
 
             blogCards.forEach(card => {
-                const link = card.querySelector('.blog-link');
+                const link = card.querySelector('.blog-link, .read-more, a[href*="article"]');
                 if (!link) return;
 
                 const href = link.getAttribute('href');
@@ -491,28 +491,7 @@
                     color: var(--champagne-gold, #d4af37);
                 }
                 
-                .blog-card .blog-image::after {
-                    content: '👁️ Read Article';
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%) scale(0.8);
-                    background: rgba(13, 77, 61, 0.9);
-                    color: white;
-                    padding: 12px 24px;
-                    border-radius: 30px;
-                    font-weight: 600;
-                    font-size: 14px;
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    pointer-events: none;
-                    z-index: 10;
-                }
-                
-                .blog-card:hover .blog-image::after {
-                    opacity: 1;
-                    transform: translate(-50%, -50%) scale(1);
-                }
+                /* Read Article overlay removed — user found it ugly */
             `;
             document.head.appendChild(style);
         }
@@ -522,9 +501,9 @@
     // INITIALIZE ALL EFFECTS
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize all visual enhancements
-        CustomCursor.init();
-        Particles.init();
+        // Custom cursor and particles disabled — user found them distracting
+        // CustomCursor.init();
+        // Particles.init();
         ScrollAnimations.init();
         Parallax.init();
         MagneticButtons.init();

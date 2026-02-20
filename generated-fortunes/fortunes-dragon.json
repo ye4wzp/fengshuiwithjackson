@@ -1,0 +1,107 @@
+[
+  {
+    "date": "2026-02-19",
+    "zodiac": "dragon",
+    "emoji": "🐉",
+    "name": "Dragon",
+    "ratings": {
+      "overall": 62,
+      "wealth": 61,
+      "love": 69,
+      "career": 77,
+      "health": 86
+    },
+    "luckyColors": [
+      "Silver",
+      "Deep Red",
+      "Forest Green"
+    ],
+    "luckyDirection": "Southeast",
+    "luckyNumbers": [
+      2,
+      5,
+      7
+    ],
+    "doList": [
+      "Plan important tasks",
+      "Practice gratitude"
+    ],
+    "dontList": [
+      "Argue with others",
+      "Make impulsive decisions"
+    ],
+    "fengShuiTip": "",
+    "advice": "Leadership destiny calls. Step into authority roles with confidence. Gold accessories amplify your aura.",
+    "crystal": "Citrine"
+  },
+  {
+    "date": "2026-02-20",
+    "zodiac": "dragon",
+    "emoji": "🐉",
+    "name": "Dragon",
+    "ratings": {
+      "overall": 63,
+      "wealth": 64,
+      "love": 76,
+      "career": 88,
+      "health": 64
+    },
+    "luckyColors": [
+      "Bronze",
+      "Violet",
+      "Ivory"
+    ],
+    "luckyDirection": "East",
+    "luckyNumbers": [
+      1,
+      3,
+      6
+    ],
+    "doList": [
+      "Plan important tasks",
+      "Practice gratitude"
+    ],
+    "dontList": [
+      "Argue with others",
+      "Make impulsive decisions"
+    ],
+    "fengShuiTip": "",
+    "advice": "Creative breakthroughs are likely. Let your imagination run wild. Purple enhances your mystical connection.",
+    "crystal": "Dragon Vein Agate"
+  },
+  {
+    "date": "2026-02-21",
+    "zodiac": "dragon",
+    "emoji": "🐉",
+    "name": "Dragon",
+    "ratings": {
+      "overall": 64,
+      "wealth": 67,
+      "love": 83,
+      "career": 59,
+      "health": 77
+    },
+    "luckyColors": [
+      "Gold",
+      "Red",
+      "Purple"
+    ],
+    "luckyDirection": "Southeast",
+    "luckyNumbers": [
+      4,
+      7,
+      8
+    ],
+    "doList": [
+      "Plan important tasks",
+      "Practice gratitude"
+    ],
+    "dontList": [
+      "Argue with others",
+      "Make impulsive decisions"
+    ],
+    "fengShuiTip": "",
+    "advice": "Financial prosperity flows toward you. Be generous and it multiplies. Donate to charity for karmic returns.",
+    "crystal": "Imperial Jade"
+  }
+]

@@ -1674,6 +1674,7 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
+
 /* Legal Pages Styles */
 .page-header {
     background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-medium));
@@ -1823,13 +1824,13 @@ h3 {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: var(--transition-smooth);
 }
 
 .article-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .article-card img {
@@ -1916,7 +1917,7 @@ h3 {
         font-size: 0.85rem;
         padding: 0.75rem 0;
     }
-    
+
     .breadcrumb li:not(:last-child)::after {
         margin: 0 0.3rem;
     }
@@ -1946,12 +1947,12 @@ h3 {
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .share-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .share-facebook {
@@ -1993,7 +1994,7 @@ h3 {
     border-radius: 10px;
     margin-bottom: 15px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
@@ -2076,7 +2077,7 @@ h3 {
     right: 0;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     margin-top: 10px;
     max-height: 400px;
     overflow-y: auto;
@@ -2130,17 +2131,17 @@ h3 {
         margin: 20px 0;
         padding: 0 20px;
     }
-    
+
     .share-btn {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
     }
-    
+
     .faq-section {
         padding: 25px 20px;
     }
-    
+
     .search-container {
         width: 100%;
         max-width: none;
@@ -2196,21 +2197,21 @@ h3 {
     .nav-wrapper {
         flex-wrap: wrap;
     }
-    
+
     .nav-search {
         order: 3;
         width: 100%;
         margin-top: 15px;
     }
-    
+
     .nav-search .search-container {
         max-width: 100%;
     }
-    
+
     .mobile-menu-toggle {
         order: 2;
     }
-    
+
     .nav-menu {
         order: 4;
         width: 100%;
@@ -2252,8 +2253,13 @@ h3 {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .loader-text {
@@ -2297,6 +2303,7 @@ img[loading="lazy"] {
     0% {
         background-position: -200% 0;
     }
+
     100% {
         background-position: 200% 0;
     }
@@ -2329,4 +2336,53 @@ img[loading="lazy"].loaded {
 .skeleton-image {
     height: 200px;
     width: 100%;
+}
+
+/* =============================================
+   Dark Mode Theme
+   Triggered by data-theme="dark" on <html>
+   ============================================= */
+[data-theme="dark"] {
+    --emerald-deep: #1a8a6a;
+    --emerald-medium: #2da882;
+    --emerald-light: #4cc99a;
+    --champagne-gold: #e8c96f;
+    --gold-light: #f0d774;
+    --cream: #1a1a2e;
+    --cream-dark: #16162a;
+    --white: #222240;
+    --black: #e8e8f0;
+    --gray-dark: #c0c0d0;
+    --gray-medium: #9090a8;
+    --gray-light: #3a3a55;
+}
+
+[data-theme="dark"] body {
+    background-color: #1a1a2e;
+    color: #e8e8f0;
+}
+
+[data-theme="dark"] .navbar {
+    background: #222240;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .problem-card {
+    background: #222240;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .footer {
+    background: #0f0f20;
+}
+
+[data-theme="dark"] .modal-content {
+    background: #222240;
+}
+
+[data-theme="dark"] img {
+    opacity: 0.9;
 }

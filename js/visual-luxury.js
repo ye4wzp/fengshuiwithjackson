@@ -9,8 +9,7 @@
     document.addEventListener('DOMContentLoaded', init);
 
     function init() {
-        createCustomCursor();
-        initParticles();
+        // Custom cursor and particles removed — user found them distracting
         setupAuraCards();
         initSmoothReveal();
     }

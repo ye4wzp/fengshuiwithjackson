@@ -1,0 +1,176 @@
+/* =============================================
+   Diagnostic Tool Styles
+   3-step interactive feng shui diagnostic
+   ============================================= */
+
+.diagnostic-section {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.diagnostic-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Step Indicator */
+.diag-steps-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+}
+
+.diag-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--gray-medium);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.diag-step.active {
+    color: var(--emerald-deep);
+    font-weight: 600;
+}
+
+.diag-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    color: var(--gray-medium);
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.diag-step.active .diag-step-num {
+    background: var(--emerald-deep);
+    color: var(--white);
+}
+
+.diag-step-connector {
+    width: 40px;
+    height: 2px;
+    background: var(--gray-light);
+    margin: 0 0.25rem;
+    align-self: center;
+}
+
+/* Options Grid (Step 1) */
+.diag-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.diag-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    background: var(--cream);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: var(--font-body);
+}
+
+.diag-option:hover {
+    border-color: var(--champagne-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.diag-option-icon {
+    font-size: 2rem;
+}
+
+.diag-option-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--emerald-deep);
+}
+
+/* Result (Step 3) */
+.diag-result {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.diag-result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.diag-tip-box {
+    background: var(--cream);
+    border-left: 4px solid var(--champagne-gold);
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 1rem;
+}
+
+.diag-article-link {
+    display: block;
+    padding: 0.8rem 1rem;
+    background: var(--cream);
+    border-radius: 10px;
+    color: var(--emerald-deep);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.diag-article-link:hover {
+    background: var(--emerald-deep);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .diag-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .diag-step span:not(.diag-step-num) {
+        display: none;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}

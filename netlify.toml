@@ -1,0 +1,35 @@
+# Netlify configuration for FengShuiWithJackson
+
+[build]
+  publish = "."
+
+# Scheduled function for daily fortune emails
+[functions]
+  directory = "netlify/functions"
+
+# Headers for static assets
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Redirects
+[[redirects]]
+  from = "/fortune"
+  to = "/daily-fortune.html"
+  status = 301
+
+[[redirects]]
+  from = "/quiz"
+  to = "/landing-wealth-corner.html"
+  status = 301
