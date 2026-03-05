@@ -1,0 +1,352 @@
+/* ============================================
+   Fortune Showcase, Promo Banner & Navigation
+   Extracted from index.html inline styles
+   ============================================ */
+
+/* === Navigation Dropdown === */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown > a {
+    cursor: pointer;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    min-width: 200px;
+    z-index: 100;
+    list-style: none;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu.active {
+    display: block;
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1.2rem;
+    color: var(--emerald-deep);
+    font-size: 0.9rem;
+}
+
+.nav-dropdown-menu a:hover {
+    background: rgba(13, 77, 61, 0.05);
+}
+
+/* === 2026 Guide Nav Button === */
+.btn-nav-guide {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+}
+
+/* === Promo Banner === */
+.promo-banner {
+    background: linear-gradient(135deg, #ff4500 0%, #ff6b35 50%, #ffa500 100%);
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.promo-banner-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.promo-badge {
+    background: #fff;
+    color: #ff4500;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.promo-banner h3 {
+    color: white;
+    font-size: 28px;
+    margin: 15px 0 10px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.promo-banner p {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    margin: 0;
+}
+
+.promo-price-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.promo-price-display {
+    text-align: center;
+}
+
+.promo-price-old {
+    text-decoration: line-through;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+}
+
+.promo-price-new {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+}
+
+.promo-price-discount {
+    color: #ffeb3b;
+    font-size: 12px;
+}
+
+.promo-cta {
+    background: white;
+    color: #ff4500;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.promo-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* === Problem Card Icons === */
+.problem-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* === Fortune Showcase Section === */
+.fortune-showcase {
+    background: linear-gradient(135deg, #0d4d3d 0%, #1a5c4a 40%, #2E7D5C 100%);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.fortune-showcase .container {
+    position: relative;
+    z-index: 2;
+}
+
+.fortune-bg-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.04;
+    font-size: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-family: 'Noto Serif SC', serif;
+    letter-spacing: 2rem;
+}
+
+/* Section Header */
+.fortune-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.fortune-badge {
+    background: rgba(212,175,55,0.2);
+    color: #f0d774;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.fortune-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.fortune-header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0.8rem auto 0;
+}
+
+/* Tool Cards Grid */
+.fortune-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Fortune Tool Card */
+.fortune-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.fortune-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(212,175,55,0.4);
+}
+
+.fortune-card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.fortune-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.fortune-card p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.fortune-card-cta {
+    margin-top: 1.2rem;
+    color: #f0d774;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Quick Fortune Preview Widget */
+.fortune-preview {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.fortune-preview-label {
+    color: #f0d774;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.3rem;
+}
+
+.fortune-preview-text {
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.fortune-preview-cta {
+    background: linear-gradient(135deg, #d4af37, #c9a22e);
+    color: white;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    white-space: nowrap;
+}
+
+.fortune-preview-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+}
+
+/* === Service Card Testimonials === */
+.service-testimonial {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.service-testimonial.muted {
+    color: var(--gray-medium);
+}
+
+.service-stats {
+    font-size: 0.85rem;
+    color: var(--emerald-medium);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.service-urgency {
+    font-size: 0.8rem;
+    color: var(--champagne-gold);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* === Lead Magnet Section Overrides === */
+.lead-magnet .form-note a {
+    color: var(--champagne-gold);
+}
+
+.subscribe-success h4 {
+    color: var(--white);
+    font-family: var(--font-heading);
+}
+
+.subscribe-success p {
+    color: rgba(255,255,255,0.9);
+}
+
+/* === Blog Card Images === */
+.blog-image {
+    background-size: cover;
+    background-position: center;
+}
