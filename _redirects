@@ -15,7 +15,7 @@
 /admin/* 410
 
 # Favicon重定向
-/favicon.ico /images/favicon.webp 200
+/favicon.ico /images/favicon.jpg 200
 
 # 404页面（可选，如果将来创建404页面）
 # /* /404.html 404

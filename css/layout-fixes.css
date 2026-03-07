@@ -28,7 +28,7 @@
 .nav-menu {
     order: 3;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 1.2rem;
     overflow: visible;
     align-items: center;
 }
@@ -36,56 +36,39 @@
 /* Ensure nav button doesn't overflow */
 .nav-menu .btn-nav {
     white-space: nowrap;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.78rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
     border-radius: 25px;
     line-height: 1.2;
-    position: relative;
-    top: 0;
-}
-
-/* Fix Fortune Tools dropdown arrow wrapping */
-.nav-dropdown > a {
-    white-space: nowrap;
-}
-
-/* Nav links should not wrap */
-.nav-menu li a {
-    white-space: nowrap;
 }
 
 /* Nav menu text smaller on medium screens */
 @media (max-width: 1300px) {
     .nav-menu {
-        gap: 0.6rem;
+        gap: 0.8rem;
     }
     
     .nav-menu li a {
-        font-size: 0.82rem;
+        font-size: 0.85rem;
     }
     
     .nav-menu .btn-nav {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.72rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
 /* Nav menu on smaller screens */
 @media (max-width: 1200px) {
     .nav-menu {
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .nav-menu li a {
-        font-size: 0.8rem;
-    }
-
-    .nav-menu .btn-nav {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
 }
 

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://fengshuiwithjackson.com/">
     <meta name="description"
         content="Modern Feng Shui solutions for career success and personal harmony. Expert consultations for the Year of the Fire Horse 2026.">
     <!-- Open Graph / Facebook -->
@@ -33,9 +32,6 @@
 
         gtag('config', 'G-LL9K60SGL2');
     </script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6311246948335818"
-        crossorigin="anonymous"></script>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -280,6 +276,8 @@
 
     <!-- Preload main CSS, load async -->
     <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="css/email-subscribe.css">
+    <link rel="stylesheet" href="css/diagnostic.css">
     <noscript>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/visual-enhancements.css">
@@ -289,7 +287,6 @@
         <link rel="stylesheet" href="css/services-enhanced.css">
         <link rel="stylesheet" href="css/email-subscribe.css">
         <link rel="stylesheet" href="css/diagnostic.css">
-        <link rel="stylesheet" href="css/fortune-showcase.css">
     </noscript>
 </head>
 
@@ -308,17 +305,29 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li class="nav-dropdown">
-                        <a href="#fortune-tools">Fortune Tools ▾</a>
-                        <ul class="nav-dropdown-menu">
-                            <li><a href="daily-fortune.html">🐉 Daily Fortune</a></li>
-                            <li><a href="bazi-calculator.html">🔮 BaZi Calculator</a></li>
-                            <li><a href="fortune-calculator.html">📊 Fortune Calculator</a></li>
-                            <li><a href="compass.html">🧭 Feng Shui Compass</a></li>
+                    <li style="position:relative" class="nav-dropdown">
+                        <a href="#fortune-tools" style="cursor:pointer">🔮 Fortune Tools ▾</a>
+                        <ul style="display:none; position:absolute; top:100%; left:0; background:var(--white);
+                            box-shadow:0 8px 25px rgba(0,0,0,0.12); border-radius:12px; padding:0.8rem 0;
+                            min-width:200px; z-index:100; list-style:none;">
+                            <li><a href="daily-fortune.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🐉
+                                    Daily Fortune</a></li>
+                            <li><a href="bazi-calculator.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🔮
+                                    BaZi Calculator</a></li>
+                            <li><a href="fortune-calculator.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">📊
+                                    Fortune Calculator</a></li>
+                            <li><a href="compass.html"
+                                    style="display:block; padding:0.5rem 1.2rem; color:var(--emerald-deep); font-size:0.9rem;">🧭
+                                    Feng Shui Compass</a></li>
                         </ul>
                     </li>
                     <li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-2026-guide.html" class="btn-nav btn-nav-guide">2026 Guide</a></li>
+                    <li><a href="product-2026-guide.html" class="btn-nav"
+                            style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white;">🔥 2026
+                            Guide</a></li>
                 </ul>
             </div>
         </div>
@@ -346,20 +355,30 @@
     </section>
 
     <!-- 2026 Fire Horse Guide Promotion Banner -->
-    <section class="promo-banner">
-        <div class="container">
-            <div class="promo-banner-text">
-                <span class="promo-badge">🔥 NEW RELEASE</span>
-                <h3>2026 Fire Horse Feng Shui Planning Guide</h3>
-                <p>37-page complete guide with zodiac forecasts, monthly tips, and 10 deadly mistakes to avoid!</p>
+    <section class="promo-banner"
+        style="background: linear-gradient(135deg, #ff4500 0%, #ff6b35 50%, #ffa500 100%); padding: 30px 0; position: relative; overflow: hidden;">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px;">
+                <span
+                    style="background: #fff; color: #ff4500; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px;">🔥
+                    NEW RELEASE</span>
+                <h3
+                    style="color: white; font-size: 28px; margin: 15px 0 10px; font-family: 'Cormorant Garamond', serif;">
+                    2026 Fire Horse Feng Shui Planning Guide</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0;">37-page complete guide with zodiac
+                    forecasts, monthly tips, and 10 deadly mistakes to avoid!</p>
             </div>
-            <div class="promo-price-box">
-                <div class="promo-price-display">
-                    <span class="promo-price-old">$19.99</span>
-                    <span class="promo-price-new">$0.99</span>
-                    <span class="promo-price-discount">95% OFF - Limited Time!</span>
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <span
+                        style="text-decoration: line-through; color: rgba(255,255,255,0.7); font-size: 18px;">$19.99</span>
+                    <span style="color: white; font-size: 36px; font-weight: bold; display: block;">$0.99</span>
+                    <span style="color: #ffeb3b; font-size: 12px;">95% OFF - Limited Time!</span>
                 </div>
-                <a href="product-2026-guide.html" class="promo-cta">Get Instant Access →</a>
+                <a href="product-2026-guide.html"
+                    style="background: white; color: #ff4500; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-size: 18px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s;">Get
+                    Instant Access →</a>
             </div>
         </div>
     </section>
@@ -369,17 +388,20 @@
         <div class="container">
             <div class="problems-grid">
                 <div class="problem-card">
-                    <div class="problem-icon"><img src="images/problem-stuck.webp" alt="Feeling Stuck"></div>
+                    <div class="problem-icon"><img src="images/problem-stuck.webp" alt="Feeling Stuck"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Feeling Stuck?</h3>
                     <p>Your career has hit a plateau and opportunities seem to pass you by.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon"><img src="images/problem-money.webp" alt="Money Flowing Out"></div>
+                    <div class="problem-icon"><img src="images/problem-money.webp" alt="Money Flowing Out"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Money Flowing Out?</h3>
                     <p>You earn well but can't seem to save or build lasting wealth.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon"><img src="images/problem-energy.webp" alt="Restless Energy"></div>
+                    <div class="problem-icon"><img src="images/problem-energy.webp" alt="Restless Energy"
+                            style="width: 80px; height: 80px; object-fit: contain;"></div>
                     <h3>Restless Energy?</h3>
                     <p>Stress, poor sleep, and constant anxiety drain your vitality.</p>
                 </div>
@@ -408,59 +430,120 @@
     </section>
 
     <!-- ===== Fortune Tools Showcase ===== -->
-    <section id="fortune-tools" class="fortune-showcase">
+    <section id="fortune-tools" class="fortune-showcase" style="
+        background: linear-gradient(135deg, #0d4d3d 0%, #1a5c4a 40%, #2E7D5C 100%);
+        padding: 5rem 0; position: relative; overflow: hidden;
+    ">
         <!-- Background decoration -->
-        <div class="fortune-bg-decoration">
+        <div style="position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.04; font-size:12rem;
+            display:flex; align-items:center; justify-content:center; pointer-events:none;
+            font-family:'Noto Serif SC',serif; letter-spacing:2rem;">
             ☰☷☳☵
         </div>
 
-        <div class="container">
+        <div class="container" style="position:relative; z-index:2;">
             <!-- Section Header -->
-            <div class="fortune-header">
-                <span class="fortune-badge">
+            <div style="text-align:center; margin-bottom:3rem;">
+                <span style="background:rgba(212,175,55,0.2); color:#f0d774; padding:0.4rem 1.2rem;
+                    border-radius:20px; font-size:0.85rem; font-weight:600; letter-spacing:1px;">
                     ✨ FREE INTERACTIVE TOOLS
                 </span>
-                <h2>Discover Your Fortune</h2>
-                <p>Ancient Chinese wisdom meets modern technology. Explore your destiny with our interactive tools.</p>
+                <h2 style="font-family:'Cormorant Garamond',serif; color:white; font-size:clamp(2rem,4vw,3rem);
+                    margin-top:1rem; font-weight:600;">
+                    Discover Your Fortune
+                </h2>
+                <p style="color:rgba(255,255,255,0.7); font-size:1.1rem; max-width:600px; margin:0.8rem auto 0;">
+                    Ancient Chinese wisdom meets modern technology. Explore your destiny with our interactive tools.
+                </p>
             </div>
 
             <!-- Tool Cards Grid -->
-            <div class="fortune-grid">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+                gap:1.5rem; margin-bottom:3rem;">
 
                 <!-- Card 1: Daily Fortune -->
-                <a href="daily-fortune.html" class="fortune-card">
-                    <div class="fortune-card-icon">��</div>
-                    <h3>Daily Zodiac Fortune</h3>
-                    <p>BaZi-powered daily readings with lucky colors, directions, do's & don'ts, and feng shui tips.</p>
-                    <div class="fortune-card-cta">Check Today's Fortune →</div>
+                <a href="daily-fortune.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🐉</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">Daily Zodiac Fortune</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        BaZi-powered daily readings with lucky colors, directions, do's & don'ts, and feng shui tips.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Check Today's Fortune →
+                    </div>
                 </a>
 
                 <!-- Card 2: BaZi Calculator -->
-                <a href="bazi-calculator.html" class="fortune-card">
-                    <div class="fortune-card-icon">🔮</div>
-                    <h3>BaZi Birth Chart</h3>
-                    <p>Four Pillars of Destiny analysis with Five Elements balance, personality, and 2026 forecast.</p>
-                    <div class="fortune-card-cta">Calculate Your Chart →</div>
+                <a href="bazi-calculator.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🔮</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">BaZi Birth Chart</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        Four Pillars of Destiny analysis with Five Elements balance, personality, and 2026 forecast.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Calculate Your Chart →
+                    </div>
                 </a>
 
                 <!-- Card 3: Feng Shui Compass -->
-                <a href="compass.html" class="fortune-card">
-                    <div class="fortune-card-icon">🧭</div>
-                    <h3>Feng Shui Compass</h3>
-                    <p>Real-time Lo Pan compass with 24 Mountains, 8 Trigrams, and personalized Kua directions.</p>
-                    <div class="fortune-card-cta">Open Compass →</div>
+                <a href="compass.html" style="
+                    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.12); border-radius:20px;
+                    padding:2rem; text-decoration:none; color:white;
+                    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+                    display:block; position:relative; overflow:hidden;
+                " onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.3)';this.style.borderColor='rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='rgba(255,255,255,0.12)'">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🧭</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                        color:white; margin-bottom:0.5rem;">Feng Shui Compass</h3>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; line-height:1.6;">
+                        Real-time Lo Pan compass with 24 Mountains, 8 Trigrams, and personalized Kua directions.
+                    </p>
+                    <div style="margin-top:1.2rem; color:#f0d774; font-weight:600; font-size:0.9rem;">
+                        Open Compass →
+                    </div>
                 </a>
             </div>
 
             <!-- Quick Fortune Preview Widget -->
-            <div class="fortune-preview">
+            <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(212,175,55,0.2);
+                border-radius:16px; padding:1.5rem 2rem; display:flex; align-items:center;
+                justify-content:space-between; flex-wrap:wrap; gap:1rem;">
                 <div>
-                    <div class="fortune-preview-label">📅 Today's Energy</div>
-                    <div id="quickFortuneText" class="fortune-preview-text">
+                    <div style="color:#f0d774; font-size:0.8rem; font-weight:600; text-transform:uppercase;
+                        letter-spacing:1.5px; margin-bottom:0.3rem;">
+                        📅 Today's Energy
+                    </div>
+                    <div id="quickFortuneText"
+                        style="color:white; font-size:1.1rem; font-family:'Cormorant Garamond',serif;">
                         Loading today's celestial energy...
                     </div>
                 </div>
-                <a href="daily-fortune.html" class="fortune-preview-cta">
+                <a href="daily-fortune.html" style="
+                    background: linear-gradient(135deg, #d4af37, #c9a22e);
+                    color: white; padding:0.7rem 1.8rem; border-radius:50px;
+                    text-decoration:none; font-weight:600; font-size:0.9rem;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    white-space:nowrap;
+                " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     See Full Fortune →
                 </a>
             </div>
@@ -503,7 +586,8 @@
                         <li>Quick actionable tips</li>
                         <li>Perfect for beginners</li>
                     </ul>
-                    <p class="service-testimonial muted">
+                    <p
+                        style="font-size:0.85rem; color:var(--gray-medium); text-align:center; margin-bottom:1rem; font-style:italic;">
                         ⭐ "Got 3 tips that changed my bedroom energy overnight!" — Maria K.
                     </p>
                     <button class="btn btn-outline book-service" data-service="The Quick Scan - $49">Get
@@ -524,10 +608,12 @@
                         <li>Personalized action plan</li>
                         <li>Follow-up support</li>
                     </ul>
-                    <p class="service-stats">
+                    <p
+                        style="font-size:0.85rem; color:var(--emerald-medium); text-align:center; margin-bottom:0.5rem; font-weight:600;">
                         ⭐ 47 clients helped in 2025
                     </p>
-                    <p class="service-urgency">
+                    <p
+                        style="font-size:0.8rem; color:var(--champagne-gold); text-align:center; margin-bottom:1rem; font-weight:600;">
                         🔥 Only 3 spots remaining this month
                     </p>
                     <button class="btn btn-primary book-service"
@@ -564,12 +650,13 @@
                     <input type="email" placeholder="Enter your email address" required>
                     <button type="submit" class="btn-subscribe">Get Free Checklist →</button>
                 </form>
-                <p class="form-note">✨ Plus: Start with a Quick Scan for just $49 · <a href="#services">Book Now</a></p>
+                <p class="form-note">✨ Plus: Start with a Quick Scan for just $49 · <a href="#services"
+                        style="color: var(--champagne-gold);">Book Now</a></p>
                 <div class="subscribe-success">
                     <div class="success-icon">🎋</div>
-                    <h4>Welcome to the Feng Shui Family!
+                    <h4 style="color: var(--white); font-family: var(--font-heading);">Welcome to the Feng Shui Family!
                     </h4>
-                    <p>Your 2026 Checklist is on its way. Check your inbox! 📬</p>
+                    <p style="color: rgba(255,255,255,0.9);">Your 2026 Checklist is on its way. Check your inbox! 📬</p>
                 </div>
             </div>
         </div>
@@ -581,47 +668,41 @@
             <h2 class="section-title">Jackson's Feng Shui Essentials</h2>
             <div class="blog-grid">
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('images/wealth-corner-blog.webp');">
+                    <div class="blog-image"
+                        style="background-image: url('images/wealth-corner-blog.webp'); background-size: cover; background-position: center;">
                     </div>
                     <div class="blog-content">
                         <h3>How to Find Your Wealth Corner</h3>
                         <p>Discover the secret location in your home that attracts prosperity and abundance.</p>
-                        <a href="article-wealth-corner.html" class="blog-link">Read More →</a>
+                        <a href="blog.html" class="blog-link">Read More →</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('images/money-plants-blog.webp');">
+                    <div class="blog-image"
+                        style="background-image: url('images/money-plants-blog.webp'); background-size: cover; background-position: center;">
                     </div>
                     <div class="blog-content">
                         <h3>Top 5 Plants for Money</h3>
                         <p>These powerful plants don't just look good—they activate wealth energy in your space.</p>
-                        <a href="article-money-plants.html" class="blog-link">Read More →</a>
+                        <a href="blog.html" class="blog-link">Read More →</a>
                     </div>
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: url('images/bedroom-mistakes-blog.webp');">
+                    <div class="blog-image"
+                        style="background-image: url('images/bedroom-mistakes-blog.webp'); background-size: cover; background-position: center;">
                     </div>
                     <div class="blog-content">
                         <h3>Bedroom Feng Shui Mistakes</h3>
                         <p>Are these common errors blocking your rest, relationships, and rejuvenation?</p>
-                        <a href="article-bedroom-mistakes.html" class="blog-link">Read More →</a>
+                        <a href="blog.html" class="blog-link">Read More →</a>
                     </div>
                 </article>
             </div>
             <div class="blog-cta">
                 <a href="shop.html" class="btn btn-outline-gold">Shop My Favorites</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Ad Unit -->
-    <section style="padding: 20px 0;">
-        <div class="container" style="text-align: center;">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6311246948335818"
-                data-ad-slot="5628283775" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </section>
 
@@ -749,10 +830,21 @@
         </div>
     </footer>
 
-    <!-- Nav dropdown handled by CSS :hover in fortune-showcase.css -->
+    <!-- Nav dropdown script -->
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach(function (item) {
+            var submenu = item.querySelector('ul');
+            if (!submenu) return;
+            item.addEventListener('mouseenter', function () { submenu.style.display = 'block'; });
+            item.addEventListener('mouseleave', function () { submenu.style.display = 'none'; });
+        });
+    </script>
 
-    <!-- All JS bundled into bundle.min.js -->
+    <!-- Bundled JS for better performance -->
     <script src="js/bundle.min.js"></script>
+    <script src="js/email-subscribe.js"></script>
+    <script src="js/diagnostic-tool.js"></script>
+    <script src="js/dark-mode.js"></script>
 </body>
 
 </html>
